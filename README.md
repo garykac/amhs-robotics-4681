@@ -14,6 +14,8 @@ The plan will be for the team to meet in the Portable from 3:00 to 5:00 on Monda
 * Develop the team’s 3 to 5 goals
 * Define the high level design attributes/requirements
 
+If there is any time remaining, we will have team members simulate (walk-thru) the game.
+
 [List of previous meetings...](docs/meetings-2019.md)
 
 ## Documentation
