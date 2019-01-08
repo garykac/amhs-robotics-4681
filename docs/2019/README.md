@@ -12,3 +12,7 @@
 ## AMHS Competition Infomation
 
 [Team Information](teams.md)
+
+## Teams
+
+[Base](base/)
