@@ -26,4 +26,17 @@
 * difficult to calibrate
 * High SIM count (4 - 6)
 
+## White Wheel
+
+### Pro:
+
+* Easy to build
+* Drives straight
+
+### Cons:
+
+* can't move sideways
+* Can't readust w/out backing up
+* Hard to turn
+
 ## Other
