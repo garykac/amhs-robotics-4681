@@ -92,3 +92,25 @@
 #### Goals
 
 * program controls for testing
+
+## Programming
+
+#### Team Members
+
+* Christophor (Team Leader)
+* Austin C
+* Ryan D
+* Adrian K
+* Chris McV
+* Bruno S
+
+#### Goals
+
+* Drive
+  * gyro
+  * Encoders
+* Sensors
+  * distance
+  * light
+* Camera
+  * bandwidth
