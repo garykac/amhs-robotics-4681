@@ -7,3 +7,6 @@
 
 [Game Manuel 2019 pdf](https://firstfrc.blob.core.windows.net/frc2019/Manual/2019FRCGameSeasonManual.pdf)
 
+## AMHS Competition Infomation
+
+[Team Information](teams.md)
