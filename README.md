@@ -16,7 +16,7 @@ Sat 12 Jan: Meet from 10-2pm in the portable.
 
 ## 2019 Competition Information
 
-* [Main Page](docs/2019/)
+* [Main Competition Info](docs/2019/)
 * [Team Info](docs/2019/teams.md)
 
 ## Documentation
