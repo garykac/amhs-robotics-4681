@@ -6,15 +6,11 @@ Archibishop Murphy High School's FRC (FIRST Robotics Competition) team
 
 ## Upcoming meeting and events
 
-### Monday 7 January 2019
+### Week 1
 
-The plan will be for the team to meet in the Portable from 3:00 to 5:00 on Monday.  Per our conversation on Saturday, the proposed agenda is:
+Mon 7 Jan - Fri 11 Jan: Meet from 3-5pm in the portable.
 
-* Debrief from Saturday’s session (including another review of the video)
-* Develop the team’s 3 to 5 goals
-* Define the high level design attributes/requirements
-
-If there is any time remaining, we will have team members simulate (walk-thru) the game.
+Sat 12 Jan: Meet from 10-2pm in the portable.
 
 [List of previous meetings...](docs/meetings-2019.md)
 
