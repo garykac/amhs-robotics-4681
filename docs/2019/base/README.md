@@ -26,5 +26,5 @@ With Programming
 
 * Adrian K (Leader)
 * Jenna B (co-Leader)
-* Ryan
 * Zoey
+* Ryan (Sensors)
