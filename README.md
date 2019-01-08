@@ -1,5 +1,5 @@
 
-<img src="img/amhs-logo-white-160.png" height="100">&nbsp;&nbsp;&nbsp;<img src="img/frc-logo-190.jpg" height="100">
+![AMHS Logo](img/amhs-logo-white-100.png) ![FRC Logo](img/frc-logo-100.png)
 
 # AMHS Robotics 4681
 Archibishop Murphy High School's FRC (FIRST Robotics Competition) team
