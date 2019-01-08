@@ -14,6 +14,11 @@ Sat 12 Jan: Meet from 10-2pm in the portable.
 
 [List of previous meetings...](docs/meetings-2019.md)
 
+## 2019 Competition Information
+
+* [Main Page](docs/2019/)
+* [Team Info](docs/2019/teams.md)
+
 ## Documentation
 
 * [Post-mortem documents](docs/post-mortem.md)
