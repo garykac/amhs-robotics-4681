@@ -39,7 +39,7 @@
 * Zoey (Leader)
 * Liam C
 * Braydon
-* SD
+* Steven P
 * Adrian K (Ghost)
 
 #### Goals
