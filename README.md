@@ -4,11 +4,6 @@
 # AMHS Robotics 4681
 Archibishop Murphy High School's FRC (FIRST Robotics Competition) team
 
-sdf sdfsdfsdf
-sdfsdfsdfsdfsdfsdfsdfsdf
-
-sdfsdfsdfsdkjfghlwgh;ksdfjh;goedl
-
 ## Upcoming meeting and events
 
 ### Week 1
