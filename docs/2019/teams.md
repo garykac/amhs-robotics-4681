@@ -2,13 +2,13 @@
 
 ## Teleoperate
 
-### Team Members
+#### Team Members
 
 * Christopher (Leader)
 * Ryan
 * Bruno
 
-### Goals
+#### Goals
 
 * Camera
 * Radio
@@ -18,14 +18,14 @@
 
 ## Drive / Base
 
-### Team Members
+#### Team Members
 
 * Adrian K (Leader)
 * Jenna (Co-Leader)
 * Ryan D
 * Zoey
 
-### Goals
+#### Goals
 
 * Exit Hab 2
 * Drive up ramp
@@ -34,7 +34,7 @@
 
 ## Game Piece
 
-### Team Members
+#### Team Members
 
 * Zoey (Leader)
 * Liam C
@@ -42,19 +42,19 @@
 * SD
 * Adrian K (Ghost)
 
-### Goals
+#### Goals
 
 * Hatches
 * Cargo
 
 ## End Of Game (Climbing)
 
-### Team Members
+#### Team Members
 
 * Nate H (Leader)
 * Adrian K (Ghost)
 
-### Goals
+#### Goals
 
 * Mechinism
 
@@ -62,11 +62,11 @@
 
 ## Electrical
 
-### Team Members
+#### Team Members
 
 * Zoey (Leader)
 
-### Goals
+#### Goals
 
 * Build Electricl board
 * Rig electronics to board
@@ -74,21 +74,21 @@
 
 ## Pneumatics
 
-### Team Members
+#### Team Members
 
 * Nate (Leader)
 
-### Goals
+#### Goals
 
 * Build Pneumatics Board
 * Aid others in testing
 
 ## Controls
 
-### Team Members
+#### Team Members
 
 * Christopher (Leader)
 
-### Goals
+#### Goals
 
 * program controls for testing
