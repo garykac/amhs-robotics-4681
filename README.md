@@ -12,7 +12,7 @@ Mon 7 Jan - Fri 11 Jan: Meet from 3-5pm in the portable.
 
 Sat 12 Jan: Meet from 10-2pm in the portable.
 
-[List of previous meetings...](docs/meetings-2019.md)
+[Previous meetings...](docs/2019/meetings.md)
 
 ## 2019 Competition Information
 
