@@ -17,3 +17,7 @@ Sat 12 Jan: Meet from 10-2pm in the portable.
 ## Documentation
 
 * [Post-mortem documents](docs/post-mortem.md)
+
+## Help
+
+* [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) - How to format Markdown (.md) files
