@@ -16,9 +16,9 @@ With Programming
   * gyro
   * Straight Line Automaiton
   
-  ### Current Members
-  
-  * Adrian K (Leader)
-  * Jenna B (co-Leader)
-  * Ryan
-  * Zoey
+### Current Members
+
+* Adrian K (Leader)
+* Jenna B (co-Leader)
+* Ryan
+* Zoey
