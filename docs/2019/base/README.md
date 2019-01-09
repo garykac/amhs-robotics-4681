@@ -6,6 +6,8 @@
 
 * Investigate Tank treads
 * Play with mech
+----
+* choose between Tank Treads and Mecanum (and others)
 - - - - - -
 * Build a simple wheel base
 
