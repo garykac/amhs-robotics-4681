@@ -2,6 +2,13 @@
 
 ## Welcome to the Base (Drive Train) Team
 
+### Immediate Goals
+
+* Investigate Tank treads
+* Play with mech
+- - - - - -
+* Build a simple wheel base
+
 ### Design
 
 * Base
