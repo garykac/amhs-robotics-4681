@@ -11,6 +11,9 @@
   * Maybe HAB Lvl 2
 * Low Sim motor usage (2 - 4)
 
+#### Design Dependant
+* Walker protection (no buffer up keeps ground down)
+
 ### Con:
 * Difficult to turn
 * Slow?
