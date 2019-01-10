@@ -9,7 +9,13 @@ Archibishop Murphy High School's FRC (FIRST Robotics Competition) team
 ### Week 1
 
 * Mon **7** Jan - Fri **11** Jan: Meet from 3-5pm in the portable.
-   * Initial designs and cardboard mockups
+   * Debrief from Saturday’s session (including another review of the video)
+   * Develop the team’s 3 to 5 goals
+   * Define the high level design attributes/requirements
+   * Simulate (walk-thru) the game
+   * Break up into sub-teams and assign leaders for each team
+   * Create initial designs
+   * Create cardboard mockups
 * Sat **12** Jan: Meet from 10-2pm in the portable.
    * Transition to wood mockups
    * Begin construction of game components
