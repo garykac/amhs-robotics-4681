@@ -42,4 +42,10 @@
 * Can't readust w/out backing up
 * Hard to turn
 
+## Omni Directional wheels
+
+### Pro:
+
+
+
 ## Other
