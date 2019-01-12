@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="var" path="opencv" sourcepath="opencv.sources"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/wpilib/java/current/lib/cscore.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/wpilib/java/current/lib/ntcore.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/wpilib/java/current/lib/opencv.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/wpilib/java/current/lib/WPILib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/wpilib/java/current/lib/wpiutil.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/Downloads/ejml-v0.33-libs/ejml-v0.33-libs/ejml-core-0.33.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/Downloads/ejml-v0.33-libs/ejml-v0.33-libs/ejml-core-0.33-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/Downloads/ejml-v0.33-libs/ejml-v0.33-libs/ejml-simple-0.33.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FRC4681/Downloads/ejml-v0.33-libs/ejml-v0.33-libs/ejml-simple-0.33-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

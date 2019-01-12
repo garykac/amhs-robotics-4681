@@ -1,0 +1,82 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package org.usfirst.frc.team4681.robot;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Victor;
+
+
+public class Robot extends TimedRobot {
+	Victor motor0;
+	Victor motor1;
+	Joystick controller;
+	boolean softMode;
+	boolean hardMode;
+	boolean eStop;
+	double kSpeed;
+
+
+	@Override
+	public void robotInit() {
+		this.motor0 = new Victor(0);
+		this.motor1 = new Victor(1);
+		this.controller = new Joystick(0);
+		softMode = true;
+		hardMode = false;
+		eStop = false;
+		kSpeed = 0.6;
+	}
+
+
+	@Override
+	public void autonomousInit() {}
+
+	@Override
+	public void autonomousPeriodic() {}
+
+	@Override
+	public void teleopPeriodic() {
+		if (!eStop) {
+			if (controller.getRawButtonPressed(11) || controller.getRawButtonPressed(12))
+				eStop = true;
+			if (controller.getRawButtonPressed(6)) {
+				softMode = !softMode;
+				System.out.println("Soft Mode:");
+				System.out.print(softMode);
+			}
+			if (controller.getRawButton(5)) {
+				hardMode = true;
+				System.out.println("YOU HAVE ACTIVATED HIGH SPEED MOVEMENT");
+			} else {
+				hardMode = false;
+			}
+			
+			if (softMode) {
+				kSpeed = .25;
+			} else {
+				if (!hardMode) {
+					kSpeed = .4;
+				} else {
+					kSpeed = .7;
+				}
+			}
+		
+			motor0.set(kSpeed*controller.getRawAxis(3));
+			motor1.set(kSpeed*-controller.getRawAxis(1));
+		} else {
+			System.out.println("E-STOP");
+			motor0.set(0); motor1.set(0);
+		}
+		if (controller.getRawButtonPressed(10))
+			eStop = false;
+	}
+
+	@Override
+	public void testPeriodic() {}
+}

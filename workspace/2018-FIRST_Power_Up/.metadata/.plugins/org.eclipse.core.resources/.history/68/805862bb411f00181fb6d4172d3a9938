@@ -1,0 +1,50 @@
+package org.usfirst.frc.team4681.robot;
+
+import edu.wpi.first.wpilibj.DriverStation;
+
+public class Pterodactyl2 {
+	public static AutonomousRoutine getAutonomousRoutine()
+	{
+		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+		int station = DriverStation.getInstance().getLocation();
+		char targetSide = gameData.charAt(0);
+		return getAutonomousRoutine(station, targetSide);
+	}
+	public static AutonomousRoutine getAutonomousRoutine(int station, char targetSide) {
+		switch (station) {
+			case(1):
+				if (targetSide == 'L') { //1 Left
+					return new AutonomousRoutine("1 Left",new Position[] {new Position(154.5, 0), new Position(154.5, -41.25)});
+				} else {
+					return new AutonomousRoutine("None", new Position[] {new Position(154.5+60,0)});
+				}
+				//break;
+			case(2):
+				if (targetSide == 'L') {
+					return new AutonomousRoutine("2 Left", new Position[] {new Position(58.75, -60), new Position(58.75, -128.0)});
+				} else if (targetSide == 'R') {
+					return new AutonomousRoutine("2 Right", new Position[] {new Position(-58.75, -60), new Position(-58.75, -128.0)});
+					//Go to the right: also a diagonal crossing
+				} else {
+					//Cross baseline: moving forward
+				}
+				break;
+			case(3):
+				if (targetSide == 'R') {
+					return new AutonomousRoutine("3 Right", new Position[] {new Position(-154.5-100, 0), new Position(-154.5-100, -41.25, 0)});
+				} else {
+					return new AutonomousRoutine("None", new Position[] {new Position(-154.5-60,0)});
+				}
+				//break;
+		}
+		System.out.println("No autonomous routine selected: check that targetSide and station are set correctly");
+		
+		return new AutonomousRoutine("None", new Position[] {new Position(154.5+60,0)});
+		 
+	}
+	
+	
+		/*if (gameData.length() == 3) {
+			if (gameData.charAt(0) == 'L') {}}*/
+	
+}

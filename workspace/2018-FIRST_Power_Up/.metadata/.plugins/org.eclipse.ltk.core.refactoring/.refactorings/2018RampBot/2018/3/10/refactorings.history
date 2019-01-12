@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;vStart_SwitchMiddle&apos; in &apos;org.usfirst.frc.team4681.robot.AutonomousChooser.getAutonomousRoutine(...)&apos; to &apos;vCrossBaseline&apos;&#x0D;&#x0A;- Original project: &apos;2018RampBot&apos;&#x0D;&#x0A;- Original element: &apos;org.usfirst.frc.team4681.robot.AutonomousChooser.getAutonomousRoutine(String, char).vStart_SwitchMiddle&apos;&#x0D;&#x0A;- Renamed element: &apos;vStart_SwitchMiddle&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;vStart_SwitchMiddle&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;org.usfirst.frc.team4681.robot{AutonomousChooser.java[AutonomousChooser~getAutonomousRoutine~QString;~C@vStart_SwitchMiddle!680!708!689!707!QVector2d;!0!false" name="vCrossBaseline" references="true" stamp="1520556653527" version="1.0"/>
+</session>
