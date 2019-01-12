@@ -27,6 +27,7 @@ All Sat meetings are 10am-2pm in the portable.
 
 * [Main Competition Info](docs/2019/)
 * [Team Info](docs/2019/teams.md)
+   * [Business Team](docs/2019/business-team.md)
 
 ## Documentation
 
