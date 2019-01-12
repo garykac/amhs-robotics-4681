@@ -1,4 +1,4 @@
-
+﻿
 ![AMHS Logo](img/amhs-logo-white-100.png) ![FRC Logo](img/frc-logo-100.png)
 
 # AMHS Robotics 4681
@@ -37,6 +37,7 @@ All Sat meetings are 10am-2pm in the portable.
 * Sat
    * Transition to wood mockups
    * Begin construction of game components
+* Mon - Fri
 
 
 [Previous meetings...](docs/2019/meetings.md)
