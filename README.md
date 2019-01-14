@@ -19,7 +19,11 @@ All Sat meetings are 10am-2pm in the portable.
    * Game Mechanism: ???
    * Climbing: ???
 * Mon - Fri
-
+   * Team goals:
+      * Programming: Get 2019 base project built
+      * Drive Team: Work on mecanum base
+      * Game Mech: ???
+      * Climbing: ???
 
 [Previous meetings...](docs/2019/meetings.md)
 
