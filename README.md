@@ -27,13 +27,13 @@ All Sat meetings are 10am-2pm in the portable.
 
 ### Week 3 : Sat 19 Jan - Fri 25 Jan
 
-**Note: Finals week**
+**Note: Modified schedule because of finals week**
 
 General plan for week: begin robot building
 
 * Sat
    * Meet from 10-2
-   * ??? Extend this meeting to make up for lost time during finals week ???
+   * ??? Possibly extend this meeting to make up for lost time during finals week ???
 * Mon:
    * Meet from 10am until Noon.
 * Tue-Thu
