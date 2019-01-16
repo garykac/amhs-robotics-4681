@@ -25,6 +25,26 @@ All Sat meetings are 10am-2pm in the portable.
       * Game Mech: ???
       * Climbing: ???
 
+### Week 3 : Sat 19 Jan - Fri 25 Jan
+
+**Note: Finals week**
+
+General plan for week: begin robot building
+
+* Sat
+   * Meet from 10-2
+   * ??? Extend this meeting to make up for lost time during finals week ???
+* Mon:
+   * Meet from 10am until Noon.
+* Tue-Thu
+   * No meeting (because of Finals Week)
+* Fri
+   * Meet from 10am until 2pm.
+
+### Week 4 : Sat 26 Jan - Fri 1 Feb
+
+General plan for week: Finish core robot build
+
 [Previous meetings...](docs/2019/meetings.md)
 
 ## 2019 Competition Information
