@@ -19,12 +19,15 @@ import edu.wpi.first.wpilibj.Solenoid;
  * class.
  */
 public class Robot extends TimedRobot {
-  private static final int kFrontLeftChannel = 0;
-  private static final int kRearLeftChannel = 2;
-  private static final int kFrontRightChannel = 1;
-  private static final int kRearRightChannel = 3;
+  private static final int kPWMFrontLeft = 0;
+  private static final int kPWMRearLeft = 2;
+  private static final int kPWMFrontRight = 1;
+  private static final int kPWMRearRight = 3;
   private static final int kPWMIntakeRight = 4;
-  private static final int KPWMIntakeLeft = 5;
+  private static final int kPWMIntakeLeft = 5;
+
+  private static final double kMotorPowerLevel = 0.4;
+
   private static final int kJoystickChannel = 0;
 
   private MecanumDrive m_robotDrive;
@@ -32,10 +35,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    PWMVictorSPX frontLeft = new PWMVictorSPX(kFrontLeftChannel);
-    PWMVictorSPX rearLeft = new PWMVictorSPX(kRearLeftChannel);
-    PWMVictorSPX frontRight = new PWMVictorSPX(kFrontRightChannel);
-    PWMVictorSPX rearRight = new PWMVictorSPX(kRearRightChannel);
+    PWMVictorSPX frontLeft = new PWMVictorSPX(kPWMFrontLeft);
+    PWMVictorSPX rearLeft = new PWMVictorSPX(kPWMRearLeft);
+    PWMVictorSPX frontRight = new PWMVictorSPX(kPWMFrontRight);
+    PWMVictorSPX rearRight = new PWMVictorSPX(kPWMRearRight);
 
     // Invert the left side motors.
     // You may need to change or remove this to match your robot.
@@ -53,7 +56,8 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     // Use the joystick X axis for lateral movement, Y axis for forward
     // movement, and Z axis for rotation.
-    m_robotDrive.driveCartesian(m_stick.getX(), m_stick.getY(),
-        m_stick.getZ(), 0.0);
+    m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
+                                kMotorPowerLevel * m_stick.getY(),
+                                kMotorPowerLevel * m_stick.getZ(), 0.0);
   }
 }
