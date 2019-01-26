@@ -1,0 +1,76 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package org.usfirst.frc.team4681.robot;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.Victor;
+
+
+
+public class Robot extends TimedRobot {
+	Victor motor0;
+	Victor motor1;
+	Joystick controller;
+	String Rrange,Lrange;
+	double ru,lu;
+	Ultrasonic Rultra =new Ultrasonic(3,4); //Digital Output 1, Digital Input 1
+	Ultrasonic Lultra =new Ultrasonic(1,2);
+
+	@Override
+	public void robotInit() {
+		this.motor0 = new Victor(0);
+		this.motor1 = new Victor(1);
+		this.controller = new Joystick(0);
+		Rultra.setAutomaticMode(true);
+		Lultra.setAutomaticMode(true);
+	}
+
+	public void ultraSens(){
+		if(Rultra.getRangeInches()<=.3 || Lultra.getRangeInches()<=.3){
+			motor0.set(0);
+			motor1.set(0);
+		}
+		Rrange = Double.toString(Rultra.getRangeInches());
+		Lrange = Double.toString(Lultra.getRangeInches());
+		ru=Double.parseDouble(Rrange.substring(0,2));
+		lu=Double.parseDouble(Lrange.substring(0,2));
+		System.out.println(ru+"\n"+lu);
+		if (ru>lu){
+			motor0.set(.2);
+		}
+		if(lu>ru){
+			motor1.set(.-2);
+		}
+		//System.out.println( "Left: "+valU1+"\nRight: "+valU2);
+		
+	}
+	@Override
+	public void autonomousInit() {}
+
+	@Override
+	public void autonomousPeriodic() {}
+
+	@Override
+	public void teleopPeriodic() {
+		motor0.set(controller.getRawAxis(3)); //3 is the right side
+		motor1.set(-controller.getRawAxis(1));
+		System.out.println(controller.getRawAxis(3));
+		System.out.println(controller.getRawAxis(1));
+		if (controller.getRawButton(5)) {
+			motor0.set(.2*controller.getRawAxis(3));
+			motor1.set(-.2*controller.getRawAxis(1));
+			
+		}
+		ultraSens();
+	}
+	
+	@Override
+	public void testPeriodic() {}
+}

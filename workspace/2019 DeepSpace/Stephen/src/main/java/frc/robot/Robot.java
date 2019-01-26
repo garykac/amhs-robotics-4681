@@ -26,7 +26,7 @@ public class Robot extends TimedRobot {
   // gyro calibration constant, may need to be adjusted;
   // gyro value of 360 is set to correspond to one full revolution
   private static final double kVoltsPerDegreePerSecond = 0.0128;
-  private static final int kGyroPort = 0;
+  private static final int kGyroPort = 1;
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
     // movement, and Z axis for rotation.
     m_robotDrive.driveCartesian(m_stick.getX(), m_stick.getY(),
         m_stick.getZ(), 0.0);
-    System.out.println(m_gyro.getAngle());
+    System.out.println((m_gyro.getAngle())*360);
   }
 
   /**

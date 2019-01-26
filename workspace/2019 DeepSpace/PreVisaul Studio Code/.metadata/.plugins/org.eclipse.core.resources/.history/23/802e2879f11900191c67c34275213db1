@@ -1,0 +1,102 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package org.usfirst.frc.team4681.robot;
+
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Joystick;
+
+public class Robot extends TimedRobot {
+	ADXRS450_Gyro gyro;
+	double gyroTheta,turn;
+	String gyroThetaS;
+	Victor motorR;
+	Victor motorL;
+	Joystick controller;
+	
+	@Override
+	public void robotInit() {
+		gyro = new ADXRS450_Gyro();
+		gyro.reset();
+		gyro.calibrate();
+		
+		motorR = new Victor(0);
+		motorL = new Victor(1);
+		controller = new Joystick(0);
+	}
+	
+	public void tankDrive(double rVel, double lVel) {
+		motorR.set(-rVel);
+		motorL.set(lVel);
+	}
+	public void turnDegrees(int angle) {
+		
+		
+		double start = gyro.getAngle();
+
+		if (Math.abs(gyro.getAngle()) < angle) {
+			tankDrive(0,0);
+		} else if (start < angle) {
+			while(((gyro.getAngle()-angle)>=0)){
+			tankDrive(-0.2,0.2);}
+			gyro.reset();
+		} else if(start>angle){
+			while(((gyro.getAngle()-angle)>=0)){
+				tankDrive(0.2,-0.2);}
+			gyro.reset();
+		}
+	}
+	
+	
+	@Override
+	public void autonomousInit() {}
+
+	@Override
+	public void autonomousPeriodic() {}
+
+	@SuppressWarnings("null")
+	@Override
+	public void teleopPeriodic() {
+		gyroTheta = gyro.getAngle();
+		gyroThetaS = Double.toString(gyroTheta);
+		if(gyroThetaS.length()>5){
+			gyroThetaS = gyroThetaS.substring(0,5);
+		}
+		if (controller.getRawButtonPressed(6)) {
+			gyro.reset();
+			gyro.calibrate();
+		}
+		System.out.println(gyroThetaS);
+		if (controller.getRawButtonPressed(5)){ 
+			turn = 90;
+			System.out.println("yes");
+		}
+		if(turn-(gyro.getAngle())>=0){
+			motorR.set(-.3);
+			motorL.set(-.3);
+		}
+		else{tankDrive(-controller.getRawAxis(3),-controller.getRawAxis(1));}
+		
+		
+	}
+		
+		
+		// We use the negative b/c controller y-axes are inverted.
+		
+		
+	
+
+	/**
+	 * This function is called periodically during test mode.
+	 */
+	@Override
+	
+	public void testPeriodic() {
+	}
+}

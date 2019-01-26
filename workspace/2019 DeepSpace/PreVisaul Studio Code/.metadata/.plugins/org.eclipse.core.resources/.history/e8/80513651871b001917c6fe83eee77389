@@ -1,0 +1,197 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package org.usfirst.frc.team4681.robot;
+
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Joystick;
+
+public class Robot extends TimedRobot {
+	ADXRS450_Gyro gyro;
+	double gyroTheta,turn;
+	String gyroThetaS;
+	Victor motorR;
+	Victor motorL;
+	Joystick controller;
+	boolean Rturn;
+	boolean Lturn;
+	boolean TwoTurn;
+	boolean tdrive;
+	double rDist; double lDist;
+	String Rrange,Lrange;
+	double ru,lu;
+	Ultrasonic Rultra = new Ultrasonic(3,4); //Digital Output 1, Digital Input 1
+	Ultrasonic Lultra = new Ultrasonic(1,2);
+	int x = 1; //X BUTTON ON REMOTE
+	int a = 2; //BUTTON ON REMOTE
+	int b = 3; //BUTTON ON REMOTE
+	int y = 4; //BUTTON ON REMOTE
+	int lb = 5; //BUTTON ON REMOTE
+	int rb = 6; //BUTTON ON REMOTE
+	int lt = 7; //BUTTON ON REMOTE
+	int rt = 8; //BUTTON ON REMOTE
+	@Override
+	public void robotInit() {
+		gyro = new ADXRS450_Gyro();
+		gyro.reset();
+		gyro.calibrate();
+		turn=0;
+		motorR = new Victor(0);
+		motorL = new Victor(1);
+		controller = new Joystick(0);
+	}
+	
+	public void tankDrive(double rVel, double lVel) {
+		motorR.set(-rVel/.8);
+		motorL.set(lVel/.8);
+	}
+	public void turnDegrees(int angle) {
+		
+		double start = gyro.getAngle();
+
+		if (Math.abs(gyro.getAngle()) < angle) {
+			tankDrive(0,0);
+		} else if (start < angle) {
+			while(((gyro.getAngle()-angle)>=0)){
+			tankDrive(-0.2,0.2);}
+			gyro.reset();
+		} else if(start>angle){
+			while(((gyro.getAngle()-angle)>=0)){
+				tankDrive(0.2,-0.2);}
+			gyro.reset();
+		}
+	}
+
+	
+	
+	@Override
+	public void autonomousInit() {}
+
+	@Override
+	public void autonomousPeriodic() {}
+		
+	@Override
+	public void teleopPeriodic() {
+		gyroTheta = gyro.getAngle();
+		gyroThetaS = Double.toString(gyroTheta);
+		rDist = Rultra.getRangeInches();
+		lDist = Lultra.getRangeInches();
+		Rrange = Double.toString(rDist);
+		Lrange = Double.toString(lDist);
+		ru=Double.parseDouble(Rrange.substring(0,2));
+		lu=Double.parseDouble(Lrange.substring(0,2));
+		if(gyroThetaS.length()>5){
+			gyroThetaS = gyroThetaS.substring(0,5);
+		}
+		if (controller.getRawButtonPressed(a)) {
+			gyro.reset();
+			//gyro.calibrate();
+		}
+		if (controller.getRawButtonPressed(b)){
+			gyro.calibrate();
+		}
+		System.out.println("Angle: " + gyroThetaS);// + " Left distance: " + lDist + " Right Distance: " + rDist);
+		if (controller.getRawButtonPressed(lb)){ 
+			turn = -90;
+			Lturn=true;
+			System.out.println("Initiating 90 degree left turn");
+		}
+		if (controller.getRawButtonPressed(rb)){ 
+			turn = 90;
+			Rturn=true;
+			System.out.println("Initiating 90 degree right turn");
+		}
+		/*if (controller.getRawButtonPressed(2) && tturn != true){
+			tdrive = true;
+			System.out.println("driving at the wall");
+		}*/
+		if (controller.getRawButtonPressed(lt)){ 
+			turn = 180;
+			TwoTurn=true;
+			System.out.println("Initiating 180 degree left turn");
+		}
+		if(Rturn){
+			if(turn-(gyro.getAngle())>=2){
+				motorR.set(.3);
+				motorL.set(.3);
+			}
+			else if(!((turn-(gyro.getAngle()))>=2)){
+				motorR.set(0);
+				motorL.set(0);
+				Rturn=false;
+				gyro.reset();
+			}
+		}
+		else if(Lturn){
+			if(turn-(gyro.getAngle())<=2){
+				motorR.set(-.3);
+				motorL.set(-.3);
+			}
+			else if(!((turn-(gyro.getAngle()))<=2)){
+				motorR.set(0);
+				motorL.set(0);
+				Lturn=false;
+				gyro.reset();
+			}
+		}
+		else if(TwoTurn){
+			if(turn-(gyro.getAngle())>=2){
+				motorR.set(.3);
+				motorL.set(.3);
+			}
+			else if(!((turn-(gyro.getAngle()))>=2)){
+				motorR.set(0);
+				motorL.set(0);
+				TwoTurn=false;
+				gyro.reset();
+			}
+		}
+		/*if(tdrive == true && tturn != true){
+			if(rDist <= 4 || lDist <= 4) {
+				motorR.set(0);
+				motorL.set(0);
+			} else {
+				motorR.set(-0.25);
+				motorL.set(0.25);
+			}
+			if (ru>lu){
+				//motorR.set(-.15); //for motorR pos = backwards, neg = forwards
+				motorL.set(-0.2); //for motorL, pos=ford, neg=backw
+			}
+			else if(lu>ru){
+				//motorL.set(.15);
+				motorR.set(0.2);
+			}
+			//System.out.println( "Left: "+valU1+"\nRight: "+valU2);
+			else{
+				tdrive = false;
+			}
+		}*/
+		else{
+			tankDrive(-controller.getRawAxis(3),-controller.getRawAxis(1));
+			}
+		
+		
+	}
+		
+		
+		// We use the negative b/c controller y-axes are inverted.
+		
+		
+	
+
+	/**
+	 * This function is called periodically during test mode.
+	 */
+	@Override
+	
+	public void testPeriodic() {
+	}
+}
