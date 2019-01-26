@@ -11,12 +11,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.Solenoid;
 
 /**
- * This is a demo program showing how to use Mecanum control with the RobotDrive
- * class.
+ * Main robot code for 2019.
  */
 public class Robot extends TimedRobot {
   private static final int kPWMFrontLeft = 0;
@@ -26,12 +23,6 @@ public class Robot extends TimedRobot {
   private static final int kPWMGrabberRight = 4;
   private static final int kPWMGrabberLeft = 5;
   private static final int kPWMLifter = 6;
-
-  private static final int kPCMHatchVacuum = 0;
-  private static final int kPCMHatchCylinder = 1;
-  private static final int kPCMLegsFront = 2;
-  private static final int kPCMLegsBack = 3;
-  private static final int kPCMLegsWalk = 4;
 
   private static final double kMotorPowerLevel = 0.4;
 
@@ -43,6 +34,8 @@ public class Robot extends TimedRobot {
 
   private MecanumDrive m_robotDrive;
   private Joystick m_stick;
+
+  private Walker m_walker;
 
   @Override
   public void robotInit() {
@@ -64,6 +57,9 @@ public class Robot extends TimedRobot {
     m_lifter = new PWMVictorSPX(kPWMLifter);
 
     m_stick = new Joystick(kJoystickChannel);
+
+    m_walker = new Walker();
+    m_walker.WalkerInit();
   }
 
   @Override
@@ -73,9 +69,6 @@ public class Robot extends TimedRobot {
     m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                 kMotorPowerLevel * m_stick.getY(),
                                 kMotorPowerLevel * m_stick.getZ(), 0.0);
-    //if (m_stick.getRawButtonPressed(1)){
-    //  m_testPnumatics.set(true);
-      //System.out.println("on");
-    //}
+    
   }
 }
