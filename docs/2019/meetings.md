@@ -39,3 +39,17 @@
       * Game Mech: ???
       * Climbing: ???
 
+### Week 3 : Sat 19 Jan - Fri 25 Jan
+
+**Note: Modified schedule because of finals week**
+
+General plan for week: begin robot building: create the base, finalize/map out backend tech (programming, pneumatics, electrical).
+
+* Sat 19 Jan
+   * Meet from 10-2 (lunch provided)
+* Mon 21 Jan:
+   * Meet from 10am until **Noon**.
+* Tue-Thu
+   * **No meetings** (because of Finals Week)
+* Fri 25 Jan
+   * Meet from **3pm** until **8pm** (dinner provided)
