@@ -24,8 +24,8 @@ public class Robot extends TimedRobot {
   private static final double kVoltsPerDegreePerSecond = 0.0128;
 
   private static final int kFrontLeftChannel = 0;
-  private static final int kRearLeftChannel = 2;
-  private static final int kFrontRightChannel = 1;
+  private static final int kRearLeftChannel = 1;
+  private static final int kFrontRightChannel = 2;
   private static final int kRearRightChannel = 3;
   private static final int kGyroPort = 0;
   private static final int kJoystickPort = 0;
@@ -45,8 +45,6 @@ public class Robot extends TimedRobot {
     // You may need to change or remove this to match your robot.
     frontLeft.setInverted(true);
     rearLeft.setInverted(true);
-    frontRight.setInverted(true);
-    rearRight.setInverted(true);
 
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
