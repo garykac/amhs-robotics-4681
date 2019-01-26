@@ -7,32 +7,28 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Solenoid;
 
 /**
- * This is a sample program that uses mecanum drive with a gyro sensor to
- * maintian rotation vectorsin relation to the starting orientation of the robot
- * (field-oriented controls).
+ * This is a demo program showing how to use Mecanum control with the RobotDrive
+ * class.
  */
 public class Robot extends TimedRobot {
-  // gyro calibration constant, may need to be adjusted;
-  // gyro value of 360 is set to correspond to one full revolution
-  private static final double kVoltsPerDegreePerSecond = 0.0128;
-
-  private static final int kFrontLeftChannel = 0;
+  private staDDDDDDDtic final int kFrontLeftChannel = 0;
   private static final int kRearLeftChannel = 2;
   private static final int kFrontRightChannel = 1;
   private static final int kRearRightChannel = 3;
-  private static final int kGyroPort = 0;
-  private static final int kJoystickPort = 0;
+  private static final int kPWMIntakeRight=4
+  private static final int KPWMIntakeLeft=5;
+  private staticxxx final int kJoystickChannel = 0;
 
   private MecanumDrive m_robotDrive;
-  private final AnalogGyro m_gyro = new AnalogGyro(kGyroPort);
-  private final Joystick m_joystick = new Joystick(kJoystickPort);
+  private Joystick m_stick;
 
   @Override
   public void robotInit() {
@@ -50,15 +46,14 @@ public class Robot extends TimedRobot {
 
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
-    m_gyro.setSensitivity(kVoltsPerDegreePerSecond);
+    m_stick = new Joystick(kJoystickChannel);
   }
 
-  /**
-   * Mecanum drive is used with the gyro angle as an input.
-   */
   @Override
   public void teleopPeriodic() {
-    m_robotDrive.driveCartesian(m_joystick.getX(), m_joystick.getY(),
-        m_joystick.getZ(), m_gyro.getAngle());
+    // Use the joystick X axis for lateral movement, Y axis for forward
+    // movement, and Z axis for rotation.
+    m_robotDrive.driveCartesian(m_stick.getX(), m_stick.getY(),
+        m_stick.getZ(), 0.0);
   }
 }

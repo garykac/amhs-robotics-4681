@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 // Will we need to import gyros and analog sensors?
 // What will we use them for, rather, before importing?
 
-public class Robot extends TimedRobot {
+public claxxxxxxss Robot extends TimedRobot {
   /* Buttons:
 	 * 1 = X, 2 = A, 3 = B, 4 = Y
 	 * 5 = LB, 6 = RB, 7 = LT, 8 = RT
@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    motor_frontL = new Victor();
+    motor_frontL = new Victor(1);
     motor_frontR = new Victor();
     motor_backL = new Victor();
     motor_backR = new Victor();
