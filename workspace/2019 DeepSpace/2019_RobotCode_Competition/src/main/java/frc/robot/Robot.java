@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 //import edu.wpi.first.cameraserver.CameraServer
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -17,31 +18,47 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 // What will we use them for, rather, before importing?
 
 public class Robot extends TimedRobot {
+  /* Buttons:
+	 * 1 = X, 2 = A, 3 = B, 4 = Y
+	 * 5 = LB, 6 = RB, 7 = LT, 8 = RT
+	 * 9 = Back, 10 = Start
+	 * 11 = Left Stick Press (Click In)
+	 * 12 = Right Stick Press (Click In)
+	 */
   Victor motor_frontL;
   Victor motor_frontR;
   Victor motor_backL;
   Victor motor_backR;
+  Victor motor_intakeL;
+  Victor motor_intakeR;
   Solenoid piston_frontL;
   Solenoid piston_frontR;
   Solenoid piston_backL;
   Solenoid piston_backR;
   Joystick controller;
+  Compressor compressor;
   MecanumDrive robotBase;
-  //CameraServer frontCam;
+  //CameraServer cameraServer;
 
   @Override
   public void robotInit() {
-  motor_frontL;
-  motor_frontR;
-  motor_backL;
-  motor_backR;
-  piston_frontL;
-  Solenoid piston_frontR;
-  Solenoid piston_backL;
-  Solenoid piston_backR;
-  Joystick controller;
-  MecanumDrive robotBase;
-  //CameraServer frontCam;
+    motor_frontL = new Victor();
+    motor_frontR = new Victor();
+    motor_backL = new Victor();
+    motor_backR = new Victor();
+    motor_intakeL = new Victor();
+    motor_intakeR = new Victor();
+    piston_frontL = new Solenoid();
+    piston_frontR = new Solenoid();
+    piston_backL = new Solenoid();
+    piston_backR = new Solenoid();
+    controller = new Solenoid();
+    compressor = new Compressor();
+    compressor.start(); //Here, or in teleopInit?
+    robotBase = new MecanumDrive(motor_frontL, motor_backL, motor_frontR, motor_backR);
+    cameraServer = new CameraServer.getInstance();
+    cameraServer.startAutomaticCapture("FrontCam", 0);
+    cameraServer.startAutomaticCapture("BackCam", 1);
   }
 
   /**
@@ -53,41 +70,16 @@ public class Robot extends TimedRobot {
    * LiveWindow and SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {
-  }
+  public void robotPeriodic() {}
 
-  /**
-   * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString line to get the auto name from the text box below the Gyro
-   *
-   * <p>You can add additional auto modes by adding additional comparisons to
-   * the switch structure below with additional strings. If using the
-   * SendableChooser make sure to add them to the chooser code above as well.
-   */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+    //compressor.start() Here, or robotInit, or teleopInit?
   }
 
-  /**
-   * This function is called periodically during autonomous.
-   */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
-    }
+
   }
 
   /**
