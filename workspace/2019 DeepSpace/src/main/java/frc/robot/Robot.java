@@ -27,6 +27,12 @@ public class Robot extends TimedRobot {
   private static final int kPWMGrabberLeft = 5;
   private static final int kPWMLifter = 6;
 
+  private static final int kPCMHatchVacuum = 0;
+  private static final int kPCMHatchCylinder = 1;
+  private static final int kPCMLegsFront = 2;
+  private static final int kPCMLegsBack = 3;
+  private static final int kPCMLegsWalk = 4;
+
   private static final double kMotorPowerLevel = 0.4;
 
   private static final int kJoystickChannel = 0;
@@ -53,7 +59,7 @@ public class Robot extends TimedRobot {
 
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
-    m_grabberRight = new PWMVictorSPX(kPWMFrontRight);
+    m_grabberRight = new PWMVictorSPX(kPWMGrabberRight);
     m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft);
     m_lifter = new PWMVictorSPX(kPWMLifter);
 
@@ -67,5 +73,9 @@ public class Robot extends TimedRobot {
     m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                 kMotorPowerLevel * m_stick.getY(),
                                 kMotorPowerLevel * m_stick.getZ(), 0.0);
+    //if (m_stick.getRawButtonPressed(1)){
+    //  m_testPnumatics.set(true);
+      //System.out.println("on");
+    //}
   }
 }
