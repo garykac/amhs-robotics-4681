@@ -23,12 +23,17 @@ public class Robot extends TimedRobot {
   private static final int kPWMRearLeft = 2;
   private static final int kPWMFrontRight = 1;
   private static final int kPWMRearRight = 3;
-  private static final int kPWMIntakeRight = 4;
-  private static final int kPWMIntakeLeft = 5;
+  private static final int kPWMGrabberRight = 4;
+  private static final int kPWMGrabberLeft = 5;
+  private static final int kPWMLifter = 6;
 
   private static final double kMotorPowerLevel = 0.4;
 
   private static final int kJoystickChannel = 0;
+
+  private PWMVictorSPX m_grabberRight;
+  private PWMVictorSPX m_grabberLeft;
+  private PWMVictorSPX m_lifter;
 
   private MecanumDrive m_robotDrive;
   private Joystick m_stick;
@@ -40,14 +45,17 @@ public class Robot extends TimedRobot {
     PWMVictorSPX frontRight = new PWMVictorSPX(kPWMFrontRight);
     PWMVictorSPX rearRight = new PWMVictorSPX(kPWMRearRight);
 
-    // Invert the left side motors.
-    // You may need to change or remove this to match your robot.
+    // Invert motors as needed.
     frontLeft.setInverted(true);
     rearLeft.setInverted(true);
     frontRight.setInverted(true);
     rearRight.setInverted(true);
 
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
+
+    m_grabberRight = new PWMVictorSPX(kPWMFrontRight);
+    m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft);
+    m_lifter = new PWMVictorSPX(kPWMLifter);
 
     m_stick = new Joystick(kJoystickChannel);
   }
