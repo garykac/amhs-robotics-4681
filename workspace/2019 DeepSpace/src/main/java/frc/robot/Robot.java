@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.cameraserver.CameraServer;
+// Unless you want to make cameras a separate class.
 
 /**
  * Main robot code for 2019.
@@ -23,6 +25,15 @@ public class Robot extends TimedRobot {
   private static final int kPWMGrabberRight = 4;
   private static final int kPWMGrabberLeft = 5;
   private static final int kPWMLifter = 6;
+  
+  private static final int kButtonX = 1;
+  private static final int kButtonA = 2;
+  private static final int kButtonB = 3;
+  private static final int kButtonY = 4;
+  private static final int kButtonLB = 5;
+  private static final int kButtonRB = 6;
+  private static final int kButtonLT = 7;
+  private static final int kButtonRT = 8;
 
   private static final double kMotorPowerLevel = 0.4;
 
@@ -34,6 +45,8 @@ public class Robot extends TimedRobot {
 
   private MecanumDrive m_robotDrive;
   private Joystick m_stick;
+  
+  //private CameraServer m_cameraServer;
 
   private Walker m_walker;
 
@@ -57,6 +70,11 @@ public class Robot extends TimedRobot {
     m_lifter = new PWMVictorSPX(kPWMLifter);
 
     m_stick = new Joystick(kJoystickChannel);
+    
+    /** Camera Stuff, work in progress. Use 2018 code for reference.
+    m_cameraServer = new CameraServer.getInstance();
+    cameraServer.startAutomaticCapture("Front Camera", 0);
+    */
 
     m_walker = new Walker();
     m_walker.WalkerInit();
@@ -66,6 +84,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     // Use the joystick X axis for lateral movement, Y axis for forward
     // movement, and Z axis for rotation.
+    // Why not use m_stick.getRawAxis()? And then use 0, 1, and 2 for LX, LR, RX?
     m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                 kMotorPowerLevel * m_stick.getY(),
                                 kMotorPowerLevel * m_stick.getZ(), 0.0);
