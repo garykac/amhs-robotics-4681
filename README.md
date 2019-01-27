@@ -27,7 +27,7 @@ General plan for week: Finish core robot build
 
 ### Week 7 : Sat 16 Feb - Fri 22 Feb
 
-* Tue 19 Feb - **Stop Build Day** @ 11:59pm
+* Tue 19 Feb - **Stop Build Day** @ 8:00 pm
 
 ### Week 8 : Sat 23 Feb - Fri 1 Mar
 
