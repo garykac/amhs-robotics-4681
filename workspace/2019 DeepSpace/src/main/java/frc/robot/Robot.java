@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.IterativeRobot;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -35,6 +38,8 @@ public class Robot extends TimedRobot {
   private MecanumDrive m_robotDrive;
   private Joystick m_stick;
 
+  CameraServer m_cameraServer;
+
   private Walker m_walker;
 
   @Override
@@ -60,6 +65,10 @@ public class Robot extends TimedRobot {
 
     m_walker = new Walker();
     m_walker.WalkerInit();
+
+    m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);
+    m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);
+  
   }
 
   @Override
