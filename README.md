@@ -26,12 +26,21 @@ General plan for week: Finish core robot build
 ### Week 6 : Sat 9 Feb - Fri 15 Feb
 
 ### Week 7 : Sat 16 Feb - Fri 22 Feb
-
 * Tue 19 Feb - **Stop Build Day** @ 8:00 pm
 
-### Week 8 : Sat 23 Feb - Fri 1 Mar
-
-* Week 1 Competitions
+### Auburn Mountainview Competition : 
+* 28900 124th Ave SE, Auburn, WA 98092
+* Fri 8 Mar - Sun Mar 10
+* Itinerary (proposed) :
+    * 4 Mar - 7 Mar : Pack up items in portable
+    * Fri 8 Mar : Load items into bus/van, drive to Auburn Mt.View HS
+    * Sat 9 Mar - Sun 10 Mar : Competitions
+    * Sun 10 Mar : Pack up and hit the road again
+    
+### Glacier Peak Competition
+* 7401 144th Pl SE, Snohomish, WA 98296
+* Fri 22 Mar - Sun 24 Mar
+    
 
 [Previous meetings...](docs/2019/meetings.md)
 
