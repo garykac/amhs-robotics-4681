@@ -14,8 +14,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import edu.wpi.first.cameraserver.CameraServer;
-// Unless you want to make cameras a separate class.
 
 /**
  * Main robot code for 2019.
@@ -49,8 +47,6 @@ public class Robot extends TimedRobot {
   private MecanumDrive m_robotDrive;
   private Joystick m_stick;
   
-  //private CameraServer m_cameraServer;
-
   CameraServer m_cameraServer;
 
   private Walker m_walker;
@@ -75,11 +71,6 @@ public class Robot extends TimedRobot {
     m_lifter = new PWMVictorSPX(kPWMLifter);
 
     m_stick = new Joystick(kJoystickChannel);
-    
-    /** Camera Stuff, work in progress. Use 2018 code for reference.
-    m_cameraServer = new CameraServer.getInstance();
-    cameraServer.startAutomaticCapture("Front Camera", 0);
-    */
 
     m_walker = new Walker();
     m_walker.WalkerInit();
