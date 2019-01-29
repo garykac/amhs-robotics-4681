@@ -9,32 +9,38 @@ Archibishop Murphy High School's FRC (FIRST Robotics Competition) team
 Unless otherwise specified, all Mon-Fri meetings are 3-5pm in the portable.
 All Sat meetings are 10am-2pm in the portable.
 
-### Week 3 : Sat 19 Jan - Fri 25 Jan
-
-**Note: Modified schedule because of finals week**
-
-General plan for week: begin robot building: create the base, finalize/map out backend tech (programming, pneumatics, electrical).
-
-* Sat 19 Jan
-   * Meet from 10-2 (lunch provided)
-* Mon 21 Jan:
-   * Meet from 10am until **Noon**.
-* Tue-Thu
-   * **No meetings** (because of Finals Week)
-* Fri 25 Jan
-   * Meet from **3pm** until **8pm** (dinner provided)
-
 ### Week 4 : Sat 26 Jan - Fri 1 Feb
 
 General plan for week: Finish core robot build
 
 * Sat 26 Jan
-   * Meet from 10am - 2pm (lunch provided)
-   * Possibly extend this meeting until 4pm if we don't get enough done during Finals week.
+   * Meet from 10am - 3pm (lunch provided)
+   * ~~Possibly extend this meeting until 4pm if we don't get enough done during Finals week.~~
 * Mon 28 Jan:
    * Meet from 3pm until **6pm**.
 * Tue 29 Jan - Fri 1 Feb
    * Meet from 3pm until 5pm (regular schedule).
+
+### Week 5 : Sat 2 Feb - Fri 8 Feb
+
+### Week 6 : Sat 9 Feb - Fri 15 Feb
+
+### Week 7 : Sat 16 Feb - Fri 22 Feb
+* Tue 19 Feb - **Stop Build Day** @ 8:00 pm
+
+### Auburn Mountainview Competition : 
+* 28900 124th Ave SE, Auburn, WA 98092
+* Fri 8 Mar - Sun Mar 10
+* Itinerary (proposed) :
+    * 4 Mar - 7 Mar : Pack up items in portable
+    * Fri 8 Mar : Load items into bus/van, drive to Auburn Mt.View HS
+    * Sat 9 Mar - Sun 10 Mar : Competitions
+    * Sun 10 Mar : Pack up and hit the road again
+    
+### Glacier Peak Competition
+* 7401 144th Pl SE, Snohomish, WA 98296
+* Fri 22 Mar - Sun 24 Mar
+    
 
 [Previous meetings...](docs/2019/meetings.md)
 
