@@ -41,7 +41,6 @@ public class Robot extends TimedRobot {
 
   private PWMVictorSPX m_grabberRight;
   private PWMVictorSPX m_grabberLeft;
-  private PWMVictorSPX m_lifter;
 
   private MecanumDrive m_robotDrive;
   private Joystick m_stick;
@@ -49,6 +48,8 @@ public class Robot extends TimedRobot {
   CameraServer m_cameraServer;
 
   private Walker m_walker;
+
+  private Lifter m_lifter;
 
   @Override
   public void robotInit() {
@@ -66,13 +67,15 @@ public class Robot extends TimedRobot {
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
     m_grabberRight = new PWMVictorSPX(kPWMGrabberRight);
-    m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft);
-    
+    m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft); 
 
     m_stick = new Joystick(kJoystickChannel);
 
     m_walker = new Walker();
     m_walker.WalkerInit();
+
+    m_lifter = new Lifter();
+    m_lifter.LiftInit();
 
     m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);
     m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);
@@ -87,6 +90,9 @@ public class Robot extends TimedRobot {
     m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                 kMotorPowerLevel * m_stick.getY(),
                                 kMotorPowerLevel * m_stick.getZ(), 0.0);
+    
+    m_lifter.Lift();
+    
     
   }
 }
