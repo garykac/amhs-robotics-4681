@@ -1,0 +1,48 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package frc.robot;
+
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+
+/**
+ * Main robot code for 2019.
+ */
+public class Grabber {
+  private static final int kPWMGrabberRight = 4;
+  private static final int kPWMGrabberLeft = 5;
+
+  private static final int kDIOlimitSwitchGrabber = 3;
+
+  private DigitalInput m_DIOlimitSwitchGrabber;
+  
+  private static final double kMotorPowerLevel = 0.4;
+
+  private PWMVictorSPX m_grabberRight;
+  private PWMVictorSPX m_grabberLeft;
+
+  public void GrabberInit() {
+    m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft);
+    m_grabberRight = new PWMVictorSPX(kPWMGrabberRight);
+
+    m_DIOlimitSwitchGrabber = new DigitalInput(kDIOlimitSwitchGrabber);
+
+
+  }
+    public void Grab(){
+        if(m_DIOlimitSwitchGrabber.get()){
+            m_grabberLeft.set(0);
+            m_grabberRight.set(0);
+        }
+        else{
+            m_grabberLeft.set(kMotorPowerLevel);
+            m_grabberRight.set(kMotorPowerLevel);
+        }
+    }    
+  }
+
