@@ -32,6 +32,10 @@ public class Robot extends TimedRobot {
   private static final int kButtonRB = 6;
   private static final int kButtonLT = 7;
   private static final int kButtonRT = 8;
+  private static final int kButtonBottom = 9;
+  private static final int kButtonstart = 10;
+  private static final int kButtonJoyStickLeft = 11;
+  private static final int kButtonJoyStickRight = 12;
 
   private static final double kMotorPowerLevel = 0.4;
 
@@ -47,6 +51,8 @@ public class Robot extends TimedRobot {
   private Lifter m_lifter;
 
   private Grabber m_grabber;
+
+  private Sucker m_sucker;
 
   @Override
   public void robotInit() {
@@ -74,6 +80,9 @@ public class Robot extends TimedRobot {
     m_grabber = new Grabber();
     m_grabber.GrabberInit();
 
+    m_sucker = new Sucker();
+    m_sucker.SuckerInit();
+
     m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);
     m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);
   
@@ -87,10 +96,24 @@ public class Robot extends TimedRobot {
     m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                 kMotorPowerLevel * m_stick.getY(),
                                 kMotorPowerLevel * m_stick.getZ(), 0.0);
-    if(m_stick.getRawButtonPressed(kButtonRB)){
-       m_lifter.Lift();
+    if(m_stick.getRawButtonPressed(kButtonA)){
+       m_grabber.Grab();
     }
-
+    if(m_stick.getRawButtonPressed(kButtonB)){
+      m_grabber.Eject();
+    }
+    if(m_stick.getRawButtonPressed(kButtonX)){
+      m_sucker.Sucker(true);
+    }
+    if(m_stick.getRawButtonPressed(kButtonY)){
+      m_sucker.Sucker(false);
+    }
+    if(m_stick.getPOV()==0){
+      System.out.println("Go UP");
+    }
+    if(m_stick.getPOV()==180){
+      System.out.println("GO Down");
+    }
     
   }
 }

@@ -91,6 +91,7 @@ public class Lifter {
       else{
           m_lifter.set(-kMotorPowerLevel);
       }
+      location = "B";
   }
   public void GoToTop(){
       if(m_DIOlimitSwitchTop.get()){
@@ -99,6 +100,7 @@ public class Lifter {
       else{
           m_lifter.set(kMotorPowerLevel);
       }
+      location="T";
   }
   public void GoToMiddle(){
       if(m_middleUltrasonic.getRangeInches()>kbottomRangeInches && m_middleUltrasonic.getRangeInches()<ktopRangeInches){
@@ -110,6 +112,10 @@ public class Lifter {
      else if(m_middleUltrasonic.getRangeInches()<ktopRangeInches){
          m_lifter.set(-kMotorPowerLevel);
      }
+     location="M";
   
-}
+    }
+    public String GetLocation(){
+        return location;
+    }
 }
