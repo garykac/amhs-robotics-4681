@@ -43,6 +43,10 @@ public class Grabber {
             m_grabberLeft.set(kMotorPowerLevel);
             m_grabberRight.set(kMotorPowerLevel);
         }
-    }    
+    } 
+    public void Eject(){
+        m_grabberLeft.set(-kMotorPowerLevel);
+        m_grabberRight.set(-kMotorPowerLevel);
+    }   
   }
 

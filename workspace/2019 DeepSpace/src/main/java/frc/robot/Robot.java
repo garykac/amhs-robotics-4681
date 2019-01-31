@@ -46,6 +46,8 @@ public class Robot extends TimedRobot {
 
   private Lifter m_lifter;
 
+  private Grabber m_grabber;
+
   @Override
   public void robotInit() {
     PWMVictorSPX frontLeft = new PWMVictorSPX(kPWMFrontLeft);
@@ -69,6 +71,9 @@ public class Robot extends TimedRobot {
     m_lifter = new Lifter();
     m_lifter.LiftInit();
 
+    m_grabber = new Grabber();
+    m_grabber.GrabberInit();
+
     m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);
     m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);
   
@@ -82,9 +87,10 @@ public class Robot extends TimedRobot {
     m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                 kMotorPowerLevel * m_stick.getY(),
                                 kMotorPowerLevel * m_stick.getZ(), 0.0);
-    
-    m_lifter.Lift();
-    
+    if(m_stick.getRawButtonPressed(kButtonRB)){
+       m_lifter.Lift();
+    }
+
     
   }
 }
