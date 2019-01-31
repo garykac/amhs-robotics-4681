@@ -23,8 +23,6 @@ public class Robot extends TimedRobot {
   private static final int kPWMRearLeft = 2;
   private static final int kPWMFrontRight = 1;
   private static final int kPWMRearRight = 3;
-  private static final int kPWMGrabberRight = 4;
-  private static final int kPWMGrabberLeft = 5;
   
   private static final int kButtonX = 1;
   private static final int kButtonA = 2;
@@ -38,9 +36,6 @@ public class Robot extends TimedRobot {
   private static final double kMotorPowerLevel = 0.4;
 
   private static final int kJoystickChannel = 0;
-
-  private PWMVictorSPX m_grabberRight;
-  private PWMVictorSPX m_grabberLeft;
 
   private MecanumDrive m_robotDrive;
   private Joystick m_stick;
@@ -65,9 +60,6 @@ public class Robot extends TimedRobot {
     rearRight.setInverted(true);
 
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
-
-    m_grabberRight = new PWMVictorSPX(kPWMGrabberRight);
-    m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft); 
 
     m_stick = new Joystick(kJoystickChannel);
 
