@@ -114,6 +114,9 @@ public class Robot extends TimedRobot {
     if(m_stick.getPOV()==180){
       System.out.println("GO Down");
     }
+    if(m_stick.getRawButtonPressed(kButtonstart)){
+      m_walker.Climb();
+    }
     
   }
 }
