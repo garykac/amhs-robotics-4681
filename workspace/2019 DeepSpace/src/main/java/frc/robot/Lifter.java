@@ -107,7 +107,7 @@ public class Lifter {
      else if(m_middleUltrasonic.getRangeInches()>kbottomRangeInches){
          m_lifter.set(kMotorPowerLevel);
      }
-     else if(m_middleUltrasonic.getRangeInches()<kbottomRangeInches){
+     else if(m_middleUltrasonic.getRangeInches()<ktopRangeInches){
          m_lifter.set(-kMotorPowerLevel);
      }
   
