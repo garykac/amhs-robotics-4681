@@ -19,14 +19,17 @@ General plan for week: Finish core robot build
 * Mon 28 Jan:
    * Meet from 3pm until **6pm**.
 * Tue 29 Jan - Fri 1 Feb
-   * Meet from 3pm until 5pm (regular schedule).
+   * Meet from 3pm until **6pm**~~5pm~~.
 
 ### Week 5 : Sat 2 Feb - Fri 8 Feb
 
 ### Week 6 : Sat 9 Feb - Fri 15 Feb
 
 ### Week 7 : Sat 16 Feb - Fri 22 Feb
-* Tue 19 Feb - **Stop Build Day** @ 8:00 pm
+* Mon 18 Feb (No School)
+    * Meet from ___ until ____
+* Tue 19 Feb (No School)- **Stop Build Day @ 8:00 pm**
+    * Meet from ___ until ____
 
 ### Auburn Mountainview Competition : 
 * 28900 124th Ave SE, Auburn, WA 98092
