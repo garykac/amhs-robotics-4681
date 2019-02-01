@@ -54,6 +54,8 @@ public class Robot extends TimedRobot {
 
   private Sucker m_sucker;
 
+  private LineFollower m_lineFollower;
+
   @Override
   public void robotInit() {
     PWMVictorSPX frontLeft = new PWMVictorSPX(kPWMFrontLeft);
@@ -82,6 +84,9 @@ public class Robot extends TimedRobot {
 
     m_sucker = new Sucker();
     m_sucker.SuckerInit();
+
+    m_lineFollower = new LineFollower();
+    m_lineFollower.LineFollowerInit();
 
     m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);
     m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);
@@ -117,6 +122,6 @@ public class Robot extends TimedRobot {
     if(m_stick.getRawButtonPressed(kButtonstart)){
       m_walker.Climb();
     }
-    
+    m_lineFollower.OnLine();
   }
 }
