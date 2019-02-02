@@ -29,7 +29,7 @@ public class Lifter {
     private DigitalInput m_DIOlimitSwitchBottom;
     private DigitalInput m_DIOlimitSwitchTop;
 
-     public void LiftInit(){
+    public void LiftInit(){
         m_lifter = new PWMVictorSPX(kPWMLifter);
         //change from true or false depending on which works.
         m_lifter.setInverted(true);
@@ -39,83 +39,91 @@ public class Lifter {
 
         m_DIOlimitSwitchBottom = new DigitalInput(kDIOlimitSwitchBottom);
         m_DIOlimitSwitchTop = new DigitalInput(kDIOlimitSwitchTop); 
-     }
-    public void Lift(){
-        if(m_DIOlimitSwitchTop.get()){
+    }
+
+    public void Lift() {
+        if (m_DIOlimitSwitchTop.get()){
             m_lifter.set(0);
             location = "T";
             System.out.println(location);
         }
 
-        else if(m_DIOlimitSwitchBottom.get()){
+        else if (m_DIOlimitSwitchBottom.get()) {
             m_lifter.set(kMotorPowerLevel);
             location="B";
             System.out.println(location);
         }
         
-        else if(m_middleUltrasonic.getRangeInches()>kbottomRangeInches && m_middleUltrasonic.getRangeInches()<ktopRangeInches){
+        else if (m_middleUltrasonic.getRangeInches() > kbottomRangeInches
+                && m_middleUltrasonic.getRangeInches() < ktopRangeInches) {
             //not sure on the range yet.
             location = "M";
             System.out.println(m_middleUltrasonic.getRangeInches());
         }
-        if(location== "B" || location == "M"){
+        if (location== "B" || location == "M") {
             m_lifter.set(kMotorPowerLevel);
         }
-  }
-  public void Lower(){
-    if(m_DIOlimitSwitchTop.get()){
-        m_lifter.set(0);
-        location = "T";
-        System.out.println(location);
     }
 
-    else if(m_DIOlimitSwitchBottom.get()){
-        m_lifter.set(0);
-        location="B";
-        System.out.println(location);
+    public void Lower() {
+        if (m_DIOlimitSwitchTop.get()) {
+            m_lifter.set(0);
+            location = "T";
+            System.out.println(location);
+        }
+        else if (m_DIOlimitSwitchBottom.get()) {
+            m_lifter.set(0);
+            location="B";
+            System.out.println(location);
+        }
+        else if (m_middleUltrasonic.getRangeInches() > kbottomRangeInches
+                && m_middleUltrasonic.getRangeInches() < ktopRangeInches) {
+            //not sure on the range yet.
+            location = "M";
+            System.out.println(m_middleUltrasonic.getRangeInches());
+        }
+
+        if (location == "T" || location == "M"){
+            m_lifter.set(-kMotorPowerLevel);
+        }
     }
     
-    else if(m_middleUltrasonic.getRangeInches()>kbottomRangeInches && m_middleUltrasonic.getRangeInches()<ktopRangeInches){
-        //not sure on the range yet.
+    public void GoToBottom() {
+        if (m_DIOlimitSwitchBottom.get()) {
+            m_lifter.set(0);
+        }
+        else {
+            m_lifter.set(-kMotorPowerLevel);
+        }
+        location = "B";
+    }
+
+    public void GoToTop() {
+        if (m_DIOlimitSwitchTop.get()) {
+            m_lifter.set(0);
+        } else {
+            m_lifter.set(kMotorPowerLevel);
+        }
+        location = "T";
+    }
+
+    public void GoToMiddle() {
+        if (m_middleUltrasonic.getRangeInches() > kbottomRangeInches
+                && m_middleUltrasonic.getRangeInches() < ktopRangeInches) {
+            m_lifter.set(0);
+        } else if (m_middleUltrasonic.getRangeInches() > kbottomRangeInches){
+            m_lifter.set(kMotorPowerLevel);
+        } else if (m_middleUltrasonic.getRangeInches() < ktopRangeInches){
+            m_lifter.set(-kMotorPowerLevel);
+        }
         location = "M";
-        System.out.println(m_middleUltrasonic.getRangeInches());
     }
-    if(location == "T" || location == "M"){
-        m_lifter.set(-kMotorPowerLevel);
-    }
-  }
-  public void GoToBottom(){
-      if(m_DIOlimitSwitchBottom.get()){
-          m_lifter.set(0);
-      }
-      else{
-          m_lifter.set(-kMotorPowerLevel);
-      }
-      location = "B";
-  }
-  public void GoToTop(){
-      if(m_DIOlimitSwitchTop.get()){
-          m_lifter.set(0);
-      }
-      else{
-          m_lifter.set(kMotorPowerLevel);
-      }
-      location="T";
-  }
-  public void GoToMiddle(){
-      if(m_middleUltrasonic.getRangeInches()>kbottomRangeInches && m_middleUltrasonic.getRangeInches()<ktopRangeInches){
-          m_lifter.set(0);
-     }
-     else if(m_middleUltrasonic.getRangeInches()>kbottomRangeInches){
-         m_lifter.set(kMotorPowerLevel);
-     }
-     else if(m_middleUltrasonic.getRangeInches()<ktopRangeInches){
-         m_lifter.set(-kMotorPowerLevel);
-     }
-     location="M";
-  
-    }
-    public String GetLocation(){
+
+    public String GetLocation() {
         return location;
+    }
+
+    public double getDistanceTest() {
+        return m_middleUltrasonic.getRangeInches();
     }
 }

@@ -8,18 +8,17 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 public class Sucker {
 
-  private static final int kPCMHatchSucker = 0;
+    private static final int kPCMHatchSucker = 0;
 
-  private Solenoid m_sucker;
+    private Solenoid m_sucker;
 
 
-  public void SuckerInit() {
-    m_sucker = new Solenoid(kPCMHatchSucker);
-    m_sucker.set(false);
-  }
+    public void SuckerInit() {
+        m_sucker = new Solenoid(kPCMHatchSucker);
+        m_sucker.set(false);
+    }
   
-  public void Sucker(boolean suckState){
-     m_sucker.set(suckState);
-  }
-
+    public void Sucker(boolean suckState){
+        m_sucker.set(suckState);
+    }
 }

@@ -14,37 +14,33 @@ import edu.wpi.first.wpilibj.PWMVictorSPX;
  * Main robot code for 2019.
  */
 public class Grabber {
-  private static final int kPWMGrabberRight = 4;
-  private static final int kPWMGrabberLeft = 5;
+    private static final int kPWMGrabberRight = 4;
+    private static final int kPWMGrabberLeft = 5;
+    private static final double kMotorPowerLevel = 0.4;
+    private static final int kDIOlimitSwitchGrabber = 3;
 
-  private static final int kDIOlimitSwitchGrabber = 3;
+    private DigitalInput m_DIOlimitSwitchGrabber;
+    private PWMVictorSPX m_grabberRight;
+    private PWMVictorSPX m_grabberLeft;
 
-  private DigitalInput m_DIOlimitSwitchGrabber;
-  
-  private static final double kMotorPowerLevel = 0.4;
+    public void GrabberInit() {
+        m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft);
+        m_grabberRight = new PWMVictorSPX(kPWMGrabberRight);
 
-  private PWMVictorSPX m_grabberRight;
-  private PWMVictorSPX m_grabberLeft;
+        m_DIOlimitSwitchGrabber = new DigitalInput(kDIOlimitSwitchGrabber);
+    }
 
-  public void GrabberInit() {
-    m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft);
-    m_grabberRight = new PWMVictorSPX(kPWMGrabberRight);
-
-    m_DIOlimitSwitchGrabber = new DigitalInput(kDIOlimitSwitchGrabber);
-
-
-  }
-    public void Grab(){
-        if(m_DIOlimitSwitchGrabber.get()){
+    public void Grab() {
+        if (m_DIOlimitSwitchGrabber.get()) {
             m_grabberLeft.set(0);
             m_grabberRight.set(0);
-        }
-        else{
+        } else {
             m_grabberLeft.set(kMotorPowerLevel);
             m_grabberRight.set(kMotorPowerLevel);
         }
-    } 
-    public void Eject(){
+    }
+    
+    public void Eject() {
         m_grabberLeft.set(-kMotorPowerLevel);
         m_grabberRight.set(-kMotorPowerLevel);
     }   
