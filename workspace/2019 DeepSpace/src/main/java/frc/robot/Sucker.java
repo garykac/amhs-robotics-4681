@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Solenoid;
 public class Sucker {
 
     private static final int kPCMHatchSucker = 0;
+    private static final int kPCMHatchSuckerExtender = 1;
+
 
     private Solenoid m_sucker;
 
@@ -18,7 +20,7 @@ public class Sucker {
         m_sucker.set(false);
     }
   
-    public void Sucker(boolean suckState){
+    public void Sucker(boolean suckState) {
         m_sucker.set(suckState);
     }
 }

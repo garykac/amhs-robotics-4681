@@ -11,11 +11,11 @@ public class LineFollower {
 
     private AnalogInput m_lightSensor;
 
-    public void LineFollowerInit(){
+    public void LineFollowerInit() {
         m_lightSensor = new AnalogInput(klightSensor);
     }
 
-    public void OnLine(){
+    public void OnLine() {
         System.out.println(m_lightSensor.getValue());
     }
 }
