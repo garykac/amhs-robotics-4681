@@ -25,7 +25,7 @@ public class Grabber {
         m_grabberLeft = new PWMVictorSPX(Constants.kPWMGrabberLeft);
         m_grabberRight = new PWMVictorSPX(Constants.kPWMGrabberRight);
 
-        m_DIOlimitSwitchGrabber = new DigitalInput(Constants.kDIOLimitSwitchGrabber);
+        m_DIOlimitSwitchGrabber = new DigitalInput(Constants.kDIOGrabberLimitSwitch);
     }
 
     public void Grab() {

@@ -11,7 +11,7 @@ public class LineFollower {
     private AnalogInput m_lightSensor;
 
     public void LineFollowerInit() {
-        m_lightSensor = new AnalogInput(Constants.kAnaloglightSensor);
+        m_lightSensor = new AnalogInput(Constants.kAnalogLightSensor);
     }
 
     public void OnLine() {

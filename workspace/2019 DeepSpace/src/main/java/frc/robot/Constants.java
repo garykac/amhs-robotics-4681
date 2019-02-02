@@ -8,20 +8,23 @@ import edu.wpi.first.wpilibj.Solenoid;
 
 public class Constants {
 
-    public static final int kDIOlimitSwitchBottom = 0;
-    public static final int kDIOlimitSwitchTop = 1;
-    public static final int kDIOultrasonicEcho = 4;
-    public static final int kDIOultrasonicTrig = 5;
-    public static final int kDIOLimitSwitchGrabber = 3;
+    // Digital I/O
+    public static final int kDIOLifterLimitSwitchBottom = 0;
+    public static final int kDIOLifterLimitSwitchTop = 1;
+    public static final int kDIOGrabberLimitSwitch = 3;
+    public static final int kDIOUltrasonicEcho = 4;
+    public static final int kDIOUltrasonicTrig = 5;
 
+    // Pulse-width Modulator
+    public static final int kPWMFrontLeft = 0;
+    public static final int kPWMFrontRight = 1;
+    public static final int kPWMRearLeft = 2;
+    public static final int kPWMRearRight = 3;
     public static final int kPWMGrabberRight = 4;
     public static final int kPWMGrabberLeft = 5;
     public static final int kPWMLifter = 6;
-    public static final int kPWMFrontLeft = 0;
-    public static final int kPWMRearLeft = 2;
-    public static final int kPWMFrontRight = 1;
-    public static final int kPWMRearRight = 3;
 
+    // Pnuematics Control Module
     public static final int kPCMHatchSucker = 0;
     public static final int kPCMHatchSuckerExtender = 1;
     public static final int kPCMHatchVacuum = 0;
@@ -30,11 +33,6 @@ public class Constants {
     public static final int kPCMLegsBack = 3;
     public static final int kPCMLegsWalk = 4;
 
-    public static final int kAnaloglightSensor = 0;
-
-    
-
-    public void ConstantsInit() {
-        
-    }
+    // Analog
+    public static final int kAnalogLightSensor = 0;
 }

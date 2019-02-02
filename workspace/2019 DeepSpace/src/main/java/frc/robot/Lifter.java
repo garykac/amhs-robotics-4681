@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 
 public class Lifter {
 
-    private static final int kbottomRangeInches = 40;
-    private static final int ktopRangeInches = 50;
+    private static final int kRangeBottomInches = 40;
+    private static final int kRangeTopInches = 50;
 
     private PWMVictorSPX m_lifter;
 
@@ -27,12 +27,12 @@ public class Lifter {
         //change from true or false depending on which works.
         m_lifter.setInverted(true);
 
-        m_middleUltrasonic = new Ultrasonic(Constants.kDIOultrasonicTrig, 
-                                            Constants.kDIOultrasonicEcho);
-        m_middleUltrasonic.setAutomaticMode(true);
+        //m_middleUltrasonic = new Ultrasonic(Constants.kDIOultrasonicTrig, 
+        //                                    Constants.kDIOultrasonicEcho);
+        //m_middleUltrasonic.setAutomaticMode(true);
 
-        m_DIOlimitSwitchBottom = new DigitalInput(Constants.kDIOlimitSwitchBottom);
-        m_DIOlimitSwitchTop = new DigitalInput(Constants.kDIOlimitSwitchTop); 
+        m_DIOlimitSwitchBottom = new DigitalInput(Constants.kDIOLifterLimitSwitchBottom);
+        m_DIOlimitSwitchTop = new DigitalInput(Constants.kDIOLifterLimitSwitchTop); 
     }
 
     public void Lift() {
@@ -44,8 +44,8 @@ public class Lifter {
             m_lifter.set(kMotorPowerLevel);
             location="B";
             System.out.println(location);
-        } else if (m_middleUltrasonic.getRangeInches() > kbottomRangeInches
-                && m_middleUltrasonic.getRangeInches() < ktopRangeInches) {
+        } else if (m_middleUltrasonic.getRangeInches() > kRangeBottomInches
+                && m_middleUltrasonic.getRangeInches() < kRangeTopInches) {
             //not sure on the range yet.
             location = "M";
             System.out.println(m_middleUltrasonic.getRangeInches());
@@ -64,8 +64,8 @@ public class Lifter {
             m_lifter.set(0);
             location = "B";
             System.out.println(location);
-        } else if (m_middleUltrasonic.getRangeInches() > kbottomRangeInches
-                    && m_middleUltrasonic.getRangeInches() < ktopRangeInches) {
+        } else if (m_middleUltrasonic.getRangeInches() > kRangeBottomInches
+                    && m_middleUltrasonic.getRangeInches() < kRangeTopInches) {
             //not sure on the range yet.
             location = "M";
             System.out.println(m_middleUltrasonic.getRangeInches());
@@ -95,12 +95,12 @@ public class Lifter {
     }
 
     public void GoToMiddle() {
-        if (m_middleUltrasonic.getRangeInches() > kbottomRangeInches
-                && m_middleUltrasonic.getRangeInches() < ktopRangeInches) {
+        if (m_middleUltrasonic.getRangeInches() > kRangeBottomInches
+                && m_middleUltrasonic.getRangeInches() < kRangeTopInches) {
             m_lifter.set(0);
-        } else if (m_middleUltrasonic.getRangeInches() > kbottomRangeInches){
+        } else if (m_middleUltrasonic.getRangeInches() > kRangeBottomInches){
             m_lifter.set(kMotorPowerLevel);
-        } else if (m_middleUltrasonic.getRangeInches() < ktopRangeInches){
+        } else if (m_middleUltrasonic.getRangeInches() < kRangeTopInches){
             m_lifter.set(-kMotorPowerLevel);
         }
         location = "M";
