@@ -9,20 +9,14 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 public class WalkerLegs {
 
-    private static final int kPCMHatchVacuum = 0;
-    private static final int kPCMHatchCylinder = 1;
-    private static final int kPCMLegsFront = 2;
-    private static final int kPCMLegsBack = 3;
-    private static final int kPCMLegsWalk = 4;
-
     private Solenoid m_frontLegs;
     private Solenoid m_backLegs;
     private Solenoid m_walk;
 
     public void WalkerLegsInit() {
-        m_frontLegs = new Solenoid(kPCMLegsFront);
-        m_backLegs = new Solenoid(kPCMLegsBack);
-        m_walk = new Solenoid(kPCMLegsWalk);
+        m_frontLegs = new Solenoid(Constants.kPCMLegsFront);
+        m_backLegs = new Solenoid(Constants.kPCMLegsBack);
+        m_walk = new Solenoid(Constants.kPCMLegsWalk);
 
         m_frontLegs.set(false);
         m_backLegs.set(false);
@@ -40,5 +34,4 @@ public class WalkerLegs {
     public void Walk(boolean walk) {
         m_walk.set(!walk);
     }
-
 }
