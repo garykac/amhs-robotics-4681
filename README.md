@@ -55,6 +55,7 @@ General plan for week: Finish core robot build
 
 ## Documentation
 
+* [Business and Finance](docs/2019/business.md)
 * [Post-mortem documents](docs/post-mortem.md)
 
 ## Help
