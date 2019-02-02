@@ -14,20 +14,18 @@ import edu.wpi.first.wpilibj.PWMVictorSPX;
  * Main robot code for 2019.
  */
 public class Grabber {
-    private static final int kPWMGrabberRight = 4;
-    private static final int kPWMGrabberLeft = 5;
+
     private static final double kMotorPowerLevel = 0.4;
-    private static final int kDIOlimitSwitchGrabber = 3;
 
     private DigitalInput m_DIOlimitSwitchGrabber;
     private PWMVictorSPX m_grabberRight;
     private PWMVictorSPX m_grabberLeft;
 
     public void GrabberInit() {
-        m_grabberLeft = new PWMVictorSPX(kPWMGrabberLeft);
-        m_grabberRight = new PWMVictorSPX(kPWMGrabberRight);
+        m_grabberLeft = new PWMVictorSPX(Constants.kPWMGrabberLeft);
+        m_grabberRight = new PWMVictorSPX(Constants.kPWMGrabberRight);
 
-        m_DIOlimitSwitchGrabber = new DigitalInput(kDIOlimitSwitchGrabber);
+        m_DIOlimitSwitchGrabber = new DigitalInput(Constants.kDIOLimitSwitchGrabber);
     }
 
     public void Grab() {

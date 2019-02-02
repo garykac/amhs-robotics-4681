@@ -8,13 +8,6 @@ import edu.wpi.first.wpilibj.Ultrasonic;
  */
 
 public class Lifter {
-    private static final int kPWMLifter = 6;
-
-    private static final int kDIOlimitSwitchBottom = 0;
-    private static final int kDIOlimitSwitchTop = 1;
-
-    private static final int kDIOultrasonicEcho = 4;
-    private static final int kDIOultrasonicTrig = 5;
 
     private static final int kbottomRangeInches = 40;
     private static final int ktopRangeInches = 50;
@@ -30,15 +23,16 @@ public class Lifter {
     private DigitalInput m_DIOlimitSwitchTop;
 
     public void lifterInit() {
-        m_lifter = new PWMVictorSPX(kPWMLifter);
+        m_lifter = new PWMVictorSPX(Constants.kPWMLifter);
         //change from true or false depending on which works.
         m_lifter.setInverted(true);
 
-        m_middleUltrasonic = new Ultrasonic(kDIOultrasonicTrig, kDIOultrasonicEcho);
+        m_middleUltrasonic = new Ultrasonic(Constants.kDIOultrasonicTrig, 
+                                            Constants.kDIOultrasonicEcho);
         m_middleUltrasonic.setAutomaticMode(true);
 
-        m_DIOlimitSwitchBottom = new DigitalInput(kDIOlimitSwitchBottom);
-        m_DIOlimitSwitchTop = new DigitalInput(kDIOlimitSwitchTop); 
+        m_DIOlimitSwitchBottom = new DigitalInput(Constants.kDIOlimitSwitchBottom);
+        m_DIOlimitSwitchTop = new DigitalInput(Constants.kDIOlimitSwitchTop); 
     }
 
     public void Lift() {

@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
-import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
@@ -20,11 +19,7 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
  * Main robot code for 2019.
  */
 public class Robot extends TimedRobot {
-    private static final int kPWMFrontLeft = 0;
-    private static final int kPWMRearLeft = 2;
-    private static final int kPWMFrontRight = 1;
-    private static final int kPWMRearRight = 3;
-
+    
     private static final int kButtonX = 1;
     private static final int kButtonA = 2;
     private static final int kButtonB = 3;
@@ -59,10 +54,10 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-        PWMVictorSPX frontLeft = new PWMVictorSPX(kPWMFrontLeft);
-        PWMVictorSPX rearLeft = new PWMVictorSPX(kPWMRearLeft);
-        PWMVictorSPX frontRight = new PWMVictorSPX(kPWMFrontRight);
-        PWMVictorSPX rearRight = new PWMVictorSPX(kPWMRearRight);
+        PWMVictorSPX frontLeft = new PWMVictorSPX(Constants.kPWMFrontLeft);
+        PWMVictorSPX rearLeft = new PWMVictorSPX(Constants.kPWMRearLeft);
+        PWMVictorSPX frontRight = new PWMVictorSPX(Constants.kPWMFrontRight);
+        PWMVictorSPX rearRight = new PWMVictorSPX(Constants.kPWMRearRight);
         
         // Invert motors as needed.
         frontLeft.setInverted(true);

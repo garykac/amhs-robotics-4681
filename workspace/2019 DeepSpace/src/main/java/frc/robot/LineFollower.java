@@ -7,12 +7,11 @@ import edu.wpi.first.wpilibj.AnalogInput;
  */
 public class LineFollower {
 
-    private static final int klightSensor = 0;
 
     private AnalogInput m_lightSensor;
 
     public void LineFollowerInit() {
-        m_lightSensor = new AnalogInput(klightSensor);
+        m_lightSensor = new AnalogInput(Constants.kAnaloglightSensor);
     }
 
     public void OnLine() {
