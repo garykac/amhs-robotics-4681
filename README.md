@@ -51,10 +51,10 @@ General plan for week: Finish core robot build
 
 * [Main Competition Info](docs/2019/)
 * [Team Info](docs/2019/teams.md)
-   * [Business Team](docs/2019/business-team.md)
 
 ## Documentation
 
+* [Business and Finance](docs/2019/business-team.md)
 * [Post-mortem documents](docs/post-mortem.md)
 
 ## Help
