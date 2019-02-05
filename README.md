@@ -22,8 +22,14 @@ General plan for week: Finish core robot build
    * Meet from 3pm until **6pm**~~5pm~~.
 
 ### Week 5 : Sat 2 Feb - Fri 8 Feb
+Goals: Complete physical robot, finish electrical
+* Mon 4 Feb - Fri 8 Feb
+  * Meet from 3 pm until 6pm
+    * Mon 4 Feb **cancelled** due to snow day
 
 ### Week 6 : Sat 9 Feb - Fri 15 Feb
+* Sat 9 Feb:
+  Meet from 10am - 2pm (lunch provided)
 
 ### Week 7 : Sat 16 Feb - Fri 22 Feb
 * Mon 18 Feb (No School)
