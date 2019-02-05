@@ -29,7 +29,7 @@ Goals: Complete physical robot, finish electrical
 ### Auburn Mountainview Competition : 
 * 28900 124th Ave SE, Auburn, WA 98092
 * Fri 8 Mar - Sun Mar 10
-* [Itinerary (proposed](docs/2019/itinerary_AuburnMtView.md)
+* [Itinerary (proposed)](docs/2019/itinerary_AuburnMtView.md)
     
 ### Glacier Peak Competition
 * 7401 144th Pl SE, Snohomish, WA 98296
