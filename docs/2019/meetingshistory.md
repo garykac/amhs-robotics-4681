@@ -53,3 +53,15 @@ General plan for week: begin robot building: create the base, finalize/map out b
    * **No meetings** (because of Finals Week)
 * Fri 25 Jan
    * Meet from **3pm** until **8pm** (dinner provided)
+   
+### Week 4 : Sat 26 Jan - Fri 1 Feb
+
+General plan for week: Finish core robot build
+
+* Sat 26 Jan
+   * Meet from 10am - 3pm (lunch provided)
+   * ~~Possibly extend this meeting until 4pm if we don't get enough done during Finals week.~~
+* Mon 28 Jan:
+   * Meet from 3pm until **6pm**.
+* Tue 29 Jan - Fri 1 Feb
+   * Meet from 3pm until **6pm**~~5pm~~.
