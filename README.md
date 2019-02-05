@@ -25,7 +25,7 @@ General plan for week: Finish core robot build
 Goals: Complete physical robot, finish electrical
 * Mon 4 Feb - Fri 8 Feb
   * Meet from 3 pm until 6pm
-    * Mon 4 Feb **cancelled** due to snow day
+    * Mon 4 Feb & Tue 5 Feb **cancelled** due to snow day
 
 ### Week 6 : Sat 9 Feb - Fri 15 Feb
 * Sat 9 Feb:
