@@ -39,6 +39,10 @@
 ### Drive Team
 #### Team Members
 * .
+#### Goals:
+* Program movement, field interaction
+* Establish simple controls for robot
+* Decide membership
 
 ### Electrical
 
