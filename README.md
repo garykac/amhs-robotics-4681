@@ -40,8 +40,8 @@ Goals: Complete physical robot, finish electrical
 
 ## 2019 Competition Information
 
-* [Main Competition Info](docs/2019/)
-* [Team Info](docs/2019/teams.md)
+* [Main Competition Info](docs/2019/README.md)
+* [Team Info](docs/2019/teams)
 
 ## Documentation
 
