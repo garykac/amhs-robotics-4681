@@ -45,7 +45,7 @@ Goals: Complete physical robot, finish electrical
 
 ## Documentation
 
-* [Business and Finance](docs/2019/business-team.md)
+* [Business and Finance](docs/2019/teams/business-team.md)
 * [Post-mortem documents](docs/post-mortem.md)
 
 ## Help
