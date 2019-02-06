@@ -74,17 +74,17 @@ public class LifterHight {
            maxOffSet(getDistance()) < hatchThirdLevelHight){
                return true;
            }return false; }
-    public boolean aFirstBallLevel(){
+    public boolean atFirstBallLevel(){
         if(minOffSet(getDistance()) < ballFirstLevelHight &&
            maxOffSet(getDistance()) < ballFirstLevelHight){
                return true;
            }return false; }
-    public boolean aSecondBallLevel(){
+    public boolean atSecondBallLevel(){
         if(minOffSet(getDistance()) < ballSecondLevelHight &&
            maxOffSet(getDistance()) < ballSecondLevelHight){
                return true;
            }return false; }
-    public boolean aThirdBallLevel(){
+    public boolean atThirdBallLevel(){
         if(minOffSet(getDistance()) < ballThirdLevelHight &&
            maxOffSet(getDistance()) < ballThirdLevelHight){
                return true;

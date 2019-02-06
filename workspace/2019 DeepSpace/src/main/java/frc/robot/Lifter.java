@@ -47,16 +47,64 @@ public class Lifter {
             m_lifter.set(0);
             loc = Location.bottom;
         } else { m_lifter.set(-kMotorPowerLevel); }
-        
     }
-
     public void GoToTop() {
         if (m_hight.atTop()) {
             m_lifter.set(0);
             loc = Location.top;
         } else { m_lifter.set(kMotorPowerLevel); }
-    
-       
     }
+
+    public void GoToFirstBallLevel() {
+        if (m_hight.atFirstBallLevel()) {
+            m_lifter.set(0);
+        }else if (m_hight.atBottom()) {
+            m_lifter.set(kMotorPowerLevel); 
+        }else if (m_hight.atSecondBallLevel() || m_hight.atThirdBallLevel()){
+            m_lifter.set(-kMotorPowerLevel); }  
+    }
+    public void GoToSecondBallLevel() {
+        if (m_hight.atSecondBallLevel()) {
+            m_lifter.set(0);
+        }else if (m_hight.atBottom() || m_hight.atFirstBallLevel()) {
+            m_lifter.set(kMotorPowerLevel); 
+        }else if (m_hight.atThirdBallLevel() || m_hight.atTop()){
+            m_lifter.set(-kMotorPowerLevel); }  
+    }
+    public void GoToThirdBallLevel() {
+        if (m_hight.atThirdBallLevel()) {
+            m_lifter.set(0);
+        }else if (m_hight.atBottom() || m_hight.atFirstBallLevel() || m_hight.atSecondBallLevel()) {
+            m_lifter.set(kMotorPowerLevel); 
+        }else if (m_hight.atTop()){
+            m_lifter.set(-kMotorPowerLevel); }  
+    }
+
+    public void GoToFirstHatchLevel() {
+        if (m_hight.atFirstHatchLevel()) {
+            m_lifter.set(0);
+        }else if (m_hight.atBottom() ) {
+            m_lifter.set(kMotorPowerLevel); 
+        }else if (m_hight.atThirdHatchLevel() || m_hight.atSecondHatchLevel()){
+            m_lifter.set(-kMotorPowerLevel); }  
+    }
+    public void GoToSecondHatchLevel() {
+        if (m_hight.atSecondHatchLevel()) {
+            m_lifter.set(0);
+        }else if (m_hight.atBottom() || m_hight.atFirstHatchLevel()) {
+            m_lifter.set(kMotorPowerLevel); 
+        }else if (m_hight.atThirdHatchLevel() || m_hight.atTop()){
+            m_lifter.set(-kMotorPowerLevel); }  
+    }
+    public void GoToThirdHatchLevel() {
+        if (m_hight.atThirdHatchLevel()) {
+            m_lifter.set(0);
+        }else if (m_hight.atBottom() || m_hight.atFirstHatchLevel() || m_hight.atSecondHatchLevel()) {
+            m_lifter.set(kMotorPowerLevel); 
+        }else if (m_hight.atTop()){
+            m_lifter.set(-kMotorPowerLevel); }  
+    }
+    
+    
 
 }
