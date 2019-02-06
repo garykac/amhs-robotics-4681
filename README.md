@@ -15,19 +15,22 @@ Goals: Complete physical robot, finish electrical
 * Mon 4 Feb - Tue 5 Feb
   * **Cancelled** due to snow day
 * Wed 6 Feb - Fri 8 Feb
-  * Meet from 3 pm until 6pm
+  * Meet from 3pm until 7pm (dinner provided)
 
 ### Week 6 : Sat 9 Feb - Fri 15 Feb
 * Sat 9 Feb:
-  Meet from 10am - 2pm (lunch provided)
-* Mon 11 Feb - Fri 15 Feb
+  Meet from 10am - 4pm (lunch provided)
+* Mon 11 Feb - Fri 15 Feb:
   * Meet from 3 pm until 6pm
 
 ### Week 7 : Sat 16 Feb - Fri 22 Feb
-* Mon 18 Feb (No School)
+* Sat 16 Feb:
+    * Meet from 10 am - +pm
+* Mon 18 Feb (No School):
     * Meet from ___ until ____
-* Tue 19 Feb (No School)- **Stop Build Day @ 8:00 pm**
+* Tue 19 Feb (No School):
     * Meet from ___ until ____
+    * **Stop Build @ 8:00 pm**
 
 ### Auburn Mountainview Competition : 
 * 28900 124th Ave SE, Auburn, WA 98092
