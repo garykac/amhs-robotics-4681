@@ -4,13 +4,12 @@
 
 #### Team Members:
 * Adrian K (Leader)
-* Jenna B(Co-Leader)
+* Jenna B (Co-Leader)
 * Zoe H
 #### Goals
 * Exit Hab 2
 * Drive up ramp
-* Gyro / Stright line Automtion
-* Base
+* Base construction
 
 ### Game Piece Interaction
 
@@ -24,7 +23,7 @@
 * Hatches
 * Cargo
 
-## Climbing (End of Game)
+### Climbing (End of Game)
 
 #### Team Members:
 * Nate H (Leader)
@@ -38,7 +37,8 @@
 
 ### Drive Team
 #### Team Members
-* .
+* Under discussion (update by Friday)
+
 #### Goals:
 * Program movement, field interaction
 * Establish simple controls for robot
@@ -49,7 +49,7 @@
 #### Team Members
 * Zoey (Leader)
 #### Goals
-* Build Electricl ~~board~~ box
+* Build Electrical ~~board~~ box
 * Rig electronics to ~~board~~ box
 * Help others teams with testing
 
@@ -58,14 +58,14 @@
 #### Team Members
 * Nate (Leader)
 #### Goals
-* Build Pneumatics Board
+* Build pneumatics ~~Board~~ box
 * Aid others in testing
 
 ### Programming
 
 #### Team Members
 * Ryan D (Leader)
-* Christopher(Leader)
+* Christopher (Leader)
 * Austin C
 * Chris McV
 * Bruno S
