@@ -58,6 +58,7 @@ public class Lifter {
     public void GoToFirstBallLevel() {
         if (m_hight.atFirstBallLevel()) {
             m_lifter.set(0);
+            loc = Location.ballFirstLevel;
         }else if (m_hight.atBottom()) {
             m_lifter.set(kMotorPowerLevel); 
         }else if (m_hight.atSecondBallLevel() || m_hight.atThirdBallLevel()){
@@ -66,6 +67,7 @@ public class Lifter {
     public void GoToSecondBallLevel() {
         if (m_hight.atSecondBallLevel()) {
             m_lifter.set(0);
+            loc = Location.ballSecondLevel;
         }else if (m_hight.atBottom() || m_hight.atFirstBallLevel()) {
             m_lifter.set(kMotorPowerLevel); 
         }else if (m_hight.atThirdBallLevel() || m_hight.atTop()){
@@ -74,6 +76,7 @@ public class Lifter {
     public void GoToThirdBallLevel() {
         if (m_hight.atThirdBallLevel()) {
             m_lifter.set(0);
+            loc = Location.ballThirdLevel;
         }else if (m_hight.atBottom() || m_hight.atFirstBallLevel() || m_hight.atSecondBallLevel()) {
             m_lifter.set(kMotorPowerLevel); 
         }else if (m_hight.atTop()){
@@ -83,6 +86,7 @@ public class Lifter {
     public void GoToFirstHatchLevel() {
         if (m_hight.atFirstHatchLevel()) {
             m_lifter.set(0);
+            loc = Location.hatchFirstLevel;
         }else if (m_hight.atBottom() ) {
             m_lifter.set(kMotorPowerLevel); 
         }else if (m_hight.atThirdHatchLevel() || m_hight.atSecondHatchLevel()){
@@ -91,6 +95,7 @@ public class Lifter {
     public void GoToSecondHatchLevel() {
         if (m_hight.atSecondHatchLevel()) {
             m_lifter.set(0);
+            loc = Location.hatchSecondLevel;
         }else if (m_hight.atBottom() || m_hight.atFirstHatchLevel()) {
             m_lifter.set(kMotorPowerLevel); 
         }else if (m_hight.atThirdHatchLevel() || m_hight.atTop()){
@@ -99,6 +104,7 @@ public class Lifter {
     public void GoToThirdHatchLevel() {
         if (m_hight.atThirdHatchLevel()) {
             m_lifter.set(0);
+            loc = Location.hatchThirdLevel;
         }else if (m_hight.atBottom() || m_hight.atFirstHatchLevel() || m_hight.atSecondHatchLevel()) {
             m_lifter.set(kMotorPowerLevel); 
         }else if (m_hight.atTop()){
