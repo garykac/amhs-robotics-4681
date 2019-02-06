@@ -1,10 +1,6 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.Solenoid;
+
 
 public class Constants {
 
@@ -14,6 +10,7 @@ public class Constants {
     public static final int kDIOGrabberLimitSwitch = 3;
     public static final int kDIOUltrasonicEcho = 4;
     public static final int kDIOUltrasonicTrig = 5;
+    public static final int kDIOLifterHightSensor = 2;
 
     // Pulse-width Modulator
     public static final int kPWMFrontLeft = 0;
@@ -35,4 +32,6 @@ public class Constants {
 
     // Analog
     public static final int kAnalogLightSensor = 0;
+
+    
 }

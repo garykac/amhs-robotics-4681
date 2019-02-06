@@ -1,8 +1,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.Solenoid;
 
 /**
  * Manages the walking of the robot for 2019.

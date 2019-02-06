@@ -1,6 +1,5 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 /**
  * Manages the sucker for the hatch succer.
@@ -15,7 +14,7 @@ public class Sucker {
         m_sucker.set(false);
     }
   
-    public void Sucker(boolean suckState) {
+    public void Suck(boolean suckState) {
         m_sucker.set(suckState);
     }
 }

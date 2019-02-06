@@ -9,7 +9,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -104,10 +103,10 @@ public class Robot extends TimedRobot {
             m_grabber.Eject();
         }
         if (m_stick.getRawButtonPressed(kButtonX)) {
-            m_sucker.Sucker(true);
+            m_sucker.Suck(true);
         }
         if (m_stick.getRawButtonPressed(kButtonY)) {
-            m_sucker.Sucker(false);
+            m_sucker.Suck(false);
         }
         if (m_stick.getPOV()==0) {
             System.out.println("Go UP");
