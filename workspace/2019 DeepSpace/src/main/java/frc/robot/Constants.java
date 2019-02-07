@@ -11,6 +11,7 @@ public class Constants {
     public static final int kDIOUltrasonicEcho = 4;
     public static final int kDIOUltrasonicTrig = 5;
     public static final int kDIOLifterHightSensor = 2;
+    
 
     // Pulse-width Modulator
     public static final int kPWMFrontLeft = 0;
@@ -32,6 +33,8 @@ public class Constants {
 
     // Analog
     public static final int kAnalogLightSensor = 0;
+    public static final int kAnalogInfraRed = 1;
+
 
     
 }
