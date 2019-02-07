@@ -33,13 +33,15 @@ Goals: Complete physical robot, finish electrical, upload programming
     * Meet from ___ until ____
     * **Stop Build @ 8:00 pm**
 
-### Auburn Mountainview Competition : 
-* 28900 124th Ave SE, Auburn, WA 98092
+## Competitions
+
+### Auburn Mountainview : 
+* 28900 124th Ave SE, Auburn, WA 98092 ([map](https://www.google.com/maps/place/Auburn+Mountainview+High+School/@47.3419612,-122.174061,17z/data=!4m13!1m7!3m6!1s0x54905f337d87770d:0x5ddc9b85bda5f7fc!2s28900+124th+Ave+SE,+Auburn,+WA+98092!3b1!8m2!3d47.3419617!4d-122.171867!3m4!1s0x54905f33339e7f1f:0xedba6c6d3fa95904!8m2!3d47.3419907!4d-122.1719807))
 * Fri 8 Mar - Sun Mar 10
 * [Itinerary (proposed)](docs/2019/itinerary_AuburnMtView.md)
     
-### Glacier Peak Competition
-* 7401 144th Pl SE, Snohomish, WA 98296
+### Glacier Peak :
+* 7401 144th Pl SE, Snohomish, WA 98296 ([map](https://www.google.com/maps/place/Glacier+Peak+High+School/@47.8672956,-122.1356616,17z/data=!3m1!4b1!4m5!3m4!1s0x549007c5b4b4f587:0xa8d95e9dacee5108!8m2!3d47.8672956!4d-122.1334675))
 * Fri 22 Mar - Sun 24 Mar
     
 
