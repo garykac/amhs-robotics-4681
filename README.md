@@ -9,13 +9,14 @@ Est. 2013
 
 Unless otherwise specified, all robotics meetings take place in the portables.
 
-
 ### Week 5 : Sat 2 Feb - Fri 8 Feb
 Goals: Complete physical robot, finish electrical, upload programming
 * Mon 4 Feb - Wed 6 Feb
   * **Cancelled** due to snow day
-* Thu 7 Feb - Fri 8 Feb
+* Thu 7 Feb
   * Meet from 3pm until 7pm (dinner provided)
+* Fri 8 Feb
+  * **Cancelled** due to Early Release (school closes at 2pm due to heavy snow)
 
 ### Week 6 : Sat 9 Feb - Fri 15 Feb
 * Sat 9 Feb:
