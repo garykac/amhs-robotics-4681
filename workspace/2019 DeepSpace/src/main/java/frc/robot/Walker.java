@@ -43,15 +43,21 @@ public class Walker {
 
     public void Climb() {
         if (completed == false){
-            if (progress == 0) {
-                RaiseRobot();
-            } else if (progress == 1) {
-                Walk();
-            } else if (progress == 2) {
-                RetractFrontLegs();
-            } else if (progress == 3) {
+            if (progress == 3) {
                 RetractBackLegs();
             }
+            else if (progress == 2) {
+                RetractFrontLegs();
+            } 
+            else if (progress == 1) {
+                Walk();
+            } 
+            else if (progress == 0) {
+                RaiseRobot();
+            } 
+            
+            
+            
         }
     }
 }
