@@ -20,11 +20,15 @@ public class Sucker {
     public void Suck(boolean suckState) {
         if(suckState == true){
             m_extender.set(suckState);
+            System.out.println("Extender Out");
             m_sucker.set(suckState);
+            System.out.println("Sucker On");
         }
         else if (suckState ==false){
             m_sucker.set(suckState);
+            System.out.println("Extender in");
             m_extender.set(suckState);
+            System.out.println("Sucker Off");
         }
     }
 }

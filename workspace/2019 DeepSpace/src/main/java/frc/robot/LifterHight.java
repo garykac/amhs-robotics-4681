@@ -20,11 +20,11 @@ public class LifterHight {
     private static final double maxHight = 196;
     private static final double minHight = 4;
 
-    private static final double ballFirstLevelHight = 50;
+    private static final double ballFirstLevelHight = 67.945;
     private static final double ballSecondLevelHight = 100;
     private static final double ballThirdLevelHight = 150;
 
-    private static final double hatchFirstLevelHight = 60;
+    private static final double hatchFirstLevelHight = 47;
     private static final double hatchSecondLevelHight = 90;
     private static final double hatchThirdLevelHight = 120;
 
