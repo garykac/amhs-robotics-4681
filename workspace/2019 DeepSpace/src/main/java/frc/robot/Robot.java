@@ -123,7 +123,7 @@ public class Robot extends TimedRobot {
                 lifterLevel++;
                 currentlyPressed = true;
         } 
-        else if (m_stick.getPOV() == 0) {
+        else if (m_stick.getPOV() == 180) {
             if (lifterLevel > 0 && !currentlyPressed)
             lifterLevel--;
             currentlyPressed = true;
