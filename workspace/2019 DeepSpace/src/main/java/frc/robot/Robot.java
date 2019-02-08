@@ -118,16 +118,18 @@ public class Robot extends TimedRobot {
         }
 
 
-        if (m_stick.getPOV() == 0) {
-            if (lifterLevel < 7 && !currentlyPressed)
-                lifterLevel++;
-                currentlyPressed = true;
-        } 
-        else if (m_stick.getPOV() == 180) {
-            if (lifterLevel > 0 && !currentlyPressed)
-            lifterLevel--;
-            currentlyPressed = true;
-        } 
+        if (m_stick.getPOV() == 0 && m_stick.getRawButtonPressed(kButtonRB)) {
+            if (lifterLevel < 7 && !currentlyPressed){
+                if(lifterLevel != 3){
+                    lifterLevel++;
+                    currentlyPressed = true;}
+        } }
+        else if (m_stick.getPOV() == 180 && m_stick.getRawButtonPressed(kButtonRB)) {
+            if (lifterLevel > 0 && !currentlyPressed){
+                if(lifterLevel != 0){
+                    lifterLevel--;
+                    currentlyPressed = true;}
+        } }
         else {
            currentlyPressed = false;
         }
@@ -148,7 +150,41 @@ public class Robot extends TimedRobot {
                 m_lifter.GoToThirdBallLevel();
                 System.out.println("Ball Third Level");
                 break;
+        }
+        if (m_stick.getPOV() == 0 && m_stick.getRawButtonPressed(kButtonLB)) {
+            if (lifterLevel < 7 && !currentlyPressed){
+                if(lifterLevel != 3){
+                    lifterLevel++;
+                    currentlyPressed = true;}
+        } }
+        else if (m_stick.getPOV() == 180 && m_stick.getRawButtonPressed(kButtonLB)) {
+            if (lifterLevel > 0 && !currentlyPressed){
+                if(lifterLevel !=0 ){
+                    lifterLevel--;
+                    currentlyPressed = true;}
+        } }
+        else {
+           currentlyPressed = false;
+        }
+        switch(lifterLevel) {
+            case 0:
+                m_lifter.GoToBottom();
+                System.out.println("Bottom");
+                break;
+            case 1:
+                m_lifter.GoToFirstHatchLevel();
+                System.out.println("First Hatch Level");
+                break;
+            case 2:
+                m_lifter.GoToSecondHatchLevel();
+                System.out.println("Hatch Second Level");
+                break;
+            case 3:
+                m_lifter.GoToThirdHatchLevel();
+                System.out.println("Hatch Third Level");
+                break;
         //m_lineFollower.OnLine();
         }
     }
 }
+
