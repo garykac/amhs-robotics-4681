@@ -36,6 +36,9 @@ public class Robot extends TimedRobot {
 
     private static final int kJoystickChannel = 0;
 
+    private boolean currentlyPressed = false;
+    private int lifterLevel = 0;
+
     private MecanumDrive m_robotDrive;
     private Joystick m_stick;
 
@@ -85,6 +88,7 @@ public class Robot extends TimedRobot {
 
         m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);
         m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);
+        
     }
 
     @Override
@@ -108,15 +112,43 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonY)) {
             m_sucker.Suck(false);
         }
-        if (m_stick.getPOV()==0) {
-            System.out.println("Go UP");
-        }
-        if (m_stick.getPOV()==180) {
-            System.out.println("GO Down");
-        }
+        
         if (m_stick.getRawButtonPressed(kButtonstart)) {
             m_walker.Climb();
         }
+
+
+        if (m_stick.getPOV() == 0) {
+            if (lifterLevel < 7 && !currentlyPressed)
+                lifterLevel++;
+                currentlyPressed = true;
+        } 
+        else if (m_stick.getPOV() == 0) {
+            if (lifterLevel > 0 && !currentlyPressed)
+            lifterLevel--;
+            currentlyPressed = true;
+        } 
+        else {
+           currentlyPressed = false;
+        }
+        switch(lifterLevel) {
+            case 0:
+                m_lifter.GoToBottom();
+                System.out.println("Bottom");
+                break;
+            case 1:
+                m_lifter.GoToFirstBallLevel();
+                System.out.println("Ball First Level");
+                break;
+            case 2:
+                m_lifter.GoToSecondBallLevel();
+                System.out.println("Ball Second Level");
+                break;
+            case 3:
+                m_lifter.GoToThirdBallLevel();
+                System.out.println("Ball Third Level");
+                break;
         //m_lineFollower.OnLine();
+        }
     }
 }
