@@ -51,7 +51,7 @@ public class LifterHight {
         return (hight+minMaxDef);
     }
     public boolean atBottom(){
-        if (getDistance()>=minHight){
+        if (getDistance()<=minHight){
             return true;
         } return false;}
 
@@ -60,33 +60,33 @@ public class LifterHight {
             return true;
         } return false; }
     public boolean atFirstHatchLevel(){
-        if(minOffSet(getDistance()) < hatchFirstLevelHight &&
-           maxOffSet(getDistance()) < hatchFirstLevelHight){
+        if(minOffSet(hatchFirstLevelHight) < getDistance() &&
+           maxOffSet(hatchFirstLevelHight) > getDistance()){
                return true;
            }return false; }
     public boolean atSecondHatchLevel(){
-        if(minOffSet(getDistance()) < hatchSecondLevelHight &&
-           maxOffSet(getDistance()) < hatchSecondLevelHight){
+        if(minOffSet(hatchSecondLevelHight) < getDistance() &&
+           maxOffSet(hatchSecondLevelHight) > getDistance()){
                return true;
            }return false; }
     public boolean atThirdHatchLevel(){
-        if(minOffSet(getDistance()) < hatchThirdLevelHight &&
-           maxOffSet(getDistance()) < hatchThirdLevelHight){
+        if(minOffSet(hatchThirdLevelHight) < getDistance() &&
+           maxOffSet(hatchThirdLevelHight) > getDistance()){
                return true;
            }return false; }
     public boolean atFirstBallLevel(){
-        if(minOffSet(getDistance()) < ballFirstLevelHight &&
-           maxOffSet(getDistance()) < ballFirstLevelHight){
+        if(minOffSet(ballFirstLevelHight) < getDistance() &&
+           maxOffSet(ballFirstLevelHight) > getDistance()){
                return true;
            }return false; }
     public boolean atSecondBallLevel(){
-        if(minOffSet(getDistance()) < ballSecondLevelHight &&
-           maxOffSet(getDistance()) < ballSecondLevelHight){
+        if(minOffSet(ballSecondLevelHight) < getDistance() &&
+           maxOffSet(ballSecondLevelHight) > getDistance()){
                return true;
            }return false; }
     public boolean atThirdBallLevel(){
-        if(minOffSet(getDistance()) < ballThirdLevelHight &&
-           maxOffSet(getDistance()) < ballThirdLevelHight){
+        if(minOffSet(ballThirdLevelHight) < getDistance() &&
+           maxOffSet(ballThirdLevelHight) > getDistance()){
                return true;
            }return false; }
 }
