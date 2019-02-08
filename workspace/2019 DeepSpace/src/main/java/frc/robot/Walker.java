@@ -7,7 +7,7 @@ package frc.robot;
  */
 public class Walker {
     private int progress = 0;
-
+    private boolean completed = false;
     private WalkerLegs m_legs;
 
     public void WalkerInit() {
@@ -37,18 +37,21 @@ public class Walker {
     public void RetractBackLegs() {
         m_legs.ExtendBack(false);
         progress = 0;
+        completed = true;
         System.out.println("Retract Back Legs");
     }
 
     public void Climb() {
-        if (progress == 0) {
-            RaiseRobot();
-        } else if (progress == 1) {
-            Walk();
-        } else if (progress == 2) {
-            RetractFrontLegs();
-        } else if (progress == 3) {
-            RetractBackLegs();
+        if (completed == false){
+            if (progress == 0) {
+                RaiseRobot();
+            } else if (progress == 1) {
+                Walk();
+            } else if (progress == 2) {
+                RetractFrontLegs();
+            } else if (progress == 3) {
+                RetractBackLegs();
+            }
         }
     }
 }
