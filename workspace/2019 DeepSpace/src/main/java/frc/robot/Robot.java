@@ -37,7 +37,9 @@ public class Robot extends TimedRobot {
     private static final int kJoystickChannel = 0;
 
     private boolean currentlyPressed = false;
-    private int lifterLevel = 0;
+    private boolean ballMode= true;
+    private int lifterLevelHatch = 0;
+    private int lifterLevelBall = 0;
 
     private MecanumDrive m_robotDrive;
     private Joystick m_stick;
@@ -76,6 +78,7 @@ public class Robot extends TimedRobot {
 
         m_lifter = new Lifter();
         m_lifter.lifterInit();
+        m_lifter.GoToBottom();
 
         m_grabber = new Grabber();
         m_grabber.GrabberInit();
@@ -116,73 +119,83 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonstart)) {
             m_walker.Climb();
         }
+        if(m_stick.getRawButtonPressed(kButtonLB)){
+            ballMode=false;
+        }
+        if(m_stick.getRawButtonPressed(kButtonRB)){
+            ballMode=true;
+        }
 
 
-        if (m_stick.getPOV() == 0 && m_stick.getRawButtonPressed(kButtonRB)) {
-            if (lifterLevel < 7 && !currentlyPressed){
-                if(lifterLevel != 3){
-                    lifterLevel++;
+        if (m_stick.getPOV() == 0) {
+            if (lifterLevelBall < 7 && !currentlyPressed && ballMode == true){
+                if(lifterLevelBall != 3){
+                    lifterLevelBall++;
                     currentlyPressed = true;}
         } }
-        else if (m_stick.getPOV() == 180 && m_stick.getRawButtonPressed(kButtonRB)) {
-            if (lifterLevel > 0 && !currentlyPressed){
-                if(lifterLevel != 0){
-                    lifterLevel--;
+        else if (m_stick.getPOV() == 180) {
+            if (lifterLevelBall > 0 && !currentlyPressed && ballMode == true){
+                if(lifterLevelBall != 0){
+                    lifterLevelBall--;
                     currentlyPressed = true;}
         } }
         else {
            currentlyPressed = false;
         }
-        switch(lifterLevel) {
-            case 0:
-                m_lifter.GoToBottom();
-                System.out.println("Bottom");
-                break;
-            case 1:
-                m_lifter.GoToFirstBallLevel();
-                System.out.println("Ball First Level");
-                break;
-            case 2:
-                m_lifter.GoToSecondBallLevel();
-                System.out.println("Ball Second Level");
-                break;
-            case 3:
-                m_lifter.GoToThirdBallLevel();
-                System.out.println("Ball Third Level");
-                break;
+        if(ballMode){
+            switch(lifterLevelBall) {
+                case 0:
+                    m_lifter.GoToBottom();
+                    System.out.println("Bottom");
+                    break;
+                case 1:
+                    m_lifter.GoToFirstBallLevel();
+                    System.out.println("Ball First Level");
+                    break;
+                case 2:
+                    m_lifter.GoToSecondBallLevel();
+                    System.out.println("Ball Second Level");
+                    break;
+                case 3:
+                    m_lifter.GoToThirdBallLevel();
+                    System.out.println("Ball Third Level");
+                    break;
+            }
         }
-        if (m_stick.getPOV() == 0 && m_stick.getRawButtonPressed(kButtonLB)) {
-            if (lifterLevel < 7 && !currentlyPressed){
-                if(lifterLevel != 3){
-                    lifterLevel++;
+        if (m_stick.getPOV() == 0) {
+            if (lifterLevelHatch < 7 && !currentlyPressed && ballMode != true){
+                if(lifterLevelHatch !=3 ){
+                    lifterLevelHatch++;
                     currentlyPressed = true;}
         } }
-        else if (m_stick.getPOV() == 180 && m_stick.getRawButtonPressed(kButtonLB)) {
-            if (lifterLevel > 0 && !currentlyPressed){
-                if(lifterLevel !=0 ){
-                    lifterLevel--;
+        else if (m_stick.getPOV() == 180) {
+            if (lifterLevelHatch > 0 && !currentlyPressed && ballMode != true){
+                if(lifterLevelHatch != 0){
+                    lifterLevelHatch--;
                     currentlyPressed = true;}
         } }
         else {
            currentlyPressed = false;
         }
-        switch(lifterLevel) {
-            case 0:
-                m_lifter.GoToBottom();
-                System.out.println("Bottom");
-                break;
-            case 1:
-                m_lifter.GoToFirstHatchLevel();
-                System.out.println("First Hatch Level");
-                break;
-            case 2:
-                m_lifter.GoToSecondHatchLevel();
-                System.out.println("Hatch Second Level");
-                break;
-            case 3:
-                m_lifter.GoToThirdHatchLevel();
-                System.out.println("Hatch Third Level");
-                break;
+        if(ballMode != true){
+            switch(lifterLevelHatch) {
+                case 0:
+                    m_lifter.GoToBottom();
+                    System.out.println("Bottom");
+                    break;
+                case 1:
+                    m_lifter.GoToFirstHatchLevel();
+                    System.out.println("Hatch First Level");
+                    break;
+                case 2:
+                    m_lifter.GoToSecondHatchLevel();
+                    System.out.println("Hatch Second Level");
+                    break;
+                case 3:
+                    m_lifter.GoToThirdHatchLevel();
+                    System.out.println("Hatch Third Level");
+                    break;
+        }
         //m_lineFollower.OnLine();
         }
     }
