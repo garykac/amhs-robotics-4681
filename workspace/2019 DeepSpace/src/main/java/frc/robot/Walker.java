@@ -54,10 +54,7 @@ public class Walker {
             } 
             else if (progress == 0) {
                 RaiseRobot();
-            } 
-            
-            
-            
+            }  
         }
     }
 }

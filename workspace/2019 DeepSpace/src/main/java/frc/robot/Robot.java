@@ -40,6 +40,7 @@ public class Robot extends TimedRobot {
     private boolean ballMode= true;
     private int lifterLevelHatch = 0;
     private int lifterLevelBall = 0;
+    private boolean autoLift = true;
 
     private MecanumDrive m_robotDrive;
     private Joystick m_stick;
@@ -126,19 +127,21 @@ public class Robot extends TimedRobot {
             ballMode=true;
         }
 
-
+    if (autoLift == true){
         if (m_stick.getPOV() == 0) {
             if (lifterLevelBall < 7 && !currentlyPressed && ballMode == true){
-                if(lifterLevelBall != 3){
+                if(lifterLevelBall != 3) {
                     lifterLevelBall++;
                     currentlyPressed = true;}
-        } }
+            } 
+        }
         else if (m_stick.getPOV() == 180) {
             if (lifterLevelBall > 0 && !currentlyPressed && ballMode == true){
-                if(lifterLevelBall != 0){
+                if(lifterLevelBall != 0) {
                     lifterLevelBall--;
                     currentlyPressed = true;}
-        } }
+            }
+        }
         else {
            currentlyPressed = false;
         }
@@ -164,20 +167,22 @@ public class Robot extends TimedRobot {
         }
         if (m_stick.getPOV() == 0) {
             if (lifterLevelHatch < 7 && !currentlyPressed && ballMode != true){
-                if(lifterLevelHatch !=3 ){
+                if(lifterLevelHatch != 3 ) {
                     lifterLevelHatch++;
                     currentlyPressed = true;}
-        } }
+            } 
+        }
         else if (m_stick.getPOV() == 180) {
             if (lifterLevelHatch > 0 && !currentlyPressed && ballMode != true){
-                if(lifterLevelHatch != 0){
+                if(lifterLevelHatch != 0) {
                     lifterLevelHatch--;
                     currentlyPressed = true;}
-        } }
+            } 
+        }
         else {
            currentlyPressed = false;
         }
-        if(ballMode != true){
+        if(ballMode != true) {
             switch(lifterLevelHatch) {
                 case 0:
                     m_lifter.GoToBottom();
@@ -195,9 +200,18 @@ public class Robot extends TimedRobot {
                     m_lifter.GoToThirdHatchLevel();
                     System.out.println("Hatch Third Level");
                     break;
+            }
         }
         //m_lineFollower.OnLine();
         }
+    if(autoLift == false){
+        if(m_stick.getPOV() == 0){
+            m_lifter.Lift();
+        }
+        else if (m_stick.getPOV() == 180){
+            m_lifter.Lower();
+        }
+    }
     }
 }
 
