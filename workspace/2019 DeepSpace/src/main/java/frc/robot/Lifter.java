@@ -59,10 +59,10 @@ public class Lifter {
         if (m_hight.atFirstBallLevel()) {
             m_lifter.set(0);
             loc = Location.ballFirstLevel;
-        }else if (m_hight.atBottom()) {
-            m_lifter.set(kMotorPowerLevel); 
+        }else if (m_hight.atBottom()) { // I'd rather test if getDistance < FirstBallLevel
+            m_lifter.set(kMotorPowerLevel); // Because once the lifter doesn't fit any of these three tests... what does it do?
         }else if (m_hight.atSecondBallLevel() || m_hight.atThirdBallLevel()){
-            m_lifter.set(-kMotorPowerLevel); }  
+            m_lifter.set(-kMotorPowerLevel); }  // There may be a few design issues. We have Saturday!
     }
     public void GoToSecondBallLevel() {
         if (m_hight.atSecondBallLevel()) {
