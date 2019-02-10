@@ -41,6 +41,8 @@ public class Walker {
         System.out.println("Retract Back Legs");
     }
 
+    // This function has been deprecated because it's too idealized
+    // The changes have been adapted in Robot.java
     public void Climb() {
         if (completed == false){
             if (progress == 3) {
