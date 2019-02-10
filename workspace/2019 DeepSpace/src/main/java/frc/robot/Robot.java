@@ -188,6 +188,12 @@ public class Robot extends TimedRobot {
     }
     
     @Override
+    public void teleopInit() {
+        int macroIndex = 0;
+        m_compressor.start() // If it failed in robotInit(), just in case.
+    }
+                
+    @Override
     public void teleopPeriodic() {
         m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
@@ -205,11 +211,19 @@ public class Robot extends TimedRobot {
             m_sucker.Suck(false);
         }
         if (m_stick.getRawButtonPressed(kButtonstart)) { // This code doesn't exist in the auto stuff, for good reason
-            m_walker.Climb();  // This does the climb function in its entirety, only once.
+            macroIndex++;  // I've had to edit this code, because the Climb() function is idealized
+            if (macroIndex == 1)
+                m_walker.RaiseRobot();
+            if (macroIndex == 2)
+                m_walker.Walk();
+            if (macroIndex == 3) //By idealized, I mean, the robot has to drive during this step.
+                m_walker.RetractBackLegs(); // Climb() doesn't give the operator time to do so.
+            if (macroIndex == 4) {
+                m_walker.RetractFrontLegs();
+                macroIndex = 0;
+            }
         }
         lifterOperatorCode();
-        m_compressor.start() // Just in case it fails in robotInit()
-                //m_lineFollower.OnLine();
     }
 }
 
