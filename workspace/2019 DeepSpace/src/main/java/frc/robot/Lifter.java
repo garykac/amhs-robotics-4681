@@ -42,6 +42,10 @@ public class Lifter {
         m_lifter.set(-kMotorPowerLevel);
     }
     
+    public void Stop() {
+        m_lifter.set(0);
+    }
+    
     public void GoToBottom() {
         if (m_hight.atBottom()) {
             m_lifter.set(0);
