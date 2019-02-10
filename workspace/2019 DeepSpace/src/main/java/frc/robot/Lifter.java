@@ -22,7 +22,7 @@ public class Lifter {
     private LifterHight m_hight;
 
     private enum Location{
-        bottom,top,ballFirstLevel, ballSecondLevel, ballThirdLevel, hatchFirstLevel, hatchSecondLevel, hatchThirdLevel;
+        bottom, top, ballFirstLevel, ballSecondLevel, ballThirdLevel, hatchFirstLevel, hatchSecondLevel, hatchThirdLevel;
    }
    Location loc;
     public void lifterInit() {
@@ -50,71 +50,84 @@ public class Lifter {
         if (m_hight.atBottom()) {
             m_lifter.set(0);
             loc = Location.bottom;
-        } else { m_lifter.set(-kMotorPowerLevel); }
+        } else {
+            m_lifter.set(-kMotorPowerLevel);
+        }
     }
+    
     public void GoToTop() {
         if (m_hight.atTop()) {
             m_lifter.set(0);
             loc = Location.top;
-        } else { m_lifter.set(kMotorPowerLevel); }
+        } else {
+            m_lifter.set(kMotorPowerLevel);
+        }
     }
 
+    // All these go to level functions would be much easier in python.
     public void GoToFirstBallLevel() {
         if (m_hight.atFirstBallLevel()) {
             m_lifter.set(0);
             loc = Location.ballFirstLevel;
-        }else if (m_hight.atBottom()) { // I'd rather test if getDistance < FirstBallLevel
-            m_lifter.set(kMotorPowerLevel); // Because once the lifter doesn't fit any of these three tests... what does it do?
-        }else if (m_hight.atSecondBallLevel() || m_hight.atThirdBallLevel()){
-            m_lifter.set(-kMotorPowerLevel); }  // There may be a few design issues. We have Saturday!
+        } else if (m_hight.getDistance() < m_hight.ballFirstLevelHight) {
+            m_lifter.set(kMotorPowerLevel);
+        } else if (m_hight.getDistance() > m_hight.ballFirstLevelHight) {
+            m_lifter.set(-kMotorPowerLevel);
+        }
     }
+    
     public void GoToSecondBallLevel() {
         if (m_hight.atSecondBallLevel()) {
             m_lifter.set(0);
             loc = Location.ballSecondLevel;
-        }else if (m_hight.atBottom() || m_hight.atFirstBallLevel()) {
-            m_lifter.set(kMotorPowerLevel); 
-        }else if (m_hight.atThirdBallLevel() || m_hight.atTop()){
-            m_lifter.set(-kMotorPowerLevel); }  
+        } else if (m_hight.getDistance() < m_hight.ballSecondLevelHight) {
+            m_lifter.set(kMotorPowerLevel);
+        } else if (m_hight.getDistance() > m_hight.ballSecondLevelHight) {
+            m_lifter.set(-kMotorPowerLevel);
+        }
     }
+    
     public void GoToThirdBallLevel() {
         if (m_hight.atThirdBallLevel()) {
             m_lifter.set(0);
             loc = Location.ballThirdLevel;
-        }else if (m_hight.atBottom() || m_hight.atFirstBallLevel() || m_hight.atSecondBallLevel()) {
-            m_lifter.set(kMotorPowerLevel); 
-        }else if (m_hight.atTop()){
-            m_lifter.set(-kMotorPowerLevel); }  
+        } else if (m_hight.getDistance() < m_hight.ballThirdLevelHight) {
+            m_lifter.set(kMotorPowerLevel);
+        } else if (m_hight.getDistance() > m_hight.ballThirdLevelHight) {
+            m_lifter.set(-kMotorPowerLevel);
+        }
     }
 
     public void GoToFirstHatchLevel() {
         if (m_hight.atFirstHatchLevel()) {
             m_lifter.set(0);
-            loc = Location.hatchFirstLevel;
-        }else if (m_hight.atBottom() ) {
-            m_lifter.set(kMotorPowerLevel); 
-        }else if (m_hight.atThirdHatchLevel() || m_hight.atSecondHatchLevel()){
-            m_lifter.set(-kMotorPowerLevel); }  
+            loc = Location.ballHatchLevel;
+        } else if (m_hight.getDistance() < m_hight.ballFirstHatchHight) {
+            m_lifter.set(kMotorPowerLevel);
+        } else if (m_hight.getDistance() > m_hight.ballFirstHatchHight) {
+            m_lifter.set(-kMotorPowerLevel);
+        }
     }
+    
     public void GoToSecondHatchLevel() {
         if (m_hight.atSecondHatchLevel()) {
             m_lifter.set(0);
-            loc = Location.hatchSecondLevel;
-        }else if (m_hight.atBottom() || m_hight.atFirstHatchLevel()) {
-            m_lifter.set(kMotorPowerLevel); 
-        }else if (m_hight.atThirdHatchLevel() || m_hight.atTop()){
-            m_lifter.set(-kMotorPowerLevel); }  
+            loc = Location.ballHatchLevel;
+        } else if (m_hight.getDistance() < m_hight.ballSecondHatchHight) {
+            m_lifter.set(kMotorPowerLevel);
+        } else if (m_hight.getDistance() > m_hight.ballSecondHatchHight) {
+            m_lifter.set(-kMotorPowerLevel);
+        }
     }
+    
     public void GoToThirdHatchLevel() {
         if (m_hight.atThirdHatchLevel()) {
             m_lifter.set(0);
-            loc = Location.hatchThirdLevel;
-        }else if (m_hight.atBottom() || m_hight.atFirstHatchLevel() || m_hight.atSecondHatchLevel()) {
-            m_lifter.set(kMotorPowerLevel); 
-        }else if (m_hight.atTop()){
-            m_lifter.set(-kMotorPowerLevel); }  
+            loc = Location.ballHatchLevel;
+        } else if (m_hight.getDistance() < m_hight.ballThirdHatchHight) {
+            m_lifter.set(kMotorPowerLevel);
+        } else if (m_hight.getDistance() > m_hight.ballThirdHatchHight) {
+            m_lifter.set(-kMotorPowerLevel);
+        }
     }
-    
-    
-
 }
