@@ -160,6 +160,8 @@ public class Robot extends TimedRobot {
                 m_lifter.Lift();
             } else if (m_stick.getPOV() == 180) {
                 m_lifter.Lower();
+            } else {
+                m_lifter.Stop();
             }
         }        
     }
