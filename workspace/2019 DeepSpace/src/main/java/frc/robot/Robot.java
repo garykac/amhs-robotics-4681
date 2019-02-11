@@ -41,7 +41,7 @@ public class Robot extends TimedRobot {
     private boolean currentlyPressed = false;
     private boolean ballMode= true;
     private int lifterLevel = 0;
-    private int modeAdder = 1; // You'll see its ingenuity later on... *wink*
+    private int modeAdder = 1;
     private boolean autoLift = true;
     
     private MecanumDrive m_robotDrive;
