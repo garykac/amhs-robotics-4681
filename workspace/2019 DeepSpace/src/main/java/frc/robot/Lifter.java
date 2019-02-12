@@ -64,7 +64,8 @@ public class Lifter {
         }
     }
 
-    // All these go to level functions would be much easier in python.
+    // Wouldn't it be more worthwile to define a function:
+    // public void goTo(int hight), and pass in the variables for game piece heights?
     public void GoToFirstBallLevel() {
         if (m_hight.atFirstBallLevel()) {
             m_lifter.set(0);
