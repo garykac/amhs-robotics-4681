@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
         PWMVictorSPX frontRight = new PWMVictorSPX(Constants.kPWMFrontRight);
         PWMVictorSPX rearRight = new PWMVictorSPX(Constants.kPWMRearRight);
         
-        // Invert motors as needed.
+        // Invert motors as needed. Some of these will become false.
         frontLeft.setInverted(true);
         rearLeft.setInverted(true);
         frontRight.setInverted(true);
@@ -122,7 +122,7 @@ public class Robot extends TimedRobot {
                 }
                 lifterLevel += modeAdder;
             }
-            if (m_stick.getPOV() == 0 {
+            if (m_stick.getPOV() == 0) {
                 if (lifterLevel <= 4 && !currentlyPressed)
                     lifterLevel += 2;
                 currentlyPressed = true;
@@ -160,7 +160,7 @@ public class Robot extends TimedRobot {
                     break;
             }
         } else { // The only other choice is autoLift = false;
-            if(m_stick.getPOV() == 0){
+            if (m_stick.getPOV() == 0) {
                 m_lifter.Lift();
             } else if (m_stick.getPOV() == 180) {
                 m_lifter.Lower();
