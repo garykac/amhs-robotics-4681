@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
     private static final int kButtonLT = 7;
     private static final int kButtonRT = 8;
     private static final int kButtonBottom = 9;
-    private static final int kButtonstart = 10;
+    private static final int kButtonStart = 10;
     private static final int kButtonJoyStickLeft = 11;
     private static final int kButtonJoyStickRight = 12;
     private static final int kJoystickChannel = 0;
@@ -102,11 +102,15 @@ public class Robot extends TimedRobot {
         m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);     
     }
     
-/** For line # 119
-  * lifterLevel will either be offset by +1 (ball mode) or 0 (hatch mode). It starts at +1.
-  * The lifter levels are as follows: -1=bottom, 0=bottom, 1=hatch1, 2=ball1, 3=hatch2, 4=ball2, 5=hatch3, 6=ball3
-  * The -1 is the bottom in the hatch mode, and 0 is bottom for the ball mode.
-  */      
+    /* EXPLAINING THE USE OF 'modeAdder':
+    * lifterLevel will either be offset by +1 (ball mode) or 0 (hatch mode). It starts at +1.
+    * The lifter levels are as follows: -1=bottom, 0=bottom, 1=hatch1, 2=ball1, 3=hatch2, 4=ball2, 5=hatch3, 6=ball3
+    * The -1 is the bottom in the hatch mode, and 0 is bottom for the ball mode.
+    * There are no specific levels for the loading station because we pick balls up from the ground,
+    * and the hatch receptacle is at the same level as hatch1. There isn't a level for BallCargoShip because
+    * our primary focus is the rocket.
+    */
+    
     public void lifterOperatorCode() {
         if (autoLift) {
             if (m_stick.getRawButtonPressed(kButtonLB)) {
@@ -185,7 +189,7 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonY)) {
             m_sucker.Suck(false);
         } 
-        lifterOperatorCode(); // Will this work?
+        lifterOperatorCode(); // The functionality of this line of code is referenced in issue #25
 
     }
     
@@ -212,7 +216,7 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonY)) {
             m_sucker.Suck(false);
         }
-        if (m_stick.getRawButtonPressed(kButtonstart)) { // This code doesn't exist in the auto stuff, for good reason
+        if (m_stick.getRawButtonPressed(kButtonStart)) { // This code doesn't exist in the auto stuff, for good reason
             macroIndex++;  // I've had to edit this code, because the Climb() function is idealized
             if (macroIndex == 1)
                 m_walker.RaiseRobot();
@@ -224,6 +228,11 @@ public class Robot extends TimedRobot {
                 m_walker.RetractFrontLegs();
                 macroIndex = 0;
             }
+        }
+        if (m_stick.getRawButtonPressed(kButtonBottom)) { // If we need to restart the climbing process.
+            m_walker.RetractBackLegs();
+            m_walker.RetractFrontLegs();
+            macroIndex = 0;
         }
         lifterOperatorCode();
     }
