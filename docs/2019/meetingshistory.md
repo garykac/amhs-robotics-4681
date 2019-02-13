@@ -65,3 +65,13 @@ General plan for week: Finish core robot build
    * Meet from 3pm until **6pm**.
 * Tue 29 Jan - Fri 1 Feb
    * Meet from 3pm until **6pm**~~5pm~~.
+
+### Week 5 : Sat 2 Feb - Fri 8 Feb
+Goals: Complete physical robot, finish electrical, upload programming
+* Mon 4 Feb - Wed 6 Feb
+  * **Cancelled** due to snow day
+* Thu 7 Feb
+  * Meet from 3pm until 7pm (dinner provided)
+* Fri 8 Feb
+  * Meet from 12:45 until 2pm due to Early Release
+  * (school closes at 2pm due to heavy snow)
