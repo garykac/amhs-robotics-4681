@@ -14,17 +14,12 @@ public class Lifter {
 
     private static final double kMotorPowerLevel = 0.4;
 
-    private String location;
-
-    private DigitalInput m_DIOlimitSwitchBottom;
-    private DigitalInput m_DIOlimitSwitchTop;
-
     private LifterHight m_hight;
 
-    private enum Location{
+    private enum Location {
         bottom, top, ballFirstLevel, ballSecondLevel, ballThirdLevel, hatchFirstLevel, hatchSecondLevel, hatchThirdLevel;
-   }
-   Location loc;
+    }  // I don't see the enums being used much anywhere
+    Location loc;
     public void lifterInit() {
         m_lifter = new PWMVictorSPX(Constants.kPWMLifter);
         //change from true or false depending on which works.
@@ -102,7 +97,7 @@ public class Lifter {
     public void GoToFirstHatchLevel() {
         if (m_hight.atFirstHatchLevel()) {
             m_lifter.set(0);
-            loc = Location.ballHatchLevel;
+            loc = Location.hatchFirstLevel;
         } else if (m_hight.getDistance() < m_hight.ballFirstHatchHight) {
             m_lifter.set(kMotorPowerLevel);
         } else if (m_hight.getDistance() > m_hight.ballFirstHatchHight) {
@@ -113,7 +108,7 @@ public class Lifter {
     public void GoToSecondHatchLevel() {
         if (m_hight.atSecondHatchLevel()) {
             m_lifter.set(0);
-            loc = Location.ballHatchLevel;
+            loc = Location.hatchSecondLevel;
         } else if (m_hight.getDistance() < m_hight.ballSecondHatchHight) {
             m_lifter.set(kMotorPowerLevel);
         } else if (m_hight.getDistance() > m_hight.ballSecondHatchHight) {
@@ -124,7 +119,7 @@ public class Lifter {
     public void GoToThirdHatchLevel() {
         if (m_hight.atThirdHatchLevel()) {
             m_lifter.set(0);
-            loc = Location.ballHatchLevel;
+            loc = Location.hatchThirdLevel;
         } else if (m_hight.getDistance() < m_hight.ballThirdHatchHight) {
             m_lifter.set(kMotorPowerLevel);
         } else if (m_hight.getDistance() > m_hight.ballThirdHatchHight) {
