@@ -20,13 +20,13 @@ public class LifterHight {
     private static final double maxHight = 196;
     private static final double minHight = 4;
 
-    private static final double ballFirstLevelHight = 67.945;
-    private static final double ballSecondLevelHight = 100;
-    private static final double ballThirdLevelHight = 150;
+    public static final double ballFirstLevelHight = 67.945;
+    public static final double ballSecondLevelHight = 100;
+    public static final double ballThirdLevelHight = 150;
 
-    private static final double hatchFirstLevelHight = 47;
-    private static final double hatchSecondLevelHight = 90;
-    private static final double hatchThirdLevelHight = 120;
+    public static final double hatchFirstLevelHight = 47;
+    public static final double hatchSecondLevelHight = 90;
+    public static final double hatchThirdLevelHight = 120;
 
 
     public void lifterHightInit() {
@@ -36,6 +36,7 @@ public class LifterHight {
         counter.reset();
         
     }
+    
     public double getDistance(){
         if (counter.get() < 1) {
             return 0.0;
@@ -43,50 +44,73 @@ public class LifterHight {
         return (counter.getPeriod() * 1000000.0 / 10.0) + offSet;
     }
 
-    public double minOffSet(double hight){
-        return (hight-minMaxDef);
+    public double minOffSet(double hight) {
+        return (hight - minMaxDef);
     }
 
-    public double maxOffSet(double hight){
-        return (hight+minMaxDef);
+    public double maxOffSet(double hight) {
+        return (hight + minMaxDef);
     }
+    
     public boolean atBottom(){
-        if (getDistance()<=minHight){
+        if (getDistance() <= minHight) {
             return true;
-        } return false;}
+        }
+        return false;
+    }
 
     public boolean atTop(){
         if(getDistance()>=maxHight){
             return true;
-        } return false; }
-    public boolean atFirstHatchLevel(){
+        }
+        return false;
+    }
+    
+    public boolean atFirstHatchLevel() {
         if(minOffSet(hatchFirstLevelHight) < getDistance() &&
-           maxOffSet(hatchFirstLevelHight) > getDistance()){
-               return true;
-           }return false; }
-    public boolean atSecondHatchLevel(){
+           maxOffSet(hatchFirstLevelHight) > getDistance()) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean atSecondHatchLevel() {
         if(minOffSet(hatchSecondLevelHight) < getDistance() &&
-           maxOffSet(hatchSecondLevelHight) > getDistance()){
+           maxOffSet(hatchSecondLevelHight) > getDistance()) {
                return true;
-           }return false; }
-    public boolean atThirdHatchLevel(){
+        }
+        return false;
+    }
+    
+    public boolean atThirdHatchLevel() {
         if(minOffSet(hatchThirdLevelHight) < getDistance() &&
-           maxOffSet(hatchThirdLevelHight) > getDistance()){
+           maxOffSet(hatchThirdLevelHight) > getDistance()) {
                return true;
-           }return false; }
-    public boolean atFirstBallLevel(){
+        }
+        return false;
+    }
+    
+    public boolean atFirstBallLevel() {
         if(minOffSet(ballFirstLevelHight) < getDistance() &&
-           maxOffSet(ballFirstLevelHight) > getDistance()){
+           maxOffSet(ballFirstLevelHight) > getDistance()) {
                return true;
-           }return false; }
-    public boolean atSecondBallLevel(){
+        }
+        return false;
+    }
+    
+    public boolean atSecondBallLevel() {
         if(minOffSet(ballSecondLevelHight) < getDistance() &&
-           maxOffSet(ballSecondLevelHight) > getDistance()){
-               return true;
-           }return false; }
-    public boolean atThirdBallLevel(){
+           maxOffSet(ballSecondLevelHight) > getDistance()) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean atThirdBallLevel() {
         if(minOffSet(ballThirdLevelHight) < getDistance() &&
-           maxOffSet(ballThirdLevelHight) > getDistance()){
+           maxOffSet(ballThirdLevelHight) > getDistance()) {
                return true;
-           }return false; }
+        }
+        return false;
+    }
 }

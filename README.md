@@ -15,6 +15,7 @@ Unless otherwise specified, all robotics meetings take place in the portables.
 * Thu 14 Feb - Fri 15 Feb:
   * Meet from 3 pm until 7 pm
 
+
 ### Week 7 : Sat 16 Feb - Fri 22 Feb
 * Sat 16 Feb:
     * Meet from 10 am - 4 pm
