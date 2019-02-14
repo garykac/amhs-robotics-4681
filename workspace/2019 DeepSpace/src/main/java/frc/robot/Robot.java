@@ -176,7 +176,7 @@ public class Robot extends TimedRobot {
                 
                 
     @Override
-    public void AutonomousPeriodic() {
+    public void autonomousPeriodic() {
         m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
