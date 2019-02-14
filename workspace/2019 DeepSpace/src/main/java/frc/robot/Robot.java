@@ -52,6 +52,8 @@ public class Robot extends TimedRobot {
     
     private Joystick m_stick;
     
+    private int macroIndex = 0;
+
     private Walker m_walker;
 
     private Lifter m_lifter;
@@ -78,7 +80,7 @@ public class Robot extends TimedRobot {
         m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
         
         m_compressor = new Compressor();
-        m_compressor.start()
+        m_compressor.start();
 
         m_stick = new Joystick(kJoystickChannel);
 
@@ -133,32 +135,32 @@ public class Robot extends TimedRobot {
                     lifterLevel -= 2;
                 currentlyPressed = true;
             } else if (m_stick.getPOV() == 270) {
-                lifterLevel = .5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
+                lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
             } else {
                 currentlyPressed = false;      
             }
             switch (lifterLevel) {
                 case -1:
                 case 0:
-                    m_lifter.goToBottom();
+                    m_lifter.GoToBottom();
                     break;
                 case 1:
-                    m_lifter.gotoFirstBallLevel();
+                    m_lifter.GoToFirstBallLevel();
                     break;
                 case 2:
-                    m_lifter.gotoFirstHatchLevel();
+                    m_lifter.GoToFirstHatchLevel();
                     break;
                 case 3:
-                    m_lifter.gotoSecondBallLevel();
+                    m_lifter.GoToSecondBallLevel();
                     break;
                 case 4:
-                    m_lifter.gotoSecondHatchLevel();
+                    m_lifter.GoToSecondHatchLevel();
                     break;
                 case 5:
-                    m_lifter.gotoThirdBallLevel();
+                    m_lifter.GoToThirdBallLevel();
                     break;
                 case 6:
-                    m_lifter.gotoThirdHatchLevel();
+                    m_lifter.GoToThirdHatchLevel();
                     break;
             }
         } else { // The only other choice is autoLift = false;
@@ -197,8 +199,8 @@ public class Robot extends TimedRobot {
     
     @Override
     public void teleopInit() {
-        int macroIndex = 0;
-        m_compressor.start() // If it failed in robotInit(), just in case.
+
+        m_compressor.start(); // If it failed in robotInit(), just in case.
     }
                 
     @Override

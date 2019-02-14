@@ -98,9 +98,9 @@ public class Lifter {
         if (m_hight.atFirstHatchLevel()) {
             m_lifter.set(0);
             loc = Location.hatchFirstLevel;
-        } else if (m_hight.getDistance() < m_hight.ballFirstHatchHight) {
+        } else if (m_hight.getDistance() < m_hight.hatchFirstLevelHight) {
             m_lifter.set(kMotorPowerLevel);
-        } else if (m_hight.getDistance() > m_hight.ballFirstHatchHight) {
+        } else if (m_hight.getDistance() > m_hight.hatchFirstLevelHight) {
             m_lifter.set(-kMotorPowerLevel);
         }
     }
@@ -109,9 +109,9 @@ public class Lifter {
         if (m_hight.atSecondHatchLevel()) {
             m_lifter.set(0);
             loc = Location.hatchSecondLevel;
-        } else if (m_hight.getDistance() < m_hight.ballSecondHatchHight) {
+        } else if (m_hight.getDistance() < m_hight.hatchSecondLevelHight) {
             m_lifter.set(kMotorPowerLevel);
-        } else if (m_hight.getDistance() > m_hight.ballSecondHatchHight) {
+        } else if (m_hight.getDistance() > m_hight.hatchSecondLevelHight) {
             m_lifter.set(-kMotorPowerLevel);
         }
     }
@@ -120,9 +120,9 @@ public class Lifter {
         if (m_hight.atThirdHatchLevel()) {
             m_lifter.set(0);
             loc = Location.hatchThirdLevel;
-        } else if (m_hight.getDistance() < m_hight.ballThirdHatchHight) {
+        } else if (m_hight.getDistance() < m_hight.hatchThirdLevelHight) {
             m_lifter.set(kMotorPowerLevel);
-        } else if (m_hight.getDistance() > m_hight.ballThirdHatchHight) {
+        } else if (m_hight.getDistance() > m_hight.hatchThirdLevelHight) {
             m_lifter.set(-kMotorPowerLevel);
         }
     }
