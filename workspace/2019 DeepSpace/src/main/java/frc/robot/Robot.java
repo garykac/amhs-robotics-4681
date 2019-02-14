@@ -112,6 +112,8 @@ public class Robot extends TimedRobot {
     */
     
     public void lifterOperatorCode() {
+        if (m_stick.getRawButtonPressed(kButtonRB))
+            autoLift = !autoLift;  // true to false; v.v.
         if (autoLift) {
             if (m_stick.getRawButtonPressed(kButtonLB)) {
                 modeAdder *= -1; // Switches between -1 and 1
