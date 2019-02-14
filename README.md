@@ -13,11 +13,11 @@ Unless otherwise specified, all robotics meetings take place in the portables.
 * Sat 9 Feb, Mon 11 Feb - Wed 13 Feb:
   * **Cancelled** due to snow day
 * Thu 14 Feb - Fri 15 Feb:
-  * Meet from 3 pm until {7 or 8} pm
+  * Meet from 3 pm until 7 pm
 
 ### Week 7 : Sat 16 Feb - Fri 22 Feb
 * Sat 16 Feb:
-    * Meet from 10 am - __ pm
+    * Meet from 10 am - 4 pm
 * Mon 18 Feb (No School):
     * Meet from ___ until ____
 * Tue 19 Feb (No School):
