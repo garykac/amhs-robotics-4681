@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Counter;
  * Lifter robot code for 2019.
  */
 
-public class LifterHight {
+public class LifterHeight {
     
     private Counter counter;
 
@@ -17,20 +17,20 @@ public class LifterHight {
 
     private static final double minMaxDef = 5;
 
-    private static final double maxHight = 196;
-    private static final double minHight = 4;
+    private static final double maxHeight = 196;
+    private static final double minHeight = 4;
 
-    public static final double ballFirstLevelHight = 67.945;
-    public static final double ballSecondLevelHight = 100;
-    public static final double ballThirdLevelHight = 150;
+    public static final double ballFirstLevelHeight = 67.945;
+    public static final double ballSecondLevelHeight = 100;
+    public static final double ballThirdLevelHeight = 150;
 
-    public static final double hatchFirstLevelHight = 47;
-    public static final double hatchSecondLevelHight = 90;
-    public static final double hatchThirdLevelHight = 120;
+    public static final double hatchFirstLevelHeight = 47;
+    public static final double hatchSecondLevelHeight = 90;
+    public static final double hatchThirdLevelHeight = 120;
 
 
-    public void lifterHightInit() {
-        counter = new Counter(Constants.kDIOLifterHightSensor);
+    public void lifterHeightInit() {
+        counter = new Counter(Constants.kDIOLifterHeightSensor);
         counter.setMaxPeriod(1.0);
         counter.setSemiPeriodMode(true);
         counter.reset();
@@ -44,23 +44,23 @@ public class LifterHight {
         return (counter.getPeriod() * 1000000.0 / 10.0) + offSet;
     }
 
-    public double minOffSet(double hight) {
-        return (hight - minMaxDef);
+    public double minOffSet(double height) {
+        return (height - minMaxDef);
     }
 
-    public double maxOffSet(double hight) {
-        return (hight + minMaxDef);
+    public double maxOffSet(double height) {
+        return (height + minMaxDef);
     }
     
     public boolean atBottom(){
-        if (getDistance() <= minHight) {
+        if (getDistance() <= minHeight) {
             return true;
         }
         return false;
     }
 
     public boolean atTop(){
-        if(getDistance()>=maxHight){
+        if(getDistance()>=maxHeight){
             return true;
         }
         return false;
@@ -75,26 +75,26 @@ public class LifterHight {
     }
     
     public boolean atFirstHatchLevel() {
-        return atLevel_(hatchFirstLevelHight);
+        return atLevel_(hatchFirstLevelHeight);
     }
     
     public boolean atSecondHatchLevel() {
-        return atLevel_(hatchSecondLevelHight);
+        return atLevel_(hatchSecondLevelHeight);
     }
     
     public boolean atThirdHatchLevel() {
-        return atLevel_(hatchThirdLevelHight);
+        return atLevel_(hatchThirdLevelHeight);
     }
     
     public boolean atFirstBallLevel() {
-        return atLevel_(ballFirstLevelHight);
+        return atLevel_(ballFirstLevelHeight);
     }
     
     public boolean atSecondBallLevel() {
-        return atLevel_(ballSecondLevelHight);
+        return atLevel_(ballSecondLevelHeight);
     }
     
     public boolean atThirdBallLevel() {
-        return atLevel_(ballThirdLevelHight);
+        return atLevel_(ballThirdLevelHeight);
     }
 }

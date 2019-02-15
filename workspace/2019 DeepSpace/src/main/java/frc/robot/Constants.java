@@ -10,7 +10,7 @@ public class Constants {
     public static final int kDIOGrabberLimitSwitch = 3;
     public static final int kDIOUltrasonicEcho = 4;
     public static final int kDIOUltrasonicTrig = 5;
-    public static final int kDIOLifterHightSensor = 2;
+    public static final int kDIOLifterHeightSensor = 2;
     
 
     // Pulse-width Modulator
