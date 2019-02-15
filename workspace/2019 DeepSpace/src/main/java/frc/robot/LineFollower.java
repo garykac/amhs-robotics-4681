@@ -6,18 +6,20 @@ import edu.wpi.first.wpilibj.AnalogInput;
  */
 public class LineFollower {
 
-    private AnalogInput m_infraRed;
+    private AnalogInput m_infraRed1, m_infraRed2, m_infraRed3;
 
     private AnalogInput m_lightSensor;
 
     public void LineFollowerInit() {
         m_lightSensor = new AnalogInput(Constants.kAnalogLightSensor);
-        m_infraRed = new AnalogInput(Constants.kAnalogInfraRed);
-
+        m_infraRed1 = new AnalogInput(Constants.kAnalogInfraRed1);
+        m_infraRed2 = new AnalogInput(Constants.kAnalogInfraRed2);
+        m_infraRed3 = new AnalogInput(Constants.kAnalogInfraRed3);
+        
 
     }
 
     public void OnLine() {
-        System.out.println(m_infraRed.getValue());
+        System.out.println(" " + m_infraRed1.getValue() + ", " + m_infraRed2.getValue()+", " + m_infraRed3.getValue());
     }
 }

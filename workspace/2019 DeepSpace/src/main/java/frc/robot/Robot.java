@@ -239,6 +239,7 @@ public class Robot extends TimedRobot {
             macroIndex = 0;
         }
         lifterOperatorCode();
+        m_lineFollower.OnLine();
     }
 }
 

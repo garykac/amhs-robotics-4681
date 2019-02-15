@@ -34,7 +34,9 @@ public class Constants {
 
     // Analog
     public static final int kAnalogLightSensor = 0;
-    public static final int kAnalogInfraRed = 1;
+    public static final int kAnalogInfraRed1 = 1;
+    public static final int kAnalogInfraRed2 = 2;
+    public static final int kAnalogInfraRed3 = 3;
 
 
     
