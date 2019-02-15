@@ -66,51 +66,35 @@ public class LifterHight {
         return false;
     }
     
-    public boolean atFirstHatchLevel() {
-        if(minOffSet(hatchFirstLevelHight) < getDistance() &&
-           maxOffSet(hatchFirstLevelHight) > getDistance()) {
+    private boolean atLevel_(double height) {
+        if (minOffSet(height) < getDistance()
+                && maxOffSet(height) > getDistance()) {
             return true;
         }
         return false;
+    }
+    
+    public boolean atFirstHatchLevel() {
+        return atLevel_(hatchFirstLevelHight);
     }
     
     public boolean atSecondHatchLevel() {
-        if(minOffSet(hatchSecondLevelHight) < getDistance() &&
-           maxOffSet(hatchSecondLevelHight) > getDistance()) {
-               return true;
-        }
-        return false;
+        return atLevel_(hatchSecondLevelHight);
     }
     
     public boolean atThirdHatchLevel() {
-        if(minOffSet(hatchThirdLevelHight) < getDistance() &&
-           maxOffSet(hatchThirdLevelHight) > getDistance()) {
-               return true;
-        }
-        return false;
+        return atLevel_(hatchThirdLevelHight);
     }
     
     public boolean atFirstBallLevel() {
-        if(minOffSet(ballFirstLevelHight) < getDistance() &&
-           maxOffSet(ballFirstLevelHight) > getDistance()) {
-               return true;
-        }
-        return false;
+        return atLevel_(ballFirstLevelHight);
     }
     
     public boolean atSecondBallLevel() {
-        if(minOffSet(ballSecondLevelHight) < getDistance() &&
-           maxOffSet(ballSecondLevelHight) > getDistance()) {
-            return true;
-        }
-        return false;
+        return atLevel_(ballSecondLevelHight);
     }
     
     public boolean atThirdBallLevel() {
-        if(minOffSet(ballThirdLevelHight) < getDistance() &&
-           maxOffSet(ballThirdLevelHight) > getDistance()) {
-               return true;
-        }
-        return false;
+        return atLevel_(ballThirdLevelHight);
     }
 }
