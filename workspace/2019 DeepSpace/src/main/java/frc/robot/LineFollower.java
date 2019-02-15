@@ -15,11 +15,9 @@ public class LineFollower {
         m_infraRed1 = new AnalogInput(Constants.kAnalogInfraRed1);
         m_infraRed2 = new AnalogInput(Constants.kAnalogInfraRed2);
         m_infraRed3 = new AnalogInput(Constants.kAnalogInfraRed3);
-        
-
     }
-
+    
     public void OnLine() {
-        System.out.println(" " + m_infraRed1.getValue() + ", " + m_infraRed2.getValue()+", " + m_infraRed3.getValue());
+        System.out.println("Left: " + m_infraRed1.getValue() + ",  Middle: " + m_infraRed2.getValue() +", Right" + m_infraRed3.getValue());
     }
 }

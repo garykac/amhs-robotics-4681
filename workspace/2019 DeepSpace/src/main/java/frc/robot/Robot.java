@@ -53,6 +53,7 @@ public class Robot extends TimedRobot {
     private Joystick m_stick;
     
     private int macroIndex = 0;
+    private int counter = 0;
 
     private Walker m_walker;
 
@@ -238,8 +239,14 @@ public class Robot extends TimedRobot {
             m_walker.RetractFrontLegs();
             macroIndex = 0;
         }
+        
         lifterOperatorCode();
-        m_lineFollower.OnLine();
+
+        counter++;
+        if(counter == 5) {
+            m_lineFollower.OnLine();
+            counter = 0;
+        }
     }
 }
 
