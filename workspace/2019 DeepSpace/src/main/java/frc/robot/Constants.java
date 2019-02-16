@@ -30,10 +30,10 @@ public class Constants {
     public static final int kPCMHatchExtender = 5;
 
     // Analog
-    public static final int kAnalogLightSensor = 0;
-    public static final int kAnalogInfraRed1 = 1;
-    public static final int kAnalogInfraRed2 = 2;
-    public static final int kAnalogInfraRed3 = 3;
+    public static final int kAnalogInfraredFarLeft = 0;
+    public static final int kAnalogInfraredCenterLeft = 1;
+    public static final int kAnalogInfraredCenterRight = 2;
+    public static final int kAnalogInfraredFarRight = 3;
 
 
     

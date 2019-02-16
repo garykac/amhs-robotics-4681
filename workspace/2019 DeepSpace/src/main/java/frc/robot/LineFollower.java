@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
  */
 public class LineFollower {
 
-    private AnalogInput m_infraRed0, m_infraRed1, m_infraRed2, m_infraRed3;
+    private AnalogInput m_infraredFL, m_infraredCL, m_infraredCR, m_infraredFR;
 
     private AnalogInput m_lightSensor;
     private boolean ir0_sensor = false;
@@ -16,26 +16,26 @@ public class LineFollower {
     private String [] sensors = new String [4];
 
     public void LineFollowerInit() {
-        m_infraRed0 = new AnalogInput(Constants.kAnalogLightSensor);
-        m_infraRed1 = new AnalogInput(Constants.kAnalogInfraRed1);
-        m_infraRed2 = new AnalogInput(Constants.kAnalogInfraRed2);
-        m_infraRed3 = new AnalogInput(Constants.kAnalogInfraRed3);
+        m_infraredFL = new AnalogInput(Constants.kAnalogInfraredFarLeft);
+        m_infraredCL = new AnalogInput(Constants.kAnalogInfraredCenterLeft);
+        m_infraredCR = new AnalogInput(Constants.kAnalogInfraredCenterRight);
+        m_infraRedFR = new AnalogInput(Constants.kAnalogInfraredFarRight);
     }
     public void detectReflectivity() {
         ir0_sensor = false;
         ir1_sensor = false;
         ir2_sensor = false;
         ir3_sensor = false;
-        if (m_infraRed0.getValue() < 800) {
+        if (m_infraredFL.getValue() < 800) {
             ir0_sensor = true;
         }
-        if (m_infraRed1.getValue() < 800) {
+        if (m_infraredCL.getValue() < 800) {
             ir1_sensor = true;
         }
-        if (m_infraRed2.getValue() < 800) {
+        if (m_infraredCR.getValue() < 800) {
             ir2_sensor = true;
         }
-        if (m_infraRed3.getValue() < 800) {
+        if (m_infraredFR.getValue() < 800) {
             ir3_sensor = true;
         }
     }
