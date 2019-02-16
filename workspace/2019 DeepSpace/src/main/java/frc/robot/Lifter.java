@@ -38,7 +38,6 @@ public class Lifter {
     public void getTotalDistance(){
         System.out.println(m_height.getDistance());
     }
-
     public void Lower() {
         m_lifter.set(-kMotorPowerLevel);
     }

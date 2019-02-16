@@ -13,7 +13,7 @@ public class LifterHeight {
 
     private String location;
 
-    private static final double offSet = 0;
+    private static final double offSet = -2;
 
     private static final double minMaxDef = 5;
 
@@ -39,7 +39,8 @@ public class LifterHeight {
         if (counter.get() < 1) {
             return 0.0;
         }
-        return (counter.getPeriod() * 1000000.0 / 10.0) + offSet;
+        return (counter.getPeriod() * 39370) + offSet;
+        // This is the conversion to get to inches.
     }
 
     public double minOffSet(double height) {
