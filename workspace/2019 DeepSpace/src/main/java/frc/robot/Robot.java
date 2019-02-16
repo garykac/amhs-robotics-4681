@@ -186,10 +186,13 @@ public class Robot extends TimedRobot {
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
         
         if (m_stick.getRawButtonPressed(kButtonA)) {
-            m_grabber.Grab();
+            m_grabber.Grab(); //Hold down while you want it to suck in
         }
         if (m_stick.getRawButtonPressed(kButtonB)) {
-            m_grabber.Eject();
+            m_grabber.Eject(); //Hold down while you want it to eject out
+        }
+        if (m_stick.getRawButtonPressed(kButtonA) == false && m_stick.getRawButtonPressed(kButtonB) == false){
+            m_grabber.motorStop();
         }
         if (m_stick.getRawButtonPressed(kButtonX)) {
             m_sucker.Suck(true);

@@ -40,6 +40,10 @@ public class Grabber {
     public void Eject() {
         m_grabberLeft.set(-kMotorPowerLevel);
         m_grabberRight.set(-kMotorPowerLevel);
-    }   
+    } 
+    public void motorStop(){
+        m_grabberLeft.set(0);
+        m_grabberRight.set(0);
+    }  
   }
 
