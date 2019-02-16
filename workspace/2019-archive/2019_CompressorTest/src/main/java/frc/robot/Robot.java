@@ -32,9 +32,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {  }
 
-  /**
-   * This function is called periodically during autonomous.
-   */
   @Override
   public void autonomousPeriodic() {  }
 
