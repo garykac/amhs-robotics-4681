@@ -19,7 +19,7 @@ public class LineFollower {
         m_infraredFL = new AnalogInput(Constants.kAnalogInfraredFarLeft);
         m_infraredCL = new AnalogInput(Constants.kAnalogInfraredCenterLeft);
         m_infraredCR = new AnalogInput(Constants.kAnalogInfraredCenterRight);
-        m_infraRedFR = new AnalogInput(Constants.kAnalogInfraredFarRight);
+        m_infraredFR = new AnalogInput(Constants.kAnalogInfraredFarRight);
     }
     public void detectReflectivity() {
         ir0_sensor = false;

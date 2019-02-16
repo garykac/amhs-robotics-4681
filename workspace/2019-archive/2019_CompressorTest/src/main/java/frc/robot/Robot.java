@@ -20,7 +20,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_compressor = new Compressor(0);
-    m_compresor.start()
+    m_compressor.start();
     m_solenoid = new Solenoid(0);
     m_joystick = new Joystick(0);
   }
@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {  }
 
   @Override
-  public voide teleopInit() {
+  public void teleopInit() {
     m_compressor.start();
   }
 
