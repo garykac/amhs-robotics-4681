@@ -12,7 +12,7 @@ public class Lifter {
     
     private PWMVictorSPX m_lifter;
 
-    private static final double kMotorPowerLevel = 0.4;
+    private static final double kMotorPowerLevel = 1;
 
     private LifterHeight m_height;
 

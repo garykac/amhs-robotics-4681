@@ -45,6 +45,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+      m_compressor.setClosedLoopControl(true);
+      m_compressor.clearAllPCMStickyFaults();
     if (m_joystick.getRawButtonPressed(5))
       m_solenoid.set(true);
     if (m_joystick.getRawButtonPressed(1))

@@ -11,13 +11,13 @@ public class Constants {
     
 
     // Pulse-width Modulator
-    public static final int kPWMFrontLeft = 0;
-    public static final int kPWMFrontRight = 1;
-    public static final int kPWMRearLeft = 2;
-    public static final int kPWMRearRight = 3;
-    public static final int kPWMGrabberRight = 4;
+    public static final int kPWMFrontLeft = 3;
+    public static final int kPWMFrontRight = 2;
+    public static final int kPWMRearLeft = 1;
+    public static final int kPWMRearRight = 0;
+    public static final int kPWMGrabberRight = 6;
     public static final int kPWMGrabberLeft = 5;
-    public static final int kPWMLifter = 6;
+    public static final int kPWMLifter = 4;
 
     // Pnuematics Control Module
     public static final int kPCMHatchSucker = 0;
