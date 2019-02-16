@@ -5,6 +5,7 @@ package frc.robot;
 public class Constants {
 
     // Digital I/O
+    public static final int kDIOBallSwitch = 1;
     public static final int kDIOUltrasonicEcho = 4;
     public static final int kDIOUltrasonicTrig = 5;
     public static final int kDIOLifterHeightSensor = 0;
@@ -15,9 +16,9 @@ public class Constants {
     public static final int kPWMFrontRight = 2;
     public static final int kPWMRearLeft = 1;
     public static final int kPWMRearRight = 0;
+    public static final int kPWMLifter = 4;
     public static final int kPWMGrabberRight = 6;
     public static final int kPWMGrabberLeft = 5;
-    public static final int kPWMLifter = 4;
 
     // Pnuematics Control Module
     public static final int kPCMHatchSucker = 0;
