@@ -42,11 +42,15 @@ public class Robot extends TimedRobot {
   public void teleopInit() {
     m_compressor.start();
   }
-  
+
   @Override
   public void teleopPeriodic() {
     if (m_joystick.getRawButtonPressed(5))
       m_solenoid.set(true);
+    if (m_joystick.getRawButtonPressed(1))
+      m_compressor.start();
+    System.out.println(m_compressor.enabled());
+    System.out.println(m_compressor.getClosedLoopControl());
   }
 
   /**
