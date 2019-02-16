@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Compressor;
+//import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
 
     CameraServer m_cameraServer;
     
-    Compressor m_compressor; // It needs to be called to start in robotInit() (when the robot turns on)
+    //Compressor m_compressor; // It needs to be called to start in robotInit() (when the robot turns on)
     
     private Joystick m_stick;
     
@@ -81,8 +81,9 @@ public class Robot extends TimedRobot {
 
         m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
         
-        m_compressor = new Compressor(0);
-        m_compressor.start();
+        //m_compressor = new Compressor(0);
+        //System.out.println(m_compressor.enabled());
+        //m_compressor.start();
 
         m_stick = new Joystick(kJoystickChannel);
 
@@ -201,12 +202,12 @@ public class Robot extends TimedRobot {
     
     @Override
     public void teleopInit() {
-        m_compressor.start(); // If it failed in robotInit(), just in case.
+        //m_compressor.start(); // If it failed in robotInit(), just in case.
     }
                 
     @Override
     public void teleopPeriodic() {
-        m_compressor.start();
+        //m_compressor.start();
         m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
