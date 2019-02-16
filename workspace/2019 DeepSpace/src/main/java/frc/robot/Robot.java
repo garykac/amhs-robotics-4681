@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
     private static final int kJoystickChannel = 0;
     
     // For testing
-    private static final double kMotorPowerLevel = 0.4;
+    private static final double kMotorPowerLevel = 1;
     
     // To manage the controls for the Lifter
     private boolean currentlyPressed = false;
@@ -81,7 +81,7 @@ public class Robot extends TimedRobot {
 
         m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
         
-        m_compressor = new Compressor();
+        m_compressor = new Compressor(0);
         m_compressor.start();
 
         m_stick = new Joystick(kJoystickChannel);
@@ -201,12 +201,12 @@ public class Robot extends TimedRobot {
     
     @Override
     public void teleopInit() {
-
         m_compressor.start(); // If it failed in robotInit(), just in case.
     }
                 
     @Override
     public void teleopPeriodic() {
+        m_compressor.start();
         m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
