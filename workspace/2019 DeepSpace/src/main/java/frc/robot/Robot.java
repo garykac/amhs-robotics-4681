@@ -241,10 +241,10 @@ public class Robot extends TimedRobot {
         }
         
         lifterOperatorCode();
-
         counter++;
         if(counter == 5) {
             m_lineFollower.OnLine();
+            m_lifter.getTotalDistance();
             counter = 0;
         }
     }

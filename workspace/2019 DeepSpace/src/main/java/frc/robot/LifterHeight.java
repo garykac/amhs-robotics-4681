@@ -34,9 +34,7 @@ public class LifterHeight {
         counter.setMaxPeriod(1.0);
         counter.setSemiPeriodMode(true);
         counter.reset();
-        
     }
-    
     public double getDistance(){
         if (counter.get() < 1) {
             return 0.0;

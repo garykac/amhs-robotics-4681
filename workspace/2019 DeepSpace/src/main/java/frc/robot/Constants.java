@@ -5,12 +5,9 @@ package frc.robot;
 public class Constants {
 
     // Digital I/O
-    public static final int kDIOLifterLimitSwitchBottom = 0;
-    public static final int kDIOLifterLimitSwitchTop = 1;
-    public static final int kDIOGrabberLimitSwitch = 3;
     public static final int kDIOUltrasonicEcho = 4;
     public static final int kDIOUltrasonicTrig = 5;
-    public static final int kDIOLifterHeightSensor = 2;
+    public static final int kDIOLifterHeightSensor = 0;
     
 
     // Pulse-width Modulator
