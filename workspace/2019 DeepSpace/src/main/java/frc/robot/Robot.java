@@ -167,7 +167,7 @@ public class Robot extends TimedRobot {
                     m_lifter.GoToThirdHatchLevel();
                     break;
             }
-        } else if (autoLift==false) { // The only other choice is autoLift = false;
+        } else { // The only other choice is autoLift = false;
             if (m_stick.getPOV() == 0) {
                 m_lifter.Lift();
             } else if (m_stick.getPOV() == 180) {
@@ -191,9 +191,9 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonB)) {
             m_grabber.Eject(); //Hold down while you want it to eject out
         }
-        if (m_stick.getRawButtonPressed(kButtonA) == false && m_stick.getRawButtonPressed(kButtonB) == false){
-            m_grabber.motorStop();
-        }
+        //if (m_stick.getRawButtonPressed(kButtonA) == false && m_stick.getRawButtonPressed(kButtonB) == false){
+        //    m_grabber.motorStop();
+        //}
         if (m_stick.getRawButtonPressed(kButtonX)) {
             m_sucker.Suck(true);
         }
@@ -234,9 +234,9 @@ public class Robot extends TimedRobot {
             if (macroIndex == 2)
                 m_walker.Walk();
             if (macroIndex == 3) //By idealized, I mean, the robot has to drive during this step.
-                m_walker.RetractBackLegs(); // Climb() doesn't give the operator time to do so.
+                m_walker.RetractFrontLegs(); // Climb() doesn't give the operator time to do so.
             if (macroIndex == 4) {
-                m_walker.RetractFrontLegs();
+                m_walker.RetractBackLegs();//TODO rename front legs and back legs
                 macroIndex = 0;
             }
         }
@@ -255,6 +255,6 @@ public class Robot extends TimedRobot {
             //System.out.println(averageDistance/10.0);
             //averageDistance = 0;
             counter = 0;
-        }
+            }
     }
 }

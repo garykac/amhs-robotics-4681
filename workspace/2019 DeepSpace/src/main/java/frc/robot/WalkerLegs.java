@@ -19,7 +19,7 @@ public class WalkerLegs {
 
         m_frontLegs.set(false);
         m_backLegs.set(false);
-        m_walk.set(true);
+        m_walk.set(false);
     }
 
     public void ExtendFront(boolean extend) {
@@ -31,6 +31,6 @@ public class WalkerLegs {
     }
 
     public void Walk(boolean walk) {
-        m_walk.set(!walk);
+        m_walk.set(walk);
     }
 }

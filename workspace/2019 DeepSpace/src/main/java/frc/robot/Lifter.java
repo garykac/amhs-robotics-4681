@@ -33,6 +33,7 @@ public class Lifter {
     }
     public void Lift() {
         m_lifter.set(kMotorPowerLevel);
+        System.out.println("Lifting");
     }
 
     public void getTotalDistance(){
@@ -43,10 +44,12 @@ public class Lifter {
     }
     public void Lower() {
         m_lifter.set(-kMotorPowerLevel);
+        System.out.println("Lowering");
     }
     
     public void Stop() {
         m_lifter.set(0);
+        System.out.println("Stopping");
     }
     
     public void GoToBottom() {

@@ -18,32 +18,32 @@ public class Grabber {
     private static final double kMotorPowerLevel = 0.4;
 
     private DigitalInput m_DIOlimitSwitchGrabber;
-    private PWMVictorSPX m_grabberRight;
+    //private PWMVictorSPX m_grabberRight;
     private PWMVictorSPX m_grabberLeft;
 
     public void GrabberInit() {
         m_grabberLeft = new PWMVictorSPX(Constants.kPWMGrabberLeft);
-        m_grabberRight = new PWMVictorSPX(Constants.kPWMGrabberRight);
+        //m_grabberRight = new PWMVictorSPX(Constants.kPWMGrabberRight);
         m_DIOlimitSwitchGrabber = new DigitalInput(Constants.kDIOBallSwitch);
     }
 
     public void Grab() {
         if (m_DIOlimitSwitchGrabber.get()) {
             m_grabberLeft.set(0);
-            m_grabberRight.set(0);
+            //m_grabberRight.set(0);
         } else {
             m_grabberLeft.set(kMotorPowerLevel);
-            m_grabberRight.set(kMotorPowerLevel);
+            //m_grabberRight.set(kMotorPowerLevel);
         }
     }
 
     public void Eject() {
         m_grabberLeft.set(-kMotorPowerLevel);
-        m_grabberRight.set(-kMotorPowerLevel);
+        //m_grabberRight.set(-kMotorPowerLevel);
     } 
     public void motorStop(){
         m_grabberLeft.set(0);
-        m_grabberRight.set(0);
+        //m_grabberRight.set(0);
     }  
   }
 
