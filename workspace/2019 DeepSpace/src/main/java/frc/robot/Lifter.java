@@ -15,7 +15,9 @@ public class Lifter {
     private static final double kMotorPowerLevel = 1;
 
     private LifterHeight m_height;
-
+    
+    private DigitalInput m_DIOLifterSwitch;
+    
     private enum Location {
         bottom, top, ballFirstLevel, ballSecondLevel, ballThirdLevel, hatchFirstLevel, hatchSecondLevel, hatchThirdLevel;
     }  // I don't see the enums being used much anywhere
@@ -30,6 +32,7 @@ public class Lifter {
         m_height.lifterHeightInit();
 
         m_loc = Location.bottom;
+        m_DIOLifterSwitch = new DigitalInput(Constants.kDIOLifterSwitch);
     }
     public void Lift() {
         m_lifter.set(kMotorPowerLevel);
@@ -43,8 +46,16 @@ public class Lifter {
         return m_height.getDistance();
     }
     public void Lower() {
+        /*if (!m_DIOLifterSwitch.get()){//MAY NEED TO FLIP OPPOSITE OF SWITCH
+            m_lifter.set(-kMotorPowerLevel);
+            System.out.println("Lowering");
+        }
+        else{
+            System.out.println("AT BOTTOM");
+        }*/
         m_lifter.set(-kMotorPowerLevel);
         System.out.println("Lowering");
+        
     }
     
     public void Stop() {

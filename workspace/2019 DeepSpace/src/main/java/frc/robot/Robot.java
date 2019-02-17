@@ -195,10 +195,10 @@ public class Robot extends TimedRobot {
         //    m_grabber.motorStop();
         //}
         if (m_stick.getRawButtonPressed(kButtonX)) {
-            m_sucker.Suck(true);
+            m_sucker.Suck();
         }
         if (m_stick.getRawButtonPressed(kButtonY)) {
-            m_sucker.Suck(false);
+            m_sucker.Extend();
         } 
         lifterOperatorCode(); // The functionality of this line of code is referenced in issue #25
 
@@ -222,10 +222,10 @@ public class Robot extends TimedRobot {
             m_grabber.Eject();
         }
         if (m_stick.getRawButtonPressed(kButtonX)) {
-            m_sucker.Suck(true);
+            m_sucker.Suck();
         }
         if (m_stick.getRawButtonPressed(kButtonY)) {
-            m_sucker.Suck(false);
+            m_sucker.Extend();
         }
         if (m_stick.getRawButtonPressed(kButtonStart)) { // This code doesn't exist in the auto stuff, for good reason
             macroIndex++;  // I've had to edit this code, because the Climb() function is idealized

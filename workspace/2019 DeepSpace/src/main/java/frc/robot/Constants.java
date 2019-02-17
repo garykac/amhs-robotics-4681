@@ -6,9 +6,8 @@ public class Constants {
 
     // Digital I/O
     public static final int kDIOBallSwitch = 1;
-    public static final int kDIOUltrasonicEcho = 4;
-    public static final int kDIOUltrasonicTrig = 5;
-    public static final int kDIOLifterHeightSensor = 0;
+    public static final int kDIOLifterSwitch = 4;
+    public static final int kDIOLifterHeightSensor = 2;
     
 
     // Pulse-width Modulator

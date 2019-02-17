@@ -8,6 +8,8 @@ public class Sucker {
 
     private Solenoid m_sucker;
     private Solenoid m_extender;
+    private boolean isSucking;
+    private boolean isExtending;
 
 
     public void SuckerInit() {
@@ -15,20 +17,16 @@ public class Sucker {
         m_extender = new Solenoid(Constants.kPCMHatchExtender);
         m_sucker.set(false);
         m_extender.set(false);
+        isSucking = false;
+        isExtending = false;
     }
   
-    public void Suck(boolean suckState) {
-        if(suckState == true){
-            m_extender.set(suckState);
-            System.out.println("Extender Out");
-            m_sucker.set(suckState);
-            System.out.println("Sucker On");
-        }
-        else if (suckState ==false){
-            m_sucker.set(suckState);
-            System.out.println("Extender in");
-            m_extender.set(suckState);
-            System.out.println("Sucker Off");
-        }
+    public void Suck() {
+        isSucking = !isSucking;
+        m_sucker.set(isSucking);
+    }
+    public void Extend(){
+        isExtending = !isExtending;
+        m_extender.set(isExtending);
     }
 }
