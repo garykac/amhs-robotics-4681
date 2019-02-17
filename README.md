@@ -11,19 +11,30 @@ Unless otherwise specified, all robotics meetings take place in the portables.
 
 ### Week 6 : Sat 9 Feb - Fri 15 Feb
 * Sat 9 Feb, Mon 11 Feb - Wed 13 Feb:
-  * **Cancelled** due to snow day
+    * **Cancelled** due to snow day
 * Thu 14 Feb - Fri 15 Feb:
-  * Meet from 3 pm until 7 pm
+    * Meet from 3 pm until 7 pm
 
 
 ### Week 7 : Sat 16 Feb - Fri 22 Feb
 * Sat 16 Feb:
     * Meet from 10 am - 4 pm
 * Mon 18 Feb (No School):
-    * Meet from ___ until ____
+    * Meet from 10 am until 4 pm
 * Tue 19 Feb (No School):
-    * Meet from ___ until ____
+    * Meet from 10 am until 4pm
     * **Stop Build @ 8:00 pm**
+      * There is a chance the meeting will last until 8 pm if extensive work/testing is required.
+      
+### Unbag Time 1
+* Sat 2 Mar - Fri 8 Mar, 6 cumulative hours
+    * Potential series of meetings lasting more than 2 hours
+    * The series of 1, 2, or 3 meetings must total up to 6 hours.
+    
+### Unbag Time 2
+* Sat 16 Mar - Fri 22 Mar, 6 cumulative hours
+    * Potential series of meetings lasting more than 2 hours
+    * The series of 1, 2, or 3 meetings must total up to 6 hours.
 
 ## Competitions
 
