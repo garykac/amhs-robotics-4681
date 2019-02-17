@@ -27,7 +27,7 @@ public class Constants {
     public static final int kPCMLegsFront = 2;
     public static final int kPCMLegsBack = 3;
     public static final int kPCMLegsWalk = 4;
-    public static final int kPCMHatchExtender = 5;
+    public static final int kPCMHatchExtender = 1;
 
     // Analog
     public static final int kAnalogInfraredFarLeft = 0;

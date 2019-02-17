@@ -245,6 +245,9 @@ public class Robot extends TimedRobot {
             m_walker.RetractFrontLegs();
             macroIndex = 0;
         }
+        if (m_stick.getRawButtonPressed(kButtonRT)){
+            m_grabber.motorStop();
+        }
         
         lifterOperatorCode();
         counter++;
