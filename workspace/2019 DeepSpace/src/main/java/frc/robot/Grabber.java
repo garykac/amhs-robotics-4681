@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.PWMVictorSPX;
  */
 public class Grabber {
 
-    private static final double kMotorPowerLevel = 0.4;
+    private static final double kMotorPowerLevelIn = 0.4;
     private static final double kMotorPowerLevelOut = -1;
 
     private DigitalInput m_DIOlimitSwitchGrabber;
@@ -31,7 +31,7 @@ public class Grabber {
         if (m_DIOlimitSwitchGrabber.get()) {
             m_grabber.set(0);
         } else {
-            m_grabber.set(kMotorPowerLevel);
+            m_grabber.set(kMotorPowerLevelIn);
         }
     }
     public boolean returnSwitch(){
@@ -40,7 +40,7 @@ public class Grabber {
     public void Eject() {
         m_grabber.set(kMotorPowerLevelOut);
     } 
-    public void motorStop(){
+    public void Stop(){
         m_grabber.set(0);
     }  
   }

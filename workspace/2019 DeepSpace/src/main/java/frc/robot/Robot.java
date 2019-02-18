@@ -98,7 +98,7 @@ public class Robot extends TimedRobot {
 
         m_lifter = new Lifter();
         m_lifter.lifterInit();
-        m_lifter.GoToBottom();
+        //m_lifter.GoToBottom();
 
         m_grabber = new Grabber();
         m_grabber.GrabberInit();
@@ -191,15 +191,13 @@ public class Robot extends TimedRobot {
                                     kMotorPowerLevel * m_stick.getY(),
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
         
-        if (m_stick.getRawButtonPressed(kButtonA)) {
-            m_grabber.Grab(); //Hold down while you want it to suck in
-        }
-        if (m_stick.getRawButtonPressed(kButtonB)) {
+        if (m_stick.getRawButton(kButtonA)) { // HOLD DOWN, NOT PRESS
+            m_grabber.Grab(); //Hold down while you want it to grab in
+        } else if (m_stick.getRawButton(kButtonB)) {
             m_grabber.Eject(); //Hold down while you want it to eject out
+        } else {
+            m_grabber.Stop();
         }
-        //if (m_stick.getRawButtonPressed(kButtonA) == false && m_stick.getRawButtonPressed(kButtonB) == false){
-        //    m_grabber.motorStop();
-        //}
         if (m_stick.getRawButtonPressed(kButtonX)) {
             m_sucker.Suck();
         }
@@ -222,11 +220,14 @@ public class Robot extends TimedRobot {
                                     kMotorPowerLevel * m_stick.getY(),
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
 
-        if (m_stick.getRawButtonPressed(kButtonA)) {
-            m_grabber.Grab();
-        }
-        if (m_stick.getRawButtonPressed(kButtonB)) {
-            m_grabber.Eject();
+        if (m_stick.getRawButton(kButtonA)) { // HOLD DOWN, NOT PRESS
+            m_grabber.Grab(); //Hold down while you want it to grab in
+        } else if (m_stick.getRawButton(kButtonB)) {
+            m_grabber.Eject(); //Hold down while you want it to eject out
+        } else if (m_stick.getRawButtonPressed(kButtonRT)) {
+            m_grabber.Stop();
+        } else {
+            m_grabber.Stop();
         }
         if (m_stick.getRawButtonPressed(kButtonX)) {
             m_sucker.Suck();
@@ -253,9 +254,6 @@ public class Robot extends TimedRobot {
             m_walker.RetractFrontLegs();
             m_walker.StraightenLegs();
             macroIndex = 0;
-        }
-        if (m_stick.getRawButtonPressed(kButtonRT)){
-            m_grabber.motorStop();
         }
         
         lifterOperatorCode();
