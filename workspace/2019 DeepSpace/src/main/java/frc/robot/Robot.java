@@ -250,13 +250,13 @@ public class Robot extends TimedRobot {
         
         lifterOperatorCode();
         counter++;
-        //averageDistance += m_lifter.getNewDistance();
+        //averageDistance += m_lifter.getDistance();
         if(counter == 10) {
             //m_lineFollower.OnLine();
-            //m_lifter.getTotalDistance();
+            //System.out.println(m_lifter.getDistance());
             //System.out.println(averageDistance/10.0);
             //averageDistance = 0;
             counter = 0;
-            }
+        }
     }
 }
