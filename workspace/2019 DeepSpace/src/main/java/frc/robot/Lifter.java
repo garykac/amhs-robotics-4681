@@ -53,7 +53,7 @@ public class Lifter {
         System.out.println("Stopping");
     }
     
-    public void getTotalDistance() {
+    public double getTotalDistance() {
         return m_height.getDistance();
     }
     
