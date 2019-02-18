@@ -30,11 +30,12 @@ public class LifterHeight {
 
 
     public void lifterHeightInit() {
-        counter = new Counter(Constants.kPWMLiftersensor);
+        counter = new Counter(Constants.kDIOLifterHeightSensor);
         counter.setMaxPeriod(1.0);
         counter.setSemiPeriodMode(true);
         counter.reset();
     }
+
     public double getDistance(){
         //if (counter.get() < 1) {
             //return 0.0;
@@ -42,9 +43,11 @@ public class LifterHeight {
         return (counter.getPeriod());// * 37724) + offSet;
         // This is the conversion to get to inches.
     }
-    public void distanceReturn(){
-        System.out.println("" + counter.get()  + " " + counter.getPeriod());
+
+    public void printRawValues(){
+        System.out.println("LIDAR: " + counter.get()  + ": " + counter.getPeriod());
     }
+
     public double minOffSet(double height) {
         return (height - minMaxDef);
     }

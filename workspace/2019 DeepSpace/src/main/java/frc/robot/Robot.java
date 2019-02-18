@@ -265,6 +265,6 @@ public class Robot extends TimedRobot {
             
         }
         */
-        m_lifter.Distance();
+        m_lifter.printRawValues();
     }
 }

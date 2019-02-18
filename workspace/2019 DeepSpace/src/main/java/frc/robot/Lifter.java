@@ -41,9 +41,11 @@ public class Lifter {
     public void getTotalDistance(){
         System.out.println(m_height.getDistance());
     }
+
     public double getNewDistance(){
         return m_height.getDistance();
     }
+
     public void Lower() {
         /*if (!m_DIOLifterSwitch.get()){//MAY NEED TO FLIP OPPOSITE OF SWITCH
             m_lifter.set(-kMotorPowerLevel);
@@ -69,8 +71,9 @@ public class Lifter {
             m_lifter.set(-kMotorPowerLevel);
         }
     }
-    public void Distance(){
-        m_height.distanceReturn();
+
+    public void printRawValues() {
+        m_height.printRawValues();
     }
     
     public void GoToTop() {
