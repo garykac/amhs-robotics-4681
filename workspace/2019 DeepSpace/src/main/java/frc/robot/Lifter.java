@@ -39,28 +39,22 @@ public class Lifter {
         System.out.println("Lifting");
     }
 
-    public void getTotalDistance(){
-        System.out.println(m_height.getDistance());
-    }
-    public double getNewDistance(){
-        return m_height.getDistance();
-    }
     public void Lower() {
-        /*if (!m_DIOLifterSwitch.get()){//MAY NEED TO FLIP OPPOSITE OF SWITCH
+        if (!m_DIOLifterSwitch.get()) { // MAY NEED TO FLIP OPPOSITE OF SWITCH
             m_lifter.set(-kMotorPowerLevel);
             System.out.println("Lowering");
-        }
-        else{
+        } else {
             System.out.println("AT BOTTOM");
-        }*/
-        m_lifter.set(-kMotorPowerLevel);
-        System.out.println("Lowering");
-        
+        }       
     }
     
     public void Stop() {
         m_lifter.set(0);
         System.out.println("Stopping");
+    }
+    
+    public void getTotalDistance() {
+        return m_height.getDistance();
     }
     
     public void GoToBottom() {
@@ -81,8 +75,6 @@ public class Lifter {
         }
     }
 
-    // Wouldn't it be more worthwile to define a function:
-    // public void goTo(int hight), and pass in the variables for game piece heights?
     public void GoToFirstBallLevel() {
         if (m_height.atFirstBallLevel()) {
             m_lifter.set(0);
