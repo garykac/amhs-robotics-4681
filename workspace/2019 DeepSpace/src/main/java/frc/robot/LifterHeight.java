@@ -30,7 +30,7 @@ public class LifterHeight {
 
 
     public void lifterHeightInit() {
-        counter = new Counter(Constants.kDIOLifterHeightSensor);
+        counter = new Counter(Constants.kPWMLiftersensor);
         counter.setMaxPeriod(1.0);
         counter.setSemiPeriodMode(true);
         counter.reset();
