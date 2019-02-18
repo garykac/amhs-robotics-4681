@@ -222,6 +222,8 @@ public class Robot extends TimedRobot {
     public void teleopInit() {
         m_compressor.start(); // If it failed in robotInit(), just in case.
         m_walker.StraightenLegs();
+        m_walker.RetractFrontLegs();
+        m_walker.RetractBackLegs();
     }
                 
     @Override
