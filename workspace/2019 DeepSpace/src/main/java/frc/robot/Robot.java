@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
     private static final int kJoystickChannel = 0;
     
     // For testing
-    private static final double kMotorPowerLevel = 1;
+    private static final double kMotorPowerLevel = .5;
     
     // To manage the controls for the Lifter
     private boolean currentlyPressed = false;
@@ -72,8 +72,15 @@ public class Robot extends TimedRobot {
 
     private LineFollower m_lineFollower;
 
+    // TEST CODE
+    PWMVictorSPX motor0;
+    PWMVictorSPX motor1;
+    PWMVictorSPX motor2;
+    PWMVictorSPX motor3;
+
     @Override
     public void robotInit() {
+        
         PWMVictorSPX frontLeft = new PWMVictorSPX(Constants.kPWMFrontLeft);
         PWMVictorSPX rearLeft = new PWMVictorSPX(Constants.kPWMRearLeft);
         PWMVictorSPX frontRight = new PWMVictorSPX(Constants.kPWMFrontRight);
@@ -187,9 +194,9 @@ public class Robot extends TimedRobot {
                 
     @Override
     public void autonomousPeriodic() {
-        m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
+        m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
-                                    kMotorPowerLevel * m_stick.getZ(), 0.0);
+                                    -kMotorPowerLevel * m_stick.getZ(), 0.0);
         
         if (m_stick.getRawButton(kButtonA)) { // HOLD DOWN, NOT PRESS
             m_grabber.Grab(); //Hold down while you want it to grab in
@@ -219,9 +226,9 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         m_compressor.start();
-        m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
+        m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
-                                    kMotorPowerLevel * m_stick.getZ(), 0.0);
+                                    -kMotorPowerLevel * m_stick.getZ(), 0.0);
 
         if (m_stick.getRawButton(kButtonA)) { // HOLD DOWN, NOT PRESS
             m_grabber.Grab(); //Hold down while you want it to grab in
@@ -263,6 +270,13 @@ public class Robot extends TimedRobot {
         lifterOperatorCode();
 
         trackLidarValues();
+    }
+
+    public void testPeriodic() {
+        motor0.set(m_stick.getRawAxis(0));
+        motor1.set(m_stick.getRawAxis(1));
+        motor2.set(m_stick.getRawAxis(2));
+        motor3.set(m_stick.getRawAxis(3));
     }
 
     public void trackLidarValues() {
