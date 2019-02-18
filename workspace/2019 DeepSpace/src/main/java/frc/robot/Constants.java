@@ -16,7 +16,7 @@ public class Constants {
     public static final int kPWMFrontRight = 2;
     public static final int kPWMFrontLeft = 3;
     public static final int kPWMLifter = 4;
-    public static final int kPWMGrabberLeft = 5;
+    public static final int kPWMGrabber = 5;
     public static final int kPWMLiftersensor = 6;
     // Pnuematics Control Module
     public static final int kPCMHatchSucker = 0;

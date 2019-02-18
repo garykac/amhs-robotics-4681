@@ -243,6 +243,7 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonBottom)) { // If we need to restart the climbing process.
             m_walker.RetractBackLegs();
             m_walker.RetractFrontLegs();
+            m_walker.StraightenLegs();
             macroIndex = 0;
         }
         if (m_stick.getRawButtonPressed(kButtonRT)){
