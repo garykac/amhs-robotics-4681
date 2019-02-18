@@ -47,14 +47,12 @@ public class Lifter {
     }
 
     public void Lower() {
-        /*if (!m_DIOLifterSwitch.get()){//MAY NEED TO FLIP OPPOSITE OF SWITCH
+        if (!m_DIOLifterSwitch.get()) { //MAY NEED TO FLIP OPPOSITE OF SWITCH
             m_lifter.set(-kMotorPowerLevel);
             System.out.println("Lowering");
-        }
-        else{
+        } else {
             System.out.println("AT BOTTOM");
-        }*/
-        m_lifter.set(-kMotorPowerLevel);  
+        }
     }
     
     public void Stop() {

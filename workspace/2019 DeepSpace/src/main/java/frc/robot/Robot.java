@@ -195,9 +195,12 @@ public class Robot extends TimedRobot {
             m_grabber.Grab(); //Hold down while you want it to grab in
         } else if (m_stick.getRawButton(kButtonB)) {
             m_grabber.Eject(); //Hold down while you want it to eject out
+        } else if (m_stick.getRawButtonPressed(kButtonRT)) {
+            m_grabber.Stop();
         } else {
             m_grabber.Stop();
         }
+
         if (m_stick.getRawButtonPressed(kButtonX)) {
             m_sucker.Suck();
         }
@@ -229,6 +232,7 @@ public class Robot extends TimedRobot {
         } else {
             m_grabber.Stop();
         }
+
         if (m_stick.getRawButtonPressed(kButtonX)) {
             m_sucker.Suck();
         }
