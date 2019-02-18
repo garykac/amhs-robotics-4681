@@ -38,4 +38,18 @@ public class Walker {
         m_legs.ExtendBack(false);
         System.out.println("Retract Back Legs");
     }
+    /*
+    public void Climb(int step) {
+        switch (step) {
+            case 0: // Base start configuration
+                m_legs.
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            default:
+                //Stuff
+        }
+    }
+    */
 }

@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
     private static final int kJoystickChannel = 0;
     
     // For testing
-    private static final double kMotorPowerLevel = .5;
+    private static final double kMotorPowerLevel = .7;
     
     // To manage the controls for the Lifter
     private boolean currentlyPressed = false;
@@ -221,6 +221,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         m_compressor.start(); // If it failed in robotInit(), just in case.
+        m_walker.StraightenLegs();
     }
                 
     @Override
@@ -253,17 +254,17 @@ public class Robot extends TimedRobot {
             if (macroIndex == 2)
                 m_walker.Walk();
             if (macroIndex == 3)
-                m_walker.RetractBackLegs();
+                m_walker.RetractFrontLegs();  //Currently front=back, v.v.
             if (macroIndex == 4) {
-                m_walker.RetractFrontLegs();
-                m_walker.StraightenLegs();
+                m_walker.RetractBackLegs();
+                //m_walker.StraightenLegs();
                 macroIndex = 0;
             }
         }
         if (m_stick.getRawButtonPressed(kButtonBottom)) { // If we need to restart the climbing process.
             m_walker.RetractBackLegs();
             m_walker.RetractFrontLegs();
-            m_walker.StraightenLegs();
+            //m_walker.StraightenLegs();
             macroIndex = 0;
         }
         
