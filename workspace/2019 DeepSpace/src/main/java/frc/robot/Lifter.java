@@ -36,7 +36,6 @@ public class Lifter {
     }
     public void Lift() {
         m_lifter.set(kMotorPowerLevel);
-        System.out.println("Lifting");
     }
 
     public void getTotalDistance(){
@@ -54,13 +53,12 @@ public class Lifter {
             System.out.println("AT BOTTOM");
         }*/
         m_lifter.set(-kMotorPowerLevel);
-        System.out.println("Lowering");
+
         
     }
     
     public void Stop() {
         m_lifter.set(0);
-        System.out.println("Stopping");
     }
     
     public void GoToBottom() {
@@ -70,6 +68,9 @@ public class Lifter {
         } else {
             m_lifter.set(-kMotorPowerLevel);
         }
+    }
+    public void Distance(){
+        m_height.distanceReturn();
     }
     
     public void GoToTop() {

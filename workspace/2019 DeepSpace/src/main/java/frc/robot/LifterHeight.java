@@ -36,13 +36,15 @@ public class LifterHeight {
         counter.reset();
     }
     public double getDistance(){
-        if (counter.get() < 1) {
-            return 0.0;
-        }
-        return (counter.getPeriod() * 37724) + offSet;
+        //if (counter.get() < 1) {
+            //return 0.0;
+        //}
+        return (counter.getPeriod());// * 37724) + offSet;
         // This is the conversion to get to inches.
     }
-
+    public void distanceReturn(){
+        System.out.println("" + counter.get()  + " " + counter.getPeriod());
+    }
     public double minOffSet(double height) {
         return (height - minMaxDef);
     }

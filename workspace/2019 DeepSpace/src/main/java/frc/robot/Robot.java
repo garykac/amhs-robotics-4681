@@ -42,8 +42,8 @@ public class Robot extends TimedRobot {
     private boolean ballMode= true;
     private int lifterLevel = 0;
     private int modeAdder = 1;
-    //private double averageDistance = 0.0;
-    private boolean autoLift = true;
+    private double averageDistance = 0.0;
+    private boolean autoLift = false;
     
     private MecanumDrive m_robotDrive;
 
@@ -250,14 +250,21 @@ public class Robot extends TimedRobot {
         }
         
         lifterOperatorCode();
-        counter++;
+        
+        /*
+        counter++;     
         //averageDistance += m_lifter.getNewDistance();
         if(counter == 10) {
             //m_lineFollower.OnLine();
             //m_lifter.getTotalDistance();
-            //System.out.println(averageDistance/10.0);
+            //System.out.println("Distance: " + averageDistance/10.0);
             //averageDistance = 0;
+            System.out.println("Grabber Switch: " + m_grabber.returnSwitch());
+            System.out.println("Height Switch: " + )
             counter = 0;
-            }
+            
+        }
+        */
+        m_lifter.Distance();
     }
 }

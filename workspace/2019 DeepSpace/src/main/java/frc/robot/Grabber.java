@@ -36,7 +36,9 @@ public class Grabber {
             //m_grabberRight.set(kMotorPowerLevel);
         }
     }
-
+    public boolean returnSwitch(){
+        return m_DIOlimitSwitchGrabber.get();
+    }
     public void Eject() {
         m_grabberLeft.set(-kMotorPowerLevel);
         //m_grabberRight.set(-kMotorPowerLevel);

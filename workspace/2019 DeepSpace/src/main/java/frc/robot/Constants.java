@@ -7,7 +7,7 @@ public class Constants {
     // Digital I/O
     public static final int kDIOBallSwitch = 1;
     public static final int kDIOLifterSwitch = 4;
-    public static final int kDIOLifterHeightSensor = 2;
+    public static final int kDIOLifterHeightSensor = 6;//Plugged into PWM 6
     
 
     // Pulse-width Modulator
