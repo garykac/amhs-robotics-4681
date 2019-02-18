@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
 
     CameraServer m_cameraServer;
     
-    Compressor m_compressor; // It needs to be called to start in robotInit() (when the robot turns on)
+    Compressor m_compressor;
     
     private Joystick m_stick;
     
@@ -82,7 +82,6 @@ public class Robot extends TimedRobot {
         m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
         
         m_compressor = new Compressor(0);
-        System.out.println(m_compressor.enabled());
         m_compressor.start();
 
         m_stick = new Joystick(kJoystickChannel);
@@ -185,15 +184,14 @@ public class Robot extends TimedRobot {
                                     kMotorPowerLevel * m_stick.getY(),
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
         
-        if (m_stick.getRawButtonPressed(kButtonA)) {
+        if (m_stick.getRawButton(kButtonA)) {
             m_grabber.Grab(); //Hold down while you want it to suck in
-        }
-        if (m_stick.getRawButtonPressed(kButtonB)) {
+        } else if (m_stick.getRawButton(kButtonB)) {
             m_grabber.Eject(); //Hold down while you want it to eject out
+        } else {
+            m_grabber.StopMotor();
         }
-        //if (m_stick.getRawButtonPressed(kButtonA) == false && m_stick.getRawButtonPressed(kButtonB) == false){
-        //    m_grabber.motorStop();
-        //}
+        
         if (m_stick.getRawButtonPressed(kButtonX)) {
             m_sucker.Suck();
         }
@@ -215,12 +213,15 @@ public class Robot extends TimedRobot {
         m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
-        if (m_stick.getRawButtonPressed(kButtonA)) {
-            m_grabber.Grab();
+        
+        if (m_stick.getRawButton(kButtonA)) {
+            m_grabber.Grab(); //Hold down while you want it to suck in
+        } else if (m_stick.getRawButton(kButtonB)) {
+            m_grabber.Eject(); //Hold down while you want it to eject out
+        } else {
+            m_grabber.StopMotor();
         }
-        if (m_stick.getRawButtonPressed(kButtonB)) {
-            m_grabber.Eject();
-        }
+        
         if (m_stick.getRawButtonPressed(kButtonX)) {
             m_sucker.Suck();
         }
@@ -243,10 +244,8 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonBottom)) { // If we need to restart the climbing process.
             m_walker.RetractBackLegs();
             m_walker.RetractFrontLegs();
+            m_walker.StraightenLegs(); // New function that is the opposite of Walk()
             macroIndex = 0;
-        }
-        if (m_stick.getRawButtonPressed(kButtonRT)){
-            m_grabber.motorStop();
         }
         
         lifterOperatorCode();
