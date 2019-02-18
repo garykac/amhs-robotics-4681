@@ -42,7 +42,7 @@ public class Lifter {
         System.out.println(m_height.getDistance());
     }
 
-    public double getNewDistance(){
+    public double getDistance(){
         return m_height.getDistance();
     }
 
@@ -54,9 +54,7 @@ public class Lifter {
         else{
             System.out.println("AT BOTTOM");
         }*/
-        m_lifter.set(-kMotorPowerLevel);
-
-        
+        m_lifter.set(-kMotorPowerLevel);  
     }
     
     public void Stop() {
@@ -72,10 +70,6 @@ public class Lifter {
         }
     }
 
-    public void printRawValues() {
-        m_height.printRawValues();
-    }
-    
     public void GoToTop() {
         if (m_height.atTop()) {
             m_lifter.set(0);

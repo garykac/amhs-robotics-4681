@@ -45,11 +45,8 @@ public class LifterHeight {
         double rawPeriod = counter.getPeriod();
         double distanceCm = rawPeriod * 100000;
         double distanceIn = distanceCm / 2.54;
+        //System.out.println("LIDAR: " + distanceCm + " , " + distanceIn);
         return distanceIn + offSetIn;
-    }
-
-    public void printRawValues(){
-        System.out.println("LIDAR: " + counter.get()  + ": " + counter.getPeriod());
     }
 
     public double minOffSet(double height) {

@@ -42,7 +42,6 @@ public class Robot extends TimedRobot {
     private boolean ballMode= true;
     private int lifterLevel = 0;
     private int modeAdder = 1;
-    private double averageDistance = 0.0;
     private boolean autoLift = false;
     
     private MecanumDrive m_robotDrive;
@@ -54,7 +53,10 @@ public class Robot extends TimedRobot {
     private Joystick m_stick;
     
     private int macroIndex = 0;
-    private int counter = 0;
+
+    // These are used to keep a running average of the last 10 LIDAR values.
+    private double m_averageDistance = 0.0;
+    private int m_counter = 0;
 
     private Walker m_walker;
 
@@ -120,7 +122,7 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonRB)){
             autoLift = !autoLift;  // true to false; v.v.
             System.out.println("Automated Lifter: " + autoLift);}
-        if (autoLift) {
+        if (false) {//autoLift) {
             if (m_stick.getRawButtonPressed(kButtonLB)) {
                 modeAdder *= -1; // Switches between -1 and 1
                 if (modeAdder == 1) {
@@ -253,20 +255,18 @@ public class Robot extends TimedRobot {
         
         lifterOperatorCode();
         
-        /*
-        counter++;     
-        //averageDistance += m_lifter.getNewDistance();
-        if(counter == 10) {
+        m_counter++;     
+        m_averageDistance += m_lifter.getDistance();
+        if (m_counter == 10) {
             //m_lineFollower.OnLine();
             //m_lifter.getTotalDistance();
-            //System.out.println("Distance: " + averageDistance/10.0);
-            //averageDistance = 0;
-            System.out.println("Grabber Switch: " + m_grabber.returnSwitch());
-            System.out.println("Height Switch: " + )
-            counter = 0;
-            
+            System.out.println("Distance: " + m_averageDistance/10.0);
+            m_averageDistance = 0;
+            //System.out.println("Grabber Switch: " + m_grabber.returnSwitch());
+            //System.out.println("Height Switch: " + )
+            m_counter = 0;            
         }
-        */
-        m_lifter.printRawValues();
+        
+        //m_lifter.getDistance();
     }
 }
