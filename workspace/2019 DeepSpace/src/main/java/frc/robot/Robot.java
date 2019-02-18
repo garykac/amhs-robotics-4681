@@ -55,8 +55,12 @@ public class Robot extends TimedRobot {
     private int macroIndex = 0;
 
     // These are used to keep a running average of the last 10 LIDAR values.
-    private double m_averageDistance = 0.0;
-    private int m_counter = 0;
+    // LIDAR value min/max tracker.
+    private boolean m_recordLidarValues = false;
+    private double m_totalDistance = 0.0;
+    private int m_numSamples = 0;
+    private double m_minLidarValue = Double.MAX_VALUE;
+    private double m_maxLidarValue = Double.MIN_VALUE;
 
     private Walker m_walker;
 
@@ -217,6 +221,7 @@ public class Robot extends TimedRobot {
         m_robotDrive.driveCartesian(kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     kMotorPowerLevel * m_stick.getZ(), 0.0);
+
         if (m_stick.getRawButtonPressed(kButtonA)) {
             m_grabber.Grab();
         }
@@ -254,19 +259,38 @@ public class Robot extends TimedRobot {
         }
         
         lifterOperatorCode();
-        
-        m_counter++;     
-        m_averageDistance += m_lifter.getDistance();
-        if (m_counter == 10) {
-            //m_lineFollower.OnLine();
-            //m_lifter.getTotalDistance();
-            System.out.println("Distance: " + m_averageDistance/10.0);
-            m_averageDistance = 0;
-            //System.out.println("Grabber Switch: " + m_grabber.returnSwitch());
-            //System.out.println("Height Switch: " + )
-            m_counter = 0;            
+
+        trackLidarValues();
+    }
+
+    public void trackLidarValues() {
+        if (m_stick.getRawButtonPressed(kButtonLB)) {
+            m_recordLidarValues = !m_recordLidarValues;
+
+            // Print summary when we stop sampling.
+            if (!m_recordLidarValues) {
+                System.out.println("LIDAR Summary:");
+                System.out.println("  Min: " + m_minLidarValue + " Max: " + m_maxLidarValue);
+                System.out.println("  Samples: " + m_numSamples);
+                System.out.println("  Average: " + (m_totalDistance / m_numSamples));
+            } else {
+                System.out.println("Sampling LIDAR values...");
+            }
+
+            m_numSamples = 0;
+            m_totalDistance = 0;
+            m_minLidarValue = Double.MAX_VALUE;
+            m_maxLidarValue = Double.MIN_VALUE;
         }
-        
-        //m_lifter.getDistance();
+
+        if (m_recordLidarValues) {
+            double sample = m_lifter.getDistance();
+            m_totalDistance += sample;
+            m_numSamples++;
+            if (sample < m_minLidarValue)
+                m_minLidarValue = sample;
+            if (sample > m_maxLidarValue)
+                m_maxLidarValue = sample;
+        }
     }
 }
