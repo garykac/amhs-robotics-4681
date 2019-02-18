@@ -227,16 +227,17 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonY)) {
             m_sucker.Extend();
         }
-        if (m_stick.getRawButtonPressed(kButtonStart)) { // This code doesn't exist in the auto stuff, for good reason
-            macroIndex++;  // I've had to edit this code, because the Climb() function is idealized
+        if (m_stick.getRawButtonPressed(kButtonStart)) {
+            macroIndex++; 
             if (macroIndex == 1)
                 m_walker.RaiseRobot();
             if (macroIndex == 2)
                 m_walker.Walk();
-            if (macroIndex == 3) //By idealized, I mean, the robot has to drive during this step.
-                m_walker.RetractFrontLegs(); // Climb() doesn't give the operator time to do so.
+            if (macroIndex == 3)
+                m_walker.RetractBackLegs();
             if (macroIndex == 4) {
-                m_walker.RetractBackLegs();//TODO rename front legs and back legs
+                m_walker.RetractFrontLegs();
+                m_walker.StraightenLegs();
                 macroIndex = 0;
             }
         }
