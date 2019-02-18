@@ -221,14 +221,11 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         m_compressor.start(); // If it failed in robotInit(), just in case.
-        m_walker.StraightenLegs();
-        m_walker.RetractFrontLegs();
-        m_walker.RetractBackLegs();
+        macroIndex = 0;
     }
                 
     @Override
     public void teleopPeriodic() {
-        m_compressor.start();
         m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     -kMotorPowerLevel * m_stick.getZ(), 0.0);
@@ -250,36 +247,22 @@ public class Robot extends TimedRobot {
             m_sucker.Extend();
         }
         if (m_stick.getRawButtonPressed(kButtonStart)) {
-            macroIndex++; 
-            if (macroIndex == 1)
-                m_walker.RaiseRobot();
-            if (macroIndex == 2)
-                m_walker.Walk();
-            if (macroIndex == 3)
-                m_walker.RetractFrontLegs();  //Currently front=back, v.v.
+            // Proceed to next climbing step.
+            macroIndex++;
+            m_walker.Climb(macroIndex);
             if (macroIndex == 4) {
-                m_walker.RetractBackLegs();
-                //m_walker.StraightenLegs();
-                macroIndex = 0;
+                macroIndex = -1;
             }
         }
-        if (m_stick.getRawButtonPressed(kButtonBottom)) { // If we need to restart the climbing process.
-            m_walker.RetractBackLegs();
-            m_walker.RetractFrontLegs();
-            //m_walker.StraightenLegs();
-            macroIndex = 0;
+
+        if (m_stick.getRawButtonPressed(kButtonBottom)) {
+            // If we need to restart the climbing process.
+            macroIndex = -1;
         }
         
         lifterOperatorCode();
 
         trackLidarValues();
-    }
-
-    public void testPeriodic() {
-        motor0.set(m_stick.getRawAxis(0));
-        motor1.set(m_stick.getRawAxis(1));
-        motor2.set(m_stick.getRawAxis(2));
-        motor3.set(m_stick.getRawAxis(3));
     }
 
     public void trackLidarValues() {
