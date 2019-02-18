@@ -13,7 +13,8 @@ public class LifterHeight {
 
     private String location;
 
-    private static final double offSet = .52;
+    //offset is in inches and added after the value is already converted to inches
+    private static final double offSetIn = 0;//.52;
 
     private static final double minMaxDef = 5;
 
@@ -37,11 +38,14 @@ public class LifterHeight {
     }
 
     public double getDistance(){
-        //if (counter.get() < 1) {
-            //return 0.0;
-        //}
-        return (counter.getPeriod());// * 37724) + offSet;
-        // This is the conversion to get to inches.
+        if (counter.get() < 1) {
+            return 0.0;
+        }
+        // getPeriod returns a value of 1usec / cm.
+        double rawPeriod = counter.getPeriod();
+        double distanceCm = rawPeriod * 100000;
+        double distanceIn = distanceCm / 2.54;
+        return distanceIn + offSetIn;
     }
 
     public void printRawValues(){
