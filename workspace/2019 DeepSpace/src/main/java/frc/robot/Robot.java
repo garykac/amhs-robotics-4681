@@ -135,9 +135,9 @@ public class Robot extends TimedRobot {
             if (m_stick.getRawButtonPressed(kButtonB)) {
                 modeAdder *= -1; // Switches between -1 and 1
                 if (modeAdder == 1) {
-                    System.out.println("Hatch Mode");
-                } else {
                     System.out.println("Ball Mode");
+                } else {
+                    System.out.println("Hatch Mode");
                 }
                 lifterLevel += modeAdder;
             }
@@ -267,7 +267,7 @@ public class Robot extends TimedRobot {
         counter++;
         runningTotal += m_lifter.getDistance();
         if (counter == 50) {
-            //System.out.println(runningTotal / 50);
+            System.out.println(runningTotal / 50);
             counter = 0;
             runningTotal = 0;
         }

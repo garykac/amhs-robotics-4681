@@ -14,7 +14,7 @@ public class LifterHeight {
     //offset is in inches and added after the value is already converted to inches
     private static final double offSetIn = 0;//.52;
 
-    private static final double minMaxDef = 2;
+    private static final double minMaxDef = 3;
 
     private static final double maxHeight = 58;
     private static final double minHeight = 2;
@@ -23,7 +23,7 @@ public class LifterHeight {
     public static final double ballLoadingStationHeight = 32;
     public static final double ballSecondLevelHeight = 51;
 
-    public static final double hatchFirstLevelHeight = 5;
+    public static final double hatchFirstLevelHeight = 8;
     public static final double hatchSecondLevelHeight = 40;
     public static final double hatchThirdLevelHeight = 57;
 
