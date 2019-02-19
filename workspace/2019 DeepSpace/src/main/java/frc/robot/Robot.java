@@ -132,12 +132,12 @@ public class Robot extends TimedRobot {
             autoLift = !autoLift;  // true to false; v.v.
             System.out.println("Automated Lifter: " + autoLift);}
         if (autoLift) {
-            if (m_stick.getRawButtonPressed(kButtonLB)) {
+            if (m_stick.getRawButtonPressed(kButtonB)) {
                 modeAdder *= -1; // Switches between -1 and 1
                 if (modeAdder == 1) {
-                    System.out.println("Ball Mode");
-                } else {
                     System.out.println("Hatch Mode");
+                } else {
+                    System.out.println("Ball Mode");
                 }
                 lifterLevel += modeAdder;
             }
@@ -160,22 +160,22 @@ public class Robot extends TimedRobot {
                     m_lifter.GoToBottom();
                     break;
                 case 1:
-                    m_lifter.GoToFirstBallLevel();
-                    break;
-                case 2:
                     m_lifter.GoToFirstHatchLevel();
                     break;
-                case 3:
-                    m_lifter.GoToSecondBallLevel();
+                case 2:
+                    m_lifter.GoToFirstBallLevel();
                     break;
-                case 4:
+                case 3:
                     m_lifter.GoToSecondHatchLevel();
                     break;
+                case 4:
+                    m_lifter.GoToBallLoadingStation();
+                    break;
                 case 5:
-                    m_lifter.GoToThirdBallLevel();
+                    m_lifter.GoToThirdHatchLevel();
                     break;
                 case 6:
-                    m_lifter.GoToThirdHatchLevel();
+                    m_lifter.GoToSecondBallLevel();
                     break;
             }
         } else { // The only other choice is autoLift = false;
@@ -197,7 +197,7 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonRT)) {
             grabberRunning = true;
             constantIntake = !constantIntake;
-            System.out.println("Grabber Intake: " + constantIntake);
+            System.out.println("/nGrabber Intake: " + constantIntake);
         }
         if (m_stick.getRawButtonPressed(kButtonLT)) {
             grabberRunning = false;
@@ -238,7 +238,7 @@ public class Robot extends TimedRobot {
         m_compressor.start(); // If it failed in robotInit(), just in case.
         macroIndex = 0;
         grabberRunning = false;
-        constantIntake = true;
+        constantIntake = false;
     }
                 
     @Override

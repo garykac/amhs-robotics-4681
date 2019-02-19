@@ -98,13 +98,12 @@ public class Lifter {
         }
     }
     
-    public void GoToThirdBallLevel() {
-        if (m_height.atThirdBallLevel()) {
+    public void GoToBallLoadingStation() {
+        if (m_height.atBallLoadingStationLevel()) {
             m_lifter.set(0);
-            m_loc = Location.ballThirdLevel;
-        } else if (m_height.getDistance() < m_height.ballThirdLevelHeight) {
+        } else if (m_height.getDistance() < m_height.ballLoadingStationHeight) {
             m_lifter.set(kMotorPowerLevel);
-        } else if (m_height.getDistance() > m_height.ballThirdLevelHeight) {
+        } else if (m_height.getDistance() > m_height.ballLoadingStationHeight) {
             m_lifter.set(-kMotorPowerLevel);
         }
     }
