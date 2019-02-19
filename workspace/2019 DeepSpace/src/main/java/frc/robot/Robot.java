@@ -52,6 +52,8 @@ public class Robot extends TimedRobot {
     
     private Joystick m_stick;
     
+    private boolean grabberRunning = false;
+    private boolean constantIntake = true;
     private int macroIndex = 0;
 
     // These are used to keep a running average of the last 10 LIDAR values.
@@ -71,12 +73,6 @@ public class Robot extends TimedRobot {
     private Sucker m_sucker;
 
     private LineFollower m_lineFollower;
-
-    // TEST CODE
-    PWMVictorSPX motor0;
-    PWMVictorSPX motor1;
-    PWMVictorSPX motor2;
-    PWMVictorSPX motor3;
 
     @Override
     public void robotInit() {
@@ -190,20 +186,25 @@ public class Robot extends TimedRobot {
             }
         }        
     }
-                
-                
-    @Override
-    public void autonomousPeriodic() {
+
+    public void mainPeriodic() {
         m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     -kMotorPowerLevel * m_stick.getZ(), 0.0);
-        
-        if (m_stick.getRawButton(kButtonA)) { // HOLD DOWN, NOT PRESS
-            m_grabber.Grab(); //Hold down while you want it to grab in
-        } else if (m_stick.getRawButton(kButtonB)) {
-            m_grabber.Eject(); //Hold down while you want it to eject out
-        } else if (m_stick.getRawButtonPressed(kButtonRT)) {
-            m_grabber.Stop();
+
+        if (m_stick.getRawButtonPressed(kButtonRT)) {
+            constantIntake = !constantIntake;
+            System.out.println("Grabber Intake: " + constantIntake);
+        }
+        if (m_stick.getRawButtonPressed(kButtonLT)) {
+            grabberRunning = !grabberRunning;
+        }
+        if (grabberRunning) {
+            if (constantIntake) {
+                m_grabber.Grab();
+            } else {
+                m_grabber.Eject();
+            }
         } else {
             m_grabber.Stop();
         }
@@ -213,7 +214,17 @@ public class Robot extends TimedRobot {
         }
         if (m_stick.getRawButtonPressed(kButtonY)) {
             m_sucker.Extend();
-        } 
+        }
+    }
+    
+    @Override
+    public void autonomousInit() {
+        teleopInit();
+    }
+    
+    @Override
+    public void autonomousPeriodic() {
+        mainPeriodic();
         lifterOperatorCode(); // The functionality of this line of code is referenced in issue #25
 
     }
@@ -222,30 +233,16 @@ public class Robot extends TimedRobot {
     public void teleopInit() {
         m_compressor.start(); // If it failed in robotInit(), just in case.
         macroIndex = 0;
+        grabberRunning = false;
+        constantIntake = true;
     }
                 
     @Override
     public void teleopPeriodic() {
-        m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
-                                    kMotorPowerLevel * m_stick.getY(),
-                                    -kMotorPowerLevel * m_stick.getZ(), 0.0);
+        mainPeriodic();
+        lifterOperatorCode();
 
-        if (m_stick.getRawButton(kButtonA)) { // HOLD DOWN, NOT PRESS
-            m_grabber.Grab(); //Hold down while you want it to grab in
-        } else if (m_stick.getRawButton(kButtonB)) {
-            m_grabber.Eject(); //Hold down while you want it to eject out
-        } else if (m_stick.getRawButtonPressed(kButtonRT)) {
-            m_grabber.Stop();
-        } else {
-            m_grabber.Stop();
-        }
-
-        if (m_stick.getRawButtonPressed(kButtonX)) {
-            m_sucker.Suck();
-        }
-        if (m_stick.getRawButtonPressed(kButtonY)) {
-            m_sucker.Extend();
-        }
+        // CLIMBING CODE, SPECIFIC TO TELEOP
         if (m_stick.getRawButtonPressed(kButtonStart)) {
             // Proceed to next climbing step.
             macroIndex++;
@@ -253,15 +250,14 @@ public class Robot extends TimedRobot {
             if (macroIndex == 4) {
                 macroIndex = -1;
             }
+            System.out.println(macroIndex);
         }
-
         if (m_stick.getRawButtonPressed(kButtonBottom)) {
             // If we need to restart the climbing process.
             macroIndex = -1;
+            m_walker.Climb(macroIndex);
         }
         
-        lifterOperatorCode();
-
         trackLidarValues();
     }
 

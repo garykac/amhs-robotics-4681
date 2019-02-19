@@ -44,16 +44,22 @@ public class Walker {
             case -1:
                 RetractFrontLegs();
                 RetractBackLegs();
+                break;
             case 0: // Base start configuration
                 StraightenLegs();
+                break;
             case 1:
                 RaiseRobot();
+                break;
             case 2:
                 Walk();
+                break;
             case 3:
                 RetractBackLegs();
+                break;
             case 4:
                 RetractFrontLegs();
+                break;
         }
     }
 }

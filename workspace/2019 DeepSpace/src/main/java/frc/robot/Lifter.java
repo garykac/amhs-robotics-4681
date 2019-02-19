@@ -51,6 +51,7 @@ public class Lifter {
             m_lifter.set(-kMotorPowerLevel);
             System.out.println("Lowering");
         } else {
+            m_lifter.set(0); 
             System.out.println("AT BOTTOM");
         }
     }

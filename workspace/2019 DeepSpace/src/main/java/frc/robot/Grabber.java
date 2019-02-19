@@ -28,7 +28,7 @@ public class Grabber {
     }
 
     public void Grab() {
-        if (m_DIOlimitSwitchGrabber.get()) {
+        if   (m_DIOlimitSwitchGrabber.get()) {
             m_grabber.set(0);
         } else {
             m_grabber.set(kMotorPowerLevelIn);
