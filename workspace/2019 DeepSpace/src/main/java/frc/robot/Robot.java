@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
     private static final int kButtonJoyStickLeft = 11;
     private static final int kButtonJoyStickRight = 12;
     private static final int kJoystickChannel = 0;
+    private static final int kJoystickPlayerChannel = 1;
     // For testing
     private static final double kMotorPowerLevel = .7;
     
@@ -44,18 +45,18 @@ public class Robot extends TimedRobot {
     private boolean autoLift = false;
     private int counter = 0;
     private int runningTotal = 0;
-    private boolean twoPlayer = true;//Boolean used for if using one or two remotes
+    private boolean twoPlayer = true; //Boolean used for if using one or two remotes
     
     private MecanumDrive m_robotDrive;
 
     CameraServer m_cameraServer;
     
-    Compressor m_compressor; // It needs to be called to start in robotInit() (when the robot turns on)
+    Compressor m_compressor;
     
     private Joystick m_stick, m_stickPlayer;
     
     private boolean grabberRunning = false;
-    private boolean constantIntake = true;
+    private boolean constantIntake = false;
     private int macroIndex = 0;
 
     // These are used to keep a running average of the last 10 LIDAR values.
@@ -78,7 +79,6 @@ public class Robot extends TimedRobot {
     
     @Override
     public void robotInit() {
-        
         PWMVictorSPX frontLeft = new PWMVictorSPX(Constants.kPWMFrontLeft);
         PWMVictorSPX rearLeft = new PWMVictorSPX(Constants.kPWMRearLeft);
         PWMVictorSPX frontRight = new PWMVictorSPX(Constants.kPWMFrontRight);
@@ -93,8 +93,6 @@ public class Robot extends TimedRobot {
         m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
         
         m_compressor = new Compressor(0);
-        System.out.println(m_compressor.enabled());
-        m_compressor.start();
 
         m_stick = new Joystick(kJoystickChannel);
         m_stickPlayer = new Joystick(kJoystickPlayerChannel);
@@ -104,7 +102,6 @@ public class Robot extends TimedRobot {
 
         m_lifter = new Lifter();
         m_lifter.lifterInit();
-        //m_lifter.GoToBottom();
 
         m_grabber = new Grabber();
         m_grabber.GrabberInit();
@@ -129,21 +126,13 @@ public class Robot extends TimedRobot {
     */
     
     public void lifterOperatorCode() {
-        if (twoPlayer){
-            if (m_stickPlayer.getRawButtonPressed(kButtonA)){
+        if (twoPlayer) {
+            if (m_stickPlayer.getRawButtonPressed(kButtonA)) {
                 autoLift = !autoLift;  // true to false; v.v.
                 System.out.println("Automated Lifter: " + autoLift);
             }
-        }
-        else{
-            if (m_stick.getRawButtonPressed(kButtonA)){
-                autoLift = !autoLift;  // true to false; v.v.
-                System.out.println("Automated Lifter: " + autoLift);
-            }
-        }
-        if (autoLift) {
-            if (twoPlayer){
-                if (m_stickPlayer.getRawButtonPressed(kButtonLB)) {
+            if (autoLift) {
+                if (m_stickPlayer.getRawButtonPressed(kButtonB)) {
                     modeAdder *= -1; // Switches between -1 and 1
                     if (modeAdder == 1) {
                         System.out.println("Ball Mode");
@@ -171,22 +160,22 @@ public class Robot extends TimedRobot {
                         m_lifter.GoToBottom();
                         break;
                     case 1:
-                        m_lifter.GoToFirstBallLevel();
-                        break;
-                    case 2:
                         m_lifter.GoToFirstHatchLevel();
                         break;
-                    case 3:
-                        m_lifter.GoToSecondBallLevel();
+                    case 2:
+                        m_lifter.GoToFirstBallLevel();
                         break;
-                    case 4:
+                    case 3:
                         m_lifter.GoToSecondHatchLevel();
                         break;
+                    case 4:
+                        m_lifter.GoToBallLoadingStation();
+                        break;
                     case 5:
-                        m_lifter.GoToThirdBallLevel();
+                        m_lifter.GoToThirdHatchLevel();
                         break;
                     case 6:
-                        m_lifter.GoToThirdHatchLevel();
+                        m_lifter.GoToSecondBallLevel();
                         break;
                 }
             } else { // The only other choice is autoLift = false;
@@ -198,56 +187,60 @@ public class Robot extends TimedRobot {
                     m_lifter.Stop();
                 }
             }
-        }
-        else{
-            if (m_stick.getRawButtonPressed(kButtonLB)) {
-            if (m_stick.getRawButtonPressed(kButtonB)) {
-                modeAdder *= -1; // Switches between -1 and 1
-                if (modeAdder == 1) {
-                    System.out.println("Ball Mode");
-                } else {
-                    System.out.println("Hatch Mode");
+        // END OF TWO PLAYER CODE
+        } else { // ELSE IF USING ONLY ONE JOYSTICK
+            if (m_stick.getRawButtonPressed(kButtonA)){
+                autoLift = !autoLift;  // true to false; v.v.
+                System.out.println("Automated Lifter: " + autoLift);
+            }
+            if (autoLift) {
+                if (m_stick.getRawButtonPressed(kButtonB)) {
+                    modeAdder *= -1; // Switches between -1 and 1
+                    if (modeAdder == 1) {
+                        System.out.println("Ball Mode");
+                    } else {
+                        System.out.println("Hatch Mode");
+                    }
+                    lifterLevel += modeAdder;
                 }
-                lifterLevel += modeAdder;
-            }
-            if (m_stick.getPOV() == 0) {
-                if (lifterLevel <= 4 && !currentlyPressed)
-                    lifterLevel += 2;
-                currentlyPressed = true;
-            } else if (m_stick.getPOV() == 180) {
-                if (lifterLevel >= 1 && !currentlyPressed)
-                    lifterLevel -= 2;
-                currentlyPressed = true;
-            } else if (m_stick.getPOV() == 270) {
-                lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
-            } else {
-                currentlyPressed = false;      
-            }
-            switch (lifterLevel) {
-                case -1:
-                case 0:
-                    m_lifter.GoToBottom();
-                    break;
-                case 1:
-                    m_lifter.GoToFirstHatchLevel();
-                    break;
-                case 2:
-                    m_lifter.GoToFirstBallLevel();
-                    break;
-                case 3:
-                    m_lifter.GoToSecondHatchLevel();
-                    break;
-                case 4:
-                    m_lifter.GoToBallLoadingStation();
-                    break;
-                case 5:
-                    m_lifter.GoToThirdHatchLevel();
-                    break;
-                case 6:
-                    m_lifter.GoToSecondBallLevel();
-                    break;
-            } 
-            if(autoLift==false) { // The only other choice is autoLift = false;
+                if (m_stick.getPOV() == 0) {
+                    if (lifterLevel <= 4 && !currentlyPressed)
+                        lifterLevel += 2;
+                    currentlyPressed = true;
+                } else if (m_stick.getPOV() == 180) {
+                    if (lifterLevel >= 1 && !currentlyPressed)
+                        lifterLevel -= 2;
+                    currentlyPressed = true;
+                } else if (m_stick.getPOV() == 270) {
+                    lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
+                } else {
+                    currentlyPressed = false;      
+                }
+                switch (lifterLevel) {
+                    case -1:
+                    case 0:
+                        m_lifter.GoToBottom();
+                        break;
+                    case 1:
+                        m_lifter.GoToFirstHatchLevel();
+                        break;
+                    case 2:
+                        m_lifter.GoToFirstBallLevel();
+                        break;
+                    case 3:
+                        m_lifter.GoToSecondHatchLevel();
+                        break;
+                    case 4:
+                        m_lifter.GoToBallLoadingStation();
+                        break;
+                    case 5:
+                        m_lifter.GoToThirdHatchLevel();
+                        break;
+                    case 6:
+                        m_lifter.GoToSecondBallLevel();
+                        break;
+                } 
+            } else { // The only other choice is autoLift = false;
                 if (m_stick.getPOV() == 0) {
                     m_lifter.Lift();
                 } else if (m_stick.getPOV() == 180) {
@@ -256,72 +249,52 @@ public class Robot extends TimedRobot {
                     m_lifter.Stop();
                 }
             }
-        }        
+        }
     }
 
     public void mainPeriodic() {
         m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     -kMotorPowerLevel * m_stick.getZ(), 0.0);
-
-        if (twoPlayer){
-            if (m_stickPlayer.getRawButtonPressed(kButtonRT)) {
-                constantIntake = !constantIntake;
-                System.out.println("Grabber Intake: " + constantIntake);
-            }
-        }
-        else{//Code for either one player or two player
-            if (m_stick.getRawButtonPressed(kButtonRT)) {
-                constantIntake = !constantIntake;
-                System.out.println("Grabber Intake: " + constantIntake);
-            }
-        }
-        if (twoPlayer){
-            if (m_stickPlayer.getRawButtonPressed(kButtonLT)) {
-                grabberRunning = !grabberRunning;
-            }
-        }
-        else{
-            if (m_stick.getRawButtonPressed(kButtonLT)) {
-                grabberRunning = !grabberRunning;
-            }
-        if (m_stick.getRawButtonPressed(kButtonRT)) {
-            grabberRunning = true;
-            constantIntake = !constantIntake;
-            System.out.println("/nGrabber Intake: " + constantIntake);
-        }
-        if (m_stick.getRawButtonPressed(kButtonLT)) {
-            grabberRunning = false;
-            constantIntake = false;
-        }
         if (grabberRunning) {
-            if (constantIntake) {
-                m_grabber.Grab();
-            } else {
-                m_grabber.Eject();
-            }
+            if (constantIntake) {m_grabber.Grab();} else {m_grabber.Eject();}
         } else {
             m_grabber.Stop();
         }
-        if (twoPlayer){
-            if (m_stickPlayer.getRawButtonPressed(kButtonX)) {
+        // You have to press both sticks in to switch in and out of two player mode
+        if (m_stick.getRawButtonPressed(kButtonJoyStickRight) && m_stick.getRawButton(kButtonJoyStickLeft)) {
+            twoPlayer = !twoPlayer;
+            System.out.println("\nTwo Player Mode: " + twoPlayer);
+        }
+
+        if (twoPlayer) {
+            if (m_stickPlayer.getRawButtonPressed(kButtonRT)) {
+                grabberRunning = true;
+                constantIntake = !constantIntake;
+                System.out.println("Grabber Intake: " + constantIntake);
+            }
+            if (m_stickPlayer.getRawButtonPressed(kButtonLT)) {
+                grabberRunning = false;
+                constantIntake = false;
+            }
+            if (m_stickPlayer.getRawButtonPressed(kButtonX))
                 m_sucker.Suck();
+            if (m_stickPlayer.getRawButtonPressed(kButtonY))
+                m_sucker.Extend();
+        } else {
+            if (m_stick.getRawButtonPressed(kButtonRT)) {
+                grabberRunning = true;
+                constantIntake = !constantIntake;
+                System.out.println("Grabber Intake: " + constantIntake);
             }
-        }
-        else{
-            if (m_stick.getRawButtonPressed(kButtonX)) {
+            if (m_stick.getRawButtonPressed(kButtonLT)) {
+                grabberRunning = false;
+                constantIntake = false;
+            }
+            if (m_stick.getRawButtonPressed(kButtonX))
                 m_sucker.Suck();
-            }
-        }
-        if (twoPlayer){
-            if (m_stickPlayer.getRawButtonPressed(kButtonY)) {
+            if (m_stick.getRawButtonPressed(kButtonY))
                 m_sucker.Extend();
-            }
-        }
-        else{
-            if (m_stick.getRawButtonPressed(kButtonY)) {
-                m_sucker.Extend();
-            }
         }
     }
     
@@ -351,6 +324,7 @@ public class Robot extends TimedRobot {
         lifterOperatorCode();
 
         // CLIMBING CODE, SPECIFIC TO TELEOP
+        // Only valid for main joystick. It's easier that way.
         if (m_stick.getRawButtonPressed(kButtonStart)) {
             // Proceed to next climbing step.
             macroIndex++;
