@@ -23,8 +23,8 @@ Unless otherwise specified, all robotics meetings take place in the portables.
     * Meet from 10 am until 4 pm
 * Tue 19 Feb (No School):
     * Meet from 10 am until 4pm
-    * **Stop Build @ 8:00 pm**
-      * There is a chance the meeting will last until 8 pm if extensive work/testing is required.
+    * **Stop Build @ 9:00 pm**
+      * The meeting will last until 9 pm if extensive work/testing is required.
       
 ### Unbag Time 1
 * Sat 2 Mar - Fri 8 Mar, 6 cumulative hours
