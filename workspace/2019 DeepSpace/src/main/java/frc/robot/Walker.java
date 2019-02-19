@@ -26,7 +26,7 @@ public class Walker {
 
     public void StraightenLegs() {
         m_legs.Walk(false);
-        System.out.println("Un-walk");
+        System.out.println("Straightening Legs");
     }
 
     public void RetractFrontLegs() {

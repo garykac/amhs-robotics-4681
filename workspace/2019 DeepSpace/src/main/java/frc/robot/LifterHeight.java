@@ -18,16 +18,17 @@ public class LifterHeight {
 
     private static final double minMaxDef = 5;
 
-    private static final double maxHeight = 196;
-    private static final double minHeight = 4;
+    private static final double maxHeight = 58;
+    private static final double minHeight = 2;
 
-    public static final double ballFirstLevelHeight = 67.945;
-    public static final double ballSecondLevelHeight = 100;
-    public static final double ballThirdLevelHeight = 150;
+    public static final double ballFirstLevelHeight = 24;
+    public static final double ballSecondLevelHeight = 51;
+    public static final double ballThirdLevelHeight = 54;
+    // We don't have a third ball height. inaccessible
 
-    public static final double hatchFirstLevelHeight = 47;
-    public static final double hatchSecondLevelHeight = 90;
-    public static final double hatchThirdLevelHeight = 120;
+    public static final double hatchFirstLevelHeight = 5;
+    public static final double hatchSecondLevelHeight = 29;
+    public static final double hatchThirdLevelHeight = 56;
 
 
     public void lifterHeightInit() {
@@ -37,11 +38,11 @@ public class LifterHeight {
         counter.reset();
     }
 
-    public double getDistance(){
+    public double getDistance() {
         if (counter.get() < 1) {
             return 0.0;
         }
-        // getPeriod returns a value of 1usec / cm.
+        // getPeriod returns a value of 10 usec / cm.
         double rawPeriod = counter.getPeriod();
         double distanceCm = rawPeriod * 100000;
         double distanceIn = distanceCm / 2.54;

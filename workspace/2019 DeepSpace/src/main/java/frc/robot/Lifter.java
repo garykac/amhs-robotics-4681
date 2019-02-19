@@ -55,9 +55,9 @@ public class Lifter {
     public void Stop() {
         m_lifter.set(0);
     }
-    
+
     public void GoToBottom() {
-        if (m_height.atBottom()) {
+        if (m_height.atBottom() || m_DIOLifterSwitch.get()) {
             m_lifter.set(0);
             m_loc = Location.bottom;
         } else {

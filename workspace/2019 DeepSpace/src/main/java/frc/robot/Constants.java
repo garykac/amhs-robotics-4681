@@ -24,6 +24,7 @@ public class Constants {
     public static final int kPCMLegsBack = 2;
     public static final int kPCMLegsFront = 3;
     public static final int kPCMLegsWalk = 4;
+    public static final int kPCMLegsFront_2 = 5;
 
     // Analog
     public static final int kAnalogInfraredFarLeft = 0;

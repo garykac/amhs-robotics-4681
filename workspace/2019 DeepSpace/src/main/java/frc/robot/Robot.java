@@ -43,6 +43,8 @@ public class Robot extends TimedRobot {
     private int lifterLevel = 0;
     private int modeAdder = 1;
     private boolean autoLift = false;
+    private int counter = 0;
+    private int runningTotal = 0;
     
     private MecanumDrive m_robotDrive;
 
@@ -126,10 +128,10 @@ public class Robot extends TimedRobot {
     */
     
     public void lifterOperatorCode() {
-        if (m_stick.getRawButtonPressed(kButtonRB)){
+        if (m_stick.getRawButtonPressed(kButtonA)){
             autoLift = !autoLift;  // true to false; v.v.
             System.out.println("Automated Lifter: " + autoLift);}
-        if (false) {//autoLift) {
+        if (autoLift) {
             if (m_stick.getRawButtonPressed(kButtonLB)) {
                 modeAdder *= -1; // Switches between -1 and 1
                 if (modeAdder == 1) {
@@ -246,19 +248,27 @@ public class Robot extends TimedRobot {
         if (m_stick.getRawButtonPressed(kButtonStart)) {
             // Proceed to next climbing step.
             macroIndex++;
+            System.out.println(macroIndex);
             m_walker.Climb(macroIndex);
             if (macroIndex == 4) {
                 macroIndex = -1;
             }
-            System.out.println(macroIndex);
         }
         if (m_stick.getRawButtonPressed(kButtonBottom)) {
             // If we need to restart the climbing process.
             macroIndex = -1;
+            System.out.println(macroIndex);
             m_walker.Climb(macroIndex);
         }
         
         //trackLidarValues();
+        counter++;
+        runningTotal += m_lifter.getDistance();
+        if (counter == 50) {
+            System.out.println(runningTotal / 50);
+            counter = 0;
+            runningTotal = 0;
+        }
     }
 
     public void trackLidarValues() {
