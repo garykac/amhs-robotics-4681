@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
     private static final int kButtonJoyStickLeft = 11;
     private static final int kButtonJoyStickRight = 12;
     private static final int kJoystickChannel = 0;
-    
+    private static final int kJoystickPlayerChannel = 1;
     // For testing
     private static final double kMotorPowerLevel = .7;
     
@@ -53,6 +53,7 @@ public class Robot extends TimedRobot {
     Compressor m_compressor; // It needs to be called to start in robotInit() (when the robot turns on)
     
     private Joystick m_stick;
+    private Joystick m_stickPlayer;
     
     private boolean grabberRunning = false;
     private boolean constantIntake = true;
@@ -97,6 +98,7 @@ public class Robot extends TimedRobot {
         m_compressor.start();
 
         m_stick = new Joystick(kJoystickChannel);
+        m_stickPlayer = new Joystick(kJoystickPlayerChannel);
 
         m_walker = new Walker();
         m_walker.WalkerInit();
