@@ -126,12 +126,38 @@ public class Robot extends TimedRobot {
     */
     
     public void lifterOperatorCode() {
-        if (twoPlayer) {
-            if (m_stickPlayer.getRawButtonPressed(kButtonA)) {
+        if (autoLift == !autoLift) {
+            switch (lifterLevel) {
+                case -1:
+                case 0:
+                    m_lifter.GoToBottom();
+                    break;
+                case 1:
+                    m_lifter.GoToFirstHatchLevel();
+                    break;
+                case 2:
+                    m_lifter.GoToFirstBallLevel();
+                    break;
+                case 3:
+                    m_lifter.GoToSecondHatchLevel();
+                    break;
+                case 4:
+                    m_lifter.GoToBallLoadingStation();
+                    break;
+                case 5:
+                    m_lifter.GoToThirdHatchLevel();
+                    break;
+                case 6:
+                    m_lifter.GoToSecondBallLevel();
+                    break;
+            }
+        }
+        if (twoPlayer) { // Works with the controllers
+            /*if (m_stickPlayer.getRawButtonPressed(kButtonA)) {
                 autoLift = !autoLift;  // true to false; v.v.
                 System.out.println("Automated Lifter: " + autoLift);
-            }
-            if (autoLift) {
+            }*/
+            if (false) {//autoLift) {
                 if (m_stickPlayer.getRawButtonPressed(kButtonB)) {
                     modeAdder *= -1; // Switches between -1 and 1
                     if (modeAdder == 1) {
@@ -154,30 +180,6 @@ public class Robot extends TimedRobot {
                 } else {
                     currentlyPressed = false;      
                 }
-                switch (lifterLevel) {
-                    case -1:
-                    case 0:
-                        m_lifter.GoToBottom();
-                        break;
-                    case 1:
-                        m_lifter.GoToFirstHatchLevel();
-                        break;
-                    case 2:
-                        m_lifter.GoToFirstBallLevel();
-                        break;
-                    case 3:
-                        m_lifter.GoToSecondHatchLevel();
-                        break;
-                    case 4:
-                        m_lifter.GoToBallLoadingStation();
-                        break;
-                    case 5:
-                        m_lifter.GoToThirdHatchLevel();
-                        break;
-                    case 6:
-                        m_lifter.GoToSecondBallLevel();
-                        break;
-                }
             } else { // The only other choice is autoLift = false;
                 if (m_stickPlayer.getPOV() == 0) {
                     m_lifter.Lift();
@@ -189,11 +191,11 @@ public class Robot extends TimedRobot {
             }
         // END OF TWO PLAYER CODE
         } else { // ELSE IF USING ONLY ONE JOYSTICK
-            if (m_stick.getRawButtonPressed(kButtonA)){
+            /*if (m_stick.getRawButtonPressed(kButtonA)){
                 autoLift = !autoLift;  // true to false; v.v.
                 System.out.println("Automated Lifter: " + autoLift);
-            }
-            if (autoLift) {
+            }*/
+            if (false) {/*autoLift) {*/ // Autolift is jerky
                 if (m_stick.getRawButtonPressed(kButtonB)) {
                     modeAdder *= -1; // Switches between -1 and 1
                     if (modeAdder == 1) {
@@ -216,30 +218,6 @@ public class Robot extends TimedRobot {
                 } else {
                     currentlyPressed = false;      
                 }
-                switch (lifterLevel) {
-                    case -1:
-                    case 0:
-                        m_lifter.GoToBottom();
-                        break;
-                    case 1:
-                        m_lifter.GoToFirstHatchLevel();
-                        break;
-                    case 2:
-                        m_lifter.GoToFirstBallLevel();
-                        break;
-                    case 3:
-                        m_lifter.GoToSecondHatchLevel();
-                        break;
-                    case 4:
-                        m_lifter.GoToBallLoadingStation();
-                        break;
-                    case 5:
-                        m_lifter.GoToThirdHatchLevel();
-                        break;
-                    case 6:
-                        m_lifter.GoToSecondBallLevel();
-                        break;
-                } 
             } else { // The only other choice is autoLift = false;
                 if (m_stick.getPOV() == 0) {
                     m_lifter.Lift();
