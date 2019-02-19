@@ -17,11 +17,6 @@ public class Lifter {
     private LifterHeight m_height;
     
     private DigitalInput m_DIOLifterSwitch;
-    
-    private enum Location {
-        bottom, top, ballFirstLevel, ballSecondLevel, ballThirdLevel, hatchFirstLevel, hatchSecondLevel, hatchThirdLevel;
-    }  // I don't see the enums being used much anywhere
-    Location m_loc;
 
     public void lifterInit() {
         m_lifter = new PWMVictorSPX(Constants.kPWMLifter);
@@ -31,7 +26,6 @@ public class Lifter {
         m_height = new LifterHeight();
         m_height.lifterHeightInit();
 
-        m_loc = Location.bottom;
         m_DIOLifterSwitch = new DigitalInput(Constants.kDIOLifterSwitch);
     }
     public void Lift() {
@@ -59,7 +53,6 @@ public class Lifter {
     public void GoToBottom() {
         if (m_height.atBottom() || m_DIOLifterSwitch.get()) {
             m_lifter.set(0);
-            m_loc = Location.bottom;
         } else {
             m_lifter.set(-kMotorPowerLevel);
         }
@@ -74,12 +67,9 @@ public class Lifter {
         }
     }
 
-    // Wouldn't it be more worthwile to define a function:
-    // public void goTo(int hight), and pass in the variables for game piece heights?
     public void GoToFirstBallLevel() {
         if (m_height.atFirstBallLevel()) {
             m_lifter.set(0);
-            m_loc = Location.ballFirstLevel;
         } else if (m_height.getDistance() < m_height.ballFirstLevelHeight) {
             m_lifter.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.ballFirstLevelHeight) {
@@ -90,7 +80,6 @@ public class Lifter {
     public void GoToSecondBallLevel() {
         if (m_height.atSecondBallLevel()) {
             m_lifter.set(0);
-            m_loc = Location.ballSecondLevel;
         } else if (m_height.getDistance() < m_height.ballSecondLevelHeight) {
             m_lifter.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.ballSecondLevelHeight) {
@@ -111,7 +100,6 @@ public class Lifter {
     public void GoToFirstHatchLevel() {
         if (m_height.atFirstHatchLevel()) {
             m_lifter.set(0);
-            m_loc = Location.hatchFirstLevel;
         } else if (m_height.getDistance() < m_height.hatchFirstLevelHeight) {
             m_lifter.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.hatchFirstLevelHeight) {
@@ -122,7 +110,6 @@ public class Lifter {
     public void GoToSecondHatchLevel() {
         if (m_height.atSecondHatchLevel()) {
             m_lifter.set(0);
-            m_loc = Location.hatchSecondLevel;
         } else if (m_height.getDistance() < m_height.hatchSecondLevelHeight) {
             m_lifter.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.hatchSecondLevelHeight) {
@@ -133,7 +120,6 @@ public class Lifter {
     public void GoToThirdHatchLevel() {
         if (m_height.atThirdHatchLevel()) {
             m_lifter.set(0);
-            m_loc = Location.hatchThirdLevel;
         } else if (m_height.getDistance() < m_height.hatchThirdLevelHeight) {
             m_lifter.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.hatchThirdLevelHeight) {

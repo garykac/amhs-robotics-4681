@@ -30,15 +30,16 @@ public class Robot extends TimedRobot {
     private static final int kButtonRT = 8;
     private static final int kButtonBottom = 9;
     private static final int kButtonStart = 10;
-    private static final int kButtonJoyStickLeft = 11;
-    private static final int kButtonJoyStickRight = 12;
+    private static final int kButtonJoystickLeft = 11;
+    private static final int kButtonJoystickRight = 12;
     private static final int kJoystickChannel = 0;
     private static final int kJoystickPlayerChannel = 1;
     // For testing
-    private static final double kMotorPowerLevel = .7;
+    private static final double kMotorPowerLevel = .8;
     
     // To manage the controls for the Lifter
     private boolean currentlyPressed = false;
+    private boolean currentlyPressedPlayer = false;
     private boolean ballMode= true;
     private int lifterLevel = 0;
     private int modeAdder = 1;
@@ -168,17 +169,17 @@ public class Robot extends TimedRobot {
                     lifterLevel += modeAdder;
                 }
                 if (m_stickPlayer.getPOV() == 0) {
-                    if (lifterLevel <= 4 && !currentlyPressed)
+                    if (lifterLevel <= 4 && !currentlyPressedPlayer)
                         lifterLevel += 2;
-                    currentlyPressed = true;
+                    currentlyPressedPlayer = true;
                 } else if (m_stickPlayer.getPOV() == 180) {
-                    if (lifterLevel >= 1 && !currentlyPressed)
+                    if (lifterLevel >= 1 && !currentlyPressedPlayer)
                         lifterLevel -= 2;
-                    currentlyPressed = true;
+                    currentlyPressedPlayer = true;
                 } else if (m_stickPlayer.getPOV() == 270) {
                     lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
                 } else {
-                    currentlyPressed = false;      
+                    currentlyPressedPlayer = false;      
                 }
             } else { // The only other choice is autoLift = false;
                 if (m_stickPlayer.getPOV() == 0) {
@@ -206,17 +207,17 @@ public class Robot extends TimedRobot {
                     lifterLevel += modeAdder;
                 }
                 if (m_stick.getPOV() == 0) {
-                    if (lifterLevel <= 4 && !currentlyPressed)
+                    if (lifterLevel <= 4 && !currentlyPressedPlayer)
                         lifterLevel += 2;
-                    currentlyPressed = true;
+                    currentlyPressedPlayer = true;
                 } else if (m_stick.getPOV() == 180) {
-                    if (lifterLevel >= 1 && !currentlyPressed)
+                    if (lifterLevel >= 1 && !currentlyPressedPlayer)
                         lifterLevel -= 2;
-                    currentlyPressed = true;
+                    currentlyPressedPlayer = true;
                 } else if (m_stick.getPOV() == 270) {
                     lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
                 } else {
-                    currentlyPressed = false;      
+                    currentlyPressedPlayer = false;      
                 }
             } else { // The only other choice is autoLift = false;
                 if (m_stick.getPOV() == 0) {
@@ -240,9 +241,12 @@ public class Robot extends TimedRobot {
             m_grabber.Stop();
         }
         // You have to press both sticks in to switch in and out of two player mode
-        if (m_stick.getRawButtonPressed(kButtonJoyStickRight) && m_stick.getRawButton(kButtonJoyStickLeft)) {
-            twoPlayer = !twoPlayer;
-            System.out.println("\nTwo Player Mode: " + twoPlayer);
+        if (m_stick.getRawButton(kButtonJoystickRight) && m_stick.getRawButton(kButtonJoystickLeft)) {
+            if (!currentlyPressed) {
+                twoPlayer = !twoPlayer;
+                System.out.println("\nTwo Player Mode: " + twoPlayer);
+            }
+            currentlyPressed = true;
         }
 
         if (twoPlayer) {
