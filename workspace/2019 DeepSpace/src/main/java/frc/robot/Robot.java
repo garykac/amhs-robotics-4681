@@ -221,7 +221,7 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
         teleopInit();
     }
-    
+
     @Override
     public void autonomousPeriodic() {
         mainPeriodic();
@@ -258,7 +258,7 @@ public class Robot extends TimedRobot {
             m_walker.Climb(macroIndex);
         }
         
-        trackLidarValues();
+        //trackLidarValues();
     }
 
     public void trackLidarValues() {
