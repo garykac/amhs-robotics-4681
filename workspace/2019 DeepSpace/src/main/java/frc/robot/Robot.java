@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
     private static final int kButtonJoyStickLeft = 11;
     private static final int kButtonJoyStickRight = 12;
     private static final int kJoystickChannel = 0;
-    
+
     // For testing
     private static final double kMotorPowerLevel = .7;
     
@@ -65,7 +65,7 @@ public class Robot extends TimedRobot {
     private int m_numSamples = 0;
     private double m_minLidarValue = Double.MAX_VALUE;
     private double m_maxLidarValue = Double.MIN_VALUE;
-
+    
     private Walker m_walker;
 
     private Lifter m_lifter;
@@ -75,7 +75,7 @@ public class Robot extends TimedRobot {
     private Sucker m_sucker;
 
     private LineFollower m_lineFollower;
-
+    
     @Override
     public void robotInit() {
         
@@ -195,11 +195,13 @@ public class Robot extends TimedRobot {
                                     -kMotorPowerLevel * m_stick.getZ(), 0.0);
 
         if (m_stick.getRawButtonPressed(kButtonRT)) {
+            grabberRunning = true;
             constantIntake = !constantIntake;
             System.out.println("Grabber Intake: " + constantIntake);
         }
         if (m_stick.getRawButtonPressed(kButtonLT)) {
-            grabberRunning = !grabberRunning;
+            grabberRunning = false;
+            constantIntake = false;
         }
         if (grabberRunning) {
             if (constantIntake) {
@@ -265,7 +267,7 @@ public class Robot extends TimedRobot {
         counter++;
         runningTotal += m_lifter.getDistance();
         if (counter == 50) {
-            System.out.println(runningTotal / 50);
+            //System.out.println(runningTotal / 50);
             counter = 0;
             runningTotal = 0;
         }
