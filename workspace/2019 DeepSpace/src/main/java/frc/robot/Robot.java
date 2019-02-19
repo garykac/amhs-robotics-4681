@@ -33,7 +33,6 @@ public class Robot extends TimedRobot {
     private static final int kButtonJoyStickLeft = 11;
     private static final int kButtonJoyStickRight = 12;
     private static final int kJoystickChannel = 0;
-    private static final int kJoystickPlayerChannel = 1;
     // For testing
     private static final double kMotorPowerLevel = .7;
     
@@ -66,7 +65,7 @@ public class Robot extends TimedRobot {
     private int m_numSamples = 0;
     private double m_minLidarValue = Double.MAX_VALUE;
     private double m_maxLidarValue = Double.MIN_VALUE;
-
+    
     private Walker m_walker;
 
     private Lifter m_lifter;
@@ -76,7 +75,7 @@ public class Robot extends TimedRobot {
     private Sucker m_sucker;
 
     private LineFollower m_lineFollower;
-
+    
     @Override
     public void robotInit() {
         
@@ -202,6 +201,7 @@ public class Robot extends TimedRobot {
         }
         else{
             if (m_stick.getRawButtonPressed(kButtonLB)) {
+            if (m_stick.getRawButtonPressed(kButtonB)) {
                 modeAdder *= -1; // Switches between -1 and 1
                 if (modeAdder == 1) {
                     System.out.println("Ball Mode");
@@ -229,22 +229,22 @@ public class Robot extends TimedRobot {
                     m_lifter.GoToBottom();
                     break;
                 case 1:
-                    m_lifter.GoToFirstBallLevel();
-                    break;
-                case 2:
                     m_lifter.GoToFirstHatchLevel();
                     break;
-                case 3:
-                    m_lifter.GoToSecondBallLevel();
+                case 2:
+                    m_lifter.GoToFirstBallLevel();
                     break;
-                case 4:
+                case 3:
                     m_lifter.GoToSecondHatchLevel();
                     break;
+                case 4:
+                    m_lifter.GoToBallLoadingStation();
+                    break;
                 case 5:
-                    m_lifter.GoToThirdBallLevel();
+                    m_lifter.GoToThirdHatchLevel();
                     break;
                 case 6:
-                    m_lifter.GoToThirdHatchLevel();
+                    m_lifter.GoToSecondBallLevel();
                     break;
             } 
             if(autoLift==false) { // The only other choice is autoLift = false;
@@ -285,6 +285,14 @@ public class Robot extends TimedRobot {
             if (m_stick.getRawButtonPressed(kButtonLT)) {
                 grabberRunning = !grabberRunning;
             }
+        if (m_stick.getRawButtonPressed(kButtonRT)) {
+            grabberRunning = true;
+            constantIntake = !constantIntake;
+            System.out.println("/nGrabber Intake: " + constantIntake);
+        }
+        if (m_stick.getRawButtonPressed(kButtonLT)) {
+            grabberRunning = false;
+            constantIntake = false;
         }
         if (grabberRunning) {
             if (constantIntake) {
@@ -334,7 +342,7 @@ public class Robot extends TimedRobot {
         m_compressor.start(); // If it failed in robotInit(), just in case.
         macroIndex = 0;
         grabberRunning = false;
-        constantIntake = true;
+        constantIntake = false;
     }
                 
     @Override

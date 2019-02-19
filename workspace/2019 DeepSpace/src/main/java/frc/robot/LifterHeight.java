@@ -11,24 +11,21 @@ public class LifterHeight {
     
     private Counter counter;
 
-    private String location;
-
     //offset is in inches and added after the value is already converted to inches
     private static final double offSetIn = 0;//.52;
 
-    private static final double minMaxDef = 5;
+    private static final double minMaxDef = 3;
 
     private static final double maxHeight = 58;
     private static final double minHeight = 2;
 
     public static final double ballFirstLevelHeight = 24;
+    public static final double ballLoadingStationHeight = 32;
     public static final double ballSecondLevelHeight = 51;
-    public static final double ballThirdLevelHeight = 54;
-    // We don't have a third ball height. inaccessible
 
-    public static final double hatchFirstLevelHeight = 5;
-    public static final double hatchSecondLevelHeight = 29;
-    public static final double hatchThirdLevelHeight = 56;
+    public static final double hatchFirstLevelHeight = 8;
+    public static final double hatchSecondLevelHeight = 40;
+    public static final double hatchThirdLevelHeight = 57;
 
 
     public void lifterHeightInit() {
@@ -58,18 +55,12 @@ public class LifterHeight {
         return (height + minMaxDef);
     }
     
-    public boolean atBottom(){
-        if (getDistance() <= minHeight) {
-            return true;
-        }
-        return false;
+    public boolean atBottom() {
+        return (getDistance() <= minHeight);
     }
 
-    public boolean atTop(){
-        if(getDistance()>=maxHeight){
-            return true;
-        }
-        return false;
+    public boolean atTop() {
+        return (getDistance() >= maxHeight);
     }
     
     private boolean atLevel_(double height) {
@@ -100,7 +91,7 @@ public class LifterHeight {
         return atLevel_(ballSecondLevelHeight);
     }
     
-    public boolean atThirdBallLevel() {
-        return atLevel_(ballThirdLevelHeight);
+    public boolean atBallLoadingStationLevel() {
+        return atLevel_(ballLoadingStationHeight);
     }
 }

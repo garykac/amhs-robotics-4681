@@ -16,27 +16,27 @@ public class Walker {
     public void RaiseRobot() {
         m_legs.ExtendFront(true);
         m_legs.ExtendBack(true);
-        System.out.println("Raise Bot");
+        //System.out.println("Raise Bot");
     }
 
     public void Walk() {
         m_legs.Walk(true);
-        System.out.println("Walk");
+        //System.out.println("Walk");
     }
 
     public void StraightenLegs() {
         m_legs.Walk(false);
-        System.out.println("Straightening Legs");
+        //System.out.println("Straightening Legs");
     }
 
     public void RetractFrontLegs() {
         m_legs.ExtendFront(false);
-        System.out.println("Retract Front Legs");
+        //System.out.println("Retract Front Legs");
     }
 
     public void RetractBackLegs() {
         m_legs.ExtendBack(false);
-        System.out.println("Retract Back Legs");
+        //System.out.println("Retract Back Legs");
     }
     
     public void Climb(int step) {
