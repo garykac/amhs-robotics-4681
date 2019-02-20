@@ -36,7 +36,6 @@ public class Robot extends TimedRobot {
     private static final int kJoystickPlayerChannel = 1;
     // For testing
     private static final double kMotorPowerLevel = .8;
-    
     // To manage the controls for the Lifter
     private boolean currentlyPressed = false;
     private boolean currentlyPressedPlayer = false;
@@ -47,7 +46,6 @@ public class Robot extends TimedRobot {
     private int counter = 0;
     private int runningTotal = 0;
     private boolean twoPlayer = true; //Boolean used for if using one or two remotes
-    
     private MecanumDrive m_robotDrive;
 
     CameraServer m_cameraServer;
@@ -80,7 +78,7 @@ public class Robot extends TimedRobot {
     
     @Override
     public void robotInit() {
-        PWMVictorSPX frontLeft = new PWMVictorSPX(Constants.kPWMFrontLeft);
+        PWMVictorSPX frontLeft = new PWMVictorSPX(Constants.kPWMFrontLeft);//Each motor is a seperate wheel
         PWMVictorSPX rearLeft = new PWMVictorSPX(Constants.kPWMRearLeft);
         PWMVictorSPX frontRight = new PWMVictorSPX(Constants.kPWMFrontRight);
         PWMVictorSPX rearRight = new PWMVictorSPX(Constants.kPWMRearRight);
@@ -113,7 +111,7 @@ public class Robot extends TimedRobot {
         m_lineFollower = new LineFollower();
         m_lineFollower.LineFollowerInit();
 
-        m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);
+        m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);//Initilizing Cameras, if cameras arent plugged in, will error
         m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);     
     }
     
@@ -158,9 +156,9 @@ public class Robot extends TimedRobot {
                 autoLift = !autoLift;  // true to false; v.v.
                 System.out.println("Automated Lifter: " + autoLift);
             }*/
-            if (false) {//autoLift) {
+            if (autoLift == !autoLift) {//code works, Laser Sensor not finished, removed until laser works
                 if (m_stickPlayer.getRawButtonPressed(kButtonB)) {
-                    modeAdder *= -1; // Switches between -1 and 1
+                    modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
                     if (modeAdder == 1) {
                         System.out.println("Ball Mode");
                     } else {
@@ -168,23 +166,23 @@ public class Robot extends TimedRobot {
                     }
                     lifterLevel += modeAdder;
                 }
-                if (m_stickPlayer.getPOV() == 0) {
+                if (m_stickPlayer.getPOV() == 0) {//D-Pad Up Arrow
                     if (lifterLevel <= 4 && !currentlyPressedPlayer)
                         lifterLevel += 2;
                     currentlyPressedPlayer = true;
-                } else if (m_stickPlayer.getPOV() == 180) {
+                } else if (m_stickPlayer.getPOV() == 180) {//D-Pad Down Arrow
                     if (lifterLevel >= 1 && !currentlyPressedPlayer)
                         lifterLevel -= 2;
                     currentlyPressedPlayer = true;
-                } else if (m_stickPlayer.getPOV() == 270) {
+                } else if (m_stickPlayer.getPOV() == 270) {//D-Pad Right Arrow
                     lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
                 } else {
                     currentlyPressedPlayer = false;      
                 }
             } else { // The only other choice is autoLift = false;
-                if (m_stickPlayer.getPOV() == 0) {
+                if (m_stickPlayer.getPOV() == 0) {//D-Pad Up Arrow
                     m_lifter.Lift();
-                } else if (m_stickPlayer.getPOV() == 180) {
+                } else if (m_stickPlayer.getPOV() == 180) {//D-Pad Down Arrow
                     m_lifter.Lower();
                 } else {
                     m_lifter.Stop();
@@ -198,7 +196,7 @@ public class Robot extends TimedRobot {
             }*/
             if (false) {/*autoLift) {*/ // Autolift is jerky
                 if (m_stick.getRawButtonPressed(kButtonB)) {
-                    modeAdder *= -1; // Switches between -1 and 1
+                    modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
                     if (modeAdder == 1) {
                         System.out.println("Ball Mode");
                     } else {
@@ -235,8 +233,12 @@ public class Robot extends TimedRobot {
         m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     -kMotorPowerLevel * m_stick.getZ(), 0.0);
-        if (grabberRunning) {
-            if (constantIntake) {m_grabber.Grab();} else {m_grabber.Eject();}
+        if (grabberRunning) {//Two Constants used, grabberRunning is whether or not ball motor is on
+            if (constantIntake) {//constnatIntake is whether or not the ball is being pulled in or 
+                m_grabber.Grab();
+            } else {
+                m_grabber.Eject();
+            }
         } else {
             m_grabber.Stop();
         }
@@ -250,26 +252,26 @@ public class Robot extends TimedRobot {
         }
 
         if (twoPlayer) {
-            if (m_stickPlayer.getRawButtonPressed(kButtonRT)) {
+            if (m_stickPlayer.getRawButtonPressed(kButtonRT)) {//Switches between motor for balls being off or on
                 grabberRunning = true;
                 constantIntake = !constantIntake;
                 System.out.println("Grabber Intake: " + constantIntake);
             }
-            if (m_stickPlayer.getRawButtonPressed(kButtonLT)) {
+            if (m_stickPlayer.getRawButtonPressed(kButtonLT)) {//Stops motor from spinning
                 grabberRunning = false;
                 constantIntake = false;
             }
-            if (m_stickPlayer.getRawButtonPressed(kButtonX))
+            if (m_stickPlayer.getRawButtonPressed(kButtonX))//Toggles Hatch vacuum 
                 m_sucker.Suck();
-            if (m_stickPlayer.getRawButtonPressed(kButtonY))
+            if (m_stickPlayer.getRawButtonPressed(kButtonY))//Extends Hatch out, Button toggles between extended and retracted
                 m_sucker.Extend();
         } else {
-            if (m_stick.getRawButtonPressed(kButtonRT)) {
+            if (m_stick.getRawButtonPressed(kButtonRT)) {//Toggles between between grabbing or shooting
                 grabberRunning = true;
                 constantIntake = !constantIntake;
                 System.out.println("Grabber Intake: " + constantIntake);
             }
-            if (m_stick.getRawButtonPressed(kButtonLT)) {
+            if (m_stick.getRawButtonPressed(kButtonLT)) {//Kills the motot
                 grabberRunning = false;
                 constantIntake = false;
             }

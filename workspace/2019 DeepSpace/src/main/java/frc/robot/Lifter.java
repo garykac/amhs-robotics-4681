@@ -61,7 +61,6 @@ public class Lifter {
     public void GoToTop() {
         if (m_height.atTop()) {
             m_lifter.set(0);
-            m_loc = Location.top;
         } else {
             m_lifter.set(kMotorPowerLevel);
         }
