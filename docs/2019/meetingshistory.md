@@ -75,3 +75,20 @@ Goals: Complete physical robot, finish electrical, upload programming
 * Fri 8 Feb
   * Meet from 12:45 until 2pm due to Early Release
   * (school closes at 2pm due to heavy snow)
+  
+### Week 6 : Sat 9 Feb - Fri 15 Feb
+* Sat 9 Feb, Mon 11 Feb - Wed 13 Feb:
+    * **Cancelled** due to snow day
+* Thu 14 Feb - Fri 15 Feb:
+    * Meet from 3 pm until 7 pm
+
+### Week 7 : Sat 16 Feb - Fri 22 Feb
+* Sat 16 Feb:
+    * Meet from 10 am - 4 pm
+* Mon 18 Feb (No School):
+    * Meet from 10 am until 4 pm
+* Tue 19 Feb (No School):
+    * Meet from 10 am until 4pm
+    * **Stop Build @ 9:00 pm**
+      * The meeting will last until 9 pm if extensive work/testing is required.
+      
