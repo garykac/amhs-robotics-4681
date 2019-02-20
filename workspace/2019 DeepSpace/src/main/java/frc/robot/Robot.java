@@ -283,7 +283,7 @@ public class Robot extends TimedRobot {
     }
     
     @Override
-    public void autonomousInit() {
+    public void autonomousInit() {//Teleop is being used, just incase FRC checks autonomous mode
         teleopInit();
     }
 
@@ -325,7 +325,7 @@ public class Robot extends TimedRobot {
             m_walker.Climb(macroIndex);
         }
         
-        //trackLidarValues();
+        //Prints out values for lidar scanner 
         counter++;
         runningTotal += m_lifter.getDistance();
         if (counter == 50) {
