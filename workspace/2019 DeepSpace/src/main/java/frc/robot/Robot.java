@@ -249,6 +249,8 @@ public class Robot extends TimedRobot {
                 System.out.println("\nTwo Player Mode: " + twoPlayer);
             }
             currentlyPressed = true;
+        } else {
+            currentlyPressed = false;
         }
 
         if (twoPlayer) {
@@ -329,7 +331,7 @@ public class Robot extends TimedRobot {
         counter++;
         runningTotal += m_lifter.getDistance();
         if (counter == 50) {
-            System.out.println(runningTotal / 50);
+            //System.out.println(runningTotal / 50);
             counter = 0;
             runningTotal = 0;
         }
