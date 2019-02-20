@@ -37,11 +37,17 @@
 
 ### Drive Team
 #### Team Members
-* Under discussion (update by Friday)
+* Zoey C (Main)
+* Ryan D (Main)
+* Stephen P (Secondary)
+* Austin C (Secondary)
+* Chris M (Secondary)
+* Nate H (Technician)
 
 #### Goals:
 * Program movement, field interaction
 * Establish simple controls for robot
+    * **Established Controls: 2 Controllers, see button layout for info**
 * Decide membership
 
 ### Electrical
