@@ -8,6 +8,6 @@
 
 [Game Manual 2019 (pdf)](https://firstfrc.blob.core.windows.net/frc2019/Manual/2019FRCGameSeasonManual.pdf)
 
-[Auburn Mt.View Competition Info](itinerary_AuburnMtView.md)
+[Auburn Mt.View Competition Info](Auburn%20Mt.view%20Competition%20Itinerary.md)
 
 [Teams](teams/)
