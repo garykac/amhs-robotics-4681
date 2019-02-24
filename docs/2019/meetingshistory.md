@@ -92,3 +92,6 @@ Goals: Complete physical robot, finish electrical, upload programming
     * **Stop Build @ 9:00 pm**
       * The meeting will last until 9 pm if extensive work/testing is required.
       
+### Week 8 : Sat 23 Feb - Fri 1 Mar
+* Sat 23 Feb:
+    * Meet from 10 am - 1 pm
