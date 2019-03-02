@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.AnalogInput;
 
@@ -10,7 +11,8 @@ import edu.wpi.first.wpilibj.AnalogInput;
 
 public class Lifter {
     
-    private PWMVictorSPX m_lifter;
+    //private PWMVictorSPX m_winch;
+    private PWMTalonSRX m_winch;
 
     private static final double kMotorPowerLevel = 1;
 
@@ -19,9 +21,10 @@ public class Lifter {
     private DigitalInput m_DIOLifterSwitch;
 
     public void lifterInit() {
-        m_lifter = new PWMVictorSPX(Constants.kPWMLifter);
+        //m_winch = new PWMVictorSPX(Constants.kPWMLifter);
+        m_winch = new PWMTalonSRX(Constants.kPWMLifter);
         //change from true or false depending on which works.
-        m_lifter.setInverted(true);
+        m_winch.setInverted(true);
 
         m_height = new LifterHeight();
         m_height.lifterHeightInit();
@@ -29,7 +32,7 @@ public class Lifter {
         m_DIOLifterSwitch = new DigitalInput(Constants.kDIOLifterSwitch);
     }
     public void Lift() {
-        m_lifter.set(kMotorPowerLevel);
+        m_winch.set(kMotorPowerLevel);
     }
 
     public double getDistance(){
@@ -38,91 +41,91 @@ public class Lifter {
 
     public void Lower() {
         if (!m_DIOLifterSwitch.get()) { //MAY NEED TO FLIP OPPOSITE OF SWITCH
-            m_lifter.set(-kMotorPowerLevel);
+            m_winch.set(-kMotorPowerLevel);
             System.out.println("Lowering");
         } else {
-            m_lifter.set(0); 
+            m_winch.set(0); 
             System.out.println("AT BOTTOM");
         }
     }
     
     public void Stop() {
-        m_lifter.set(0);
+        m_winch.set(0);
     }
 
     public void GoToBottom() {
         if (m_height.atBottom() || m_DIOLifterSwitch.get()) {
-            m_lifter.set(0);
+            m_winch.set(0);
         } else {
-            m_lifter.set(-kMotorPowerLevel);
+            m_winch.set(-kMotorPowerLevel);
         }
     }
 
     public void GoToTop() {
         if (m_height.atTop()) {
-            m_lifter.set(0);
+            m_winch.set(0);
         } else {
-            m_lifter.set(kMotorPowerLevel);
+            m_winch.set(kMotorPowerLevel);
         }
     }
 
     public void GoToFirstBallLevel() {
         if (m_height.atFirstBallLevel()) {
-            m_lifter.set(0);
+            m_winch.set(0);
         } else if (m_height.getDistance() < m_height.ballFirstLevelHeight) {
-            m_lifter.set(kMotorPowerLevel);
+            m_winch.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.ballFirstLevelHeight) {
-            m_lifter.set(-kMotorPowerLevel);
+            m_winch.set(-kMotorPowerLevel);
         }
     }
     
     public void GoToSecondBallLevel() {
         if (m_height.atSecondBallLevel()) {
-            m_lifter.set(0);
+            m_winch.set(0);
         } else if (m_height.getDistance() < m_height.ballSecondLevelHeight) {
-            m_lifter.set(kMotorPowerLevel);
+            m_winch.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.ballSecondLevelHeight) {
-            m_lifter.set(-kMotorPowerLevel);
+            m_winch.set(-kMotorPowerLevel);
         }
     }
     
     public void GoToBallLoadingStation() {
         if (m_height.atBallLoadingStationLevel()) {
-            m_lifter.set(0);
+            m_winch.set(0);
         } else if (m_height.getDistance() < m_height.ballLoadingStationHeight) {
-            m_lifter.set(kMotorPowerLevel);
+            m_winch.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.ballLoadingStationHeight) {
-            m_lifter.set(-kMotorPowerLevel);
+            m_winch.set(-kMotorPowerLevel);
         }
     }
 
     public void GoToFirstHatchLevel() {
         if (m_height.atFirstHatchLevel()) {
-            m_lifter.set(0);
+            m_winch.set(0);
         } else if (m_height.getDistance() < m_height.hatchFirstLevelHeight) {
-            m_lifter.set(kMotorPowerLevel);
+            m_winch.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.hatchFirstLevelHeight) {
-            m_lifter.set(-kMotorPowerLevel);
+            m_winch.set(-kMotorPowerLevel);
         }
     }
     
     public void GoToSecondHatchLevel() {
         if (m_height.atSecondHatchLevel()) {
-            m_lifter.set(0);
+            m_winch.set(0);
         } else if (m_height.getDistance() < m_height.hatchSecondLevelHeight) {
-            m_lifter.set(kMotorPowerLevel);
+            m_winch.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.hatchSecondLevelHeight) {
-            m_lifter.set(-kMotorPowerLevel);
+            m_winch.set(-kMotorPowerLevel);
         }
     }
     
     public void GoToThirdHatchLevel() {
         if (m_height.atThirdHatchLevel()) {
-            m_lifter.set(0);
+            m_winch.set(0);
         } else if (m_height.getDistance() < m_height.hatchThirdLevelHeight) {
-            m_lifter.set(kMotorPowerLevel);
+            m_winch.set(kMotorPowerLevel);
         } else if (m_height.getDistance() > m_height.hatchThirdLevelHeight) {
-            m_lifter.set(-kMotorPowerLevel);
+            m_winch.set(-kMotorPowerLevel);
         }
     }
 }

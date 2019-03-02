@@ -41,7 +41,7 @@ public class Robot extends TimedRobot {
     private boolean currentlyPressedPlayer = false;
     private boolean ballMode= true;
     private int lifterLevel = 0;
-    private int modeAdder = 1;
+    private int modeAdder = 1; //For automated lifter
     private boolean autoLift = false;
     private int counter = 0;
     private int runningTotal = 0;
@@ -78,7 +78,7 @@ public class Robot extends TimedRobot {
     
     @Override
     public void robotInit() {
-        PWMVictorSPX frontLeft = new PWMVictorSPX(Constants.kPWMFrontLeft);//Each motor is a seperate wheel
+        PWMVictorSPX frontLeft = new PWMVictorSPX(Constants.kPWMFrontLeft); //Each motor is a seperate wheel
         PWMVictorSPX rearLeft = new PWMVictorSPX(Constants.kPWMRearLeft);
         PWMVictorSPX frontRight = new PWMVictorSPX(Constants.kPWMFrontRight);
         PWMVictorSPX rearRight = new PWMVictorSPX(Constants.kPWMRearRight);
@@ -94,7 +94,7 @@ public class Robot extends TimedRobot {
         m_compressor = new Compressor(0);
 
         m_stick = new Joystick(kJoystickChannel);
-        m_stickPlayer = new Joystick(kJoystickPlayerChannel);
+        m_stickPlayer = new Joystick(kJoystickPlayerChannel); // Second controller
 
         m_walker = new Walker();
         m_walker.WalkerInit();
@@ -111,19 +111,19 @@ public class Robot extends TimedRobot {
         m_lineFollower = new LineFollower();
         m_lineFollower.LineFollowerInit();
 
-        m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0);//Initilizing Cameras, if cameras arent plugged in, will error
+        m_cameraServer.getInstance().startAutomaticCapture("FrontCam", 0); // Initilaizing cameras; if cameras arent plugged in, will error
         m_cameraServer.getInstance().startAutomaticCapture("BackCam", 1);     
     }
     
     /* EXPLAINING THE USE OF 'modeAdder':
-    * lifterLevel will either be offset by +1 (ball mode) or 0 (hatch mode). It starts at +1.
-    * The lifter levels are as follows: -1=bottom, 0=bottom, 1=hatch1, 2=ball1, 3=hatch2, 4=ball2, 5=hatch3, 6=ball3
-    * The -1 is the bottom in the hatch mode, and 0 is bottom for the ball mode.
-    * There are no specific levels for the loading station because we pick balls up from the ground,
-    * and the hatch receptacle is at the same level as hatch1. There isn't a level for BallCargoShip because
-    * our primary focus is the rocket.
+     * lifterLevel will either be offset by +1 (ball mode) or 0 (hatch mode). It starts at +1.
+     * The lifter levels are as follows: -1=bottom, 0=bottom, 1=hatch1, 2=ball1, 3=hatch2, 4=ball2, 5=hatch3, 6=ball3
+     * The -1 is the bottom in the hatch mode, and 0 is bottom for the ball mode.
+     * There are no specific levels for the loading station because we pick balls up from the ground,
+     * and the hatch receptacle is at the same level as hatch1. There isn't a level for BallCargoShip because
+     * our primary focus is the rocket. AUTOMATED LIFTER IS CURRENTLY UNUSED
     */
-    
+
     public void lifterOperatorCode() {
         if (autoLift == !autoLift) {
             switch (lifterLevel) {
@@ -156,7 +156,7 @@ public class Robot extends TimedRobot {
                 autoLift = !autoLift;  // true to false; v.v.
                 System.out.println("Automated Lifter: " + autoLift);
             }*/
-            if (autoLift == !autoLift) {//code works, Laser Sensor not finished, removed until laser works
+            if (autoLift == !autoLift) { //code works, Laser Sensor not finished, removed until laser works
                 if (m_stickPlayer.getRawButtonPressed(kButtonB)) {
                     modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
                     if (modeAdder == 1) {
@@ -194,7 +194,7 @@ public class Robot extends TimedRobot {
                 autoLift = !autoLift;  // true to false; v.v.
                 System.out.println("Automated Lifter: " + autoLift);
             }*/
-            if (false) {/*autoLift) {*/ // Autolift is jerky
+            if (autoLift == !autoLift) { // Autolift is jerky
                 if (m_stick.getRawButtonPressed(kButtonB)) {
                     modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
                     if (modeAdder == 1) {
@@ -254,26 +254,26 @@ public class Robot extends TimedRobot {
         }
 
         if (twoPlayer) {
-            if (m_stickPlayer.getRawButtonPressed(kButtonRT)) {//Switches between motor for balls being off or on
+            if (m_stickPlayer.getRawButtonPressed(kButtonRT)) { //Switches between motor for balls being off or on
                 grabberRunning = true;
                 constantIntake = !constantIntake;
                 System.out.println("Grabber Intake: " + constantIntake);
             }
-            if (m_stickPlayer.getRawButtonPressed(kButtonLT)) {//Stops motor from spinning
+            if (m_stickPlayer.getRawButtonPressed(kButtonLT)) { //Stops motor from spinning
                 grabberRunning = false;
                 constantIntake = false;
             }
-            if (m_stickPlayer.getRawButtonPressed(kButtonX))//Toggles Hatch vacuum 
+            if (m_stickPlayer.getRawButtonPressed(kButtonX)) //Toggles hatch vacuum
                 m_sucker.Suck();
-            if (m_stickPlayer.getRawButtonPressed(kButtonY))//Extends Hatch out, Button toggles between extended and retracted
+            if (m_stickPlayer.getRawButtonPressed(kButtonY)) //Toggles between extended/retracted hatch piston
                 m_sucker.Extend();
         } else {
-            if (m_stick.getRawButtonPressed(kButtonRT)) {//Toggles between between grabbing or shooting
+            if (m_stick.getRawButtonPressed(kButtonRT)) { //Toggles between between grabbing or ejecting
                 grabberRunning = true;
                 constantIntake = !constantIntake;
                 System.out.println("Grabber Intake: " + constantIntake);
             }
-            if (m_stick.getRawButtonPressed(kButtonLT)) {//Kills the motot
+            if (m_stick.getRawButtonPressed(kButtonLT)) { //Kills the motor
                 grabberRunning = false;
                 constantIntake = false;
             }
@@ -285,20 +285,20 @@ public class Robot extends TimedRobot {
     }
     
     @Override
-    public void autonomousInit() {//Teleop is being used, just incase FRC checks autonomous mode
-        teleopInit();
+    public void autonomousInit() {//Teleop is being used, just in case FRC checks autonomous mode
+        teleopInit(); // All relevant auto and teleop init functions are the same
     }
 
     @Override
     public void autonomousPeriodic() {
         mainPeriodic();
-        lifterOperatorCode(); // The functionality of this line of code is referenced in issue #25
+        lifterOperatorCode(); // The functionality of this line of code is referenced in issue #25 [it works]
 
     }
     
     @Override
     public void teleopInit() {
-        m_compressor.start(); // If it failed in robotInit(), just in case.
+        m_compressor.start();
         macroIndex = 0;
         grabberRunning = false;
         constantIntake = false;

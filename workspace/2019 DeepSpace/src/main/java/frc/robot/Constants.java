@@ -14,7 +14,7 @@ public class Constants {
     public static final int kPWMRearLeft = 1;
     public static final int kPWMFrontRight = 2;
     public static final int kPWMFrontLeft = 3;
-    public static final int kPWMLifter = 4;
+    public static final int kPWMLifter = 4; // Connects to Talon
     public static final int kPWMGrabber = 5;
     public static final int kPWMLiftersensor = 6;
 
