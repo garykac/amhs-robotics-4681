@@ -11,8 +11,13 @@ Unless otherwise specified, all robotics meetings take place in the portables.
 
 ### Unbag Time 1
 * Sat 2 Mar - Fri 8 Mar, 6 cumulative hours
-    * Potential series of meetings lasting more than 2 hours
-    * The series of 1, 2, or 3 meetings must total up to 6 hours.
+    * Sat 2 Mar - 10 am to 2 pm
+        * RESULTED IN 3 HOURS 25 MINUTES OF OUT OF BAG TIME
+        * 2 HOURS 35 MINUTES LEFT
+    * Thurs 7 Mar - 3 pm to 5:45 pm
+
+### Auburn Mountainview Competition:
+**See: Below, and [Itinerary (proposed)](docs/2019/itinerary_AuburnMtView.md)**
     
 ### Unbag Time 2
 * Sat 16 Mar - Fri 22 Mar, 6 cumulative hours
