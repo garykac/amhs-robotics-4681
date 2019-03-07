@@ -29,9 +29,17 @@ public class Walker {
         //System.out.println("Straightening Legs");
     }
 
+    public void ExtendFrontLegs() {
+        m_legs.ExtendFront(true);
+    }
+
     public void RetractFrontLegs() {
         m_legs.ExtendFront(false);
         //System.out.println("Retract Front Legs");
+    }
+
+    public void ExtendBackLegs() {
+        m_legs.ExtendBack(true);
     }
 
     public void RetractBackLegs() {
@@ -49,10 +57,11 @@ public class Walker {
                 StraightenLegs();
                 break;
             case 1:
-                RaiseRobot();
+                ExtendBackLegs();
                 break;
             case 2:
                 Walk();
+                ExtendFrontLegs();
                 break;
             case 3:
                 RetractBackLegs();
