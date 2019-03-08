@@ -61,9 +61,9 @@ public class Walker {
                 break;
             case 2:
                 Walk();
-                ExtendFrontLegs();
                 break;
             case 3:
+                ExtendFrontLegs();
                 RetractBackLegs();
                 break;
             case 4:
