@@ -7,18 +7,20 @@ The competition takes place on Sat 9 Mar and Sun 10 Mar.
 Auburn Mountainview High School
 28900 124th Ave SE, Auburn, WA 98092
 
-### Itinerary (proposed):
+### Itinerary:
 
 * **Mon 4 Mar - Thu 7 Mar :** Pack up items in portable, load into van
-  * Thu 7 Mar, 2:45pm - Pack up competition materials into van/bus
 
 * **Fri 8 Mar :** Drive to Auburn Mt.View HS; Set up
-  * 3:40pm - Depart from AMHS
-  * 4:55pm - Arrive at Auburn Mt.View HS: unload
+  * 12:00pm - Take inventory
+  * 2:30pm - Pick up dinner (bring money)
+  * 3:00pm - Depart from AMHS
+  * 4:35pm - Arrive at Auburn Mt.View HS: unload
   * 5:00pm - Pits Open: build pit, robot inspection
     * **Don't forget those safety goggles!**
-  * 8:30pm - Depart from AMVHS
-  * 9:30pm - Arrive at AMHS
+  * 9:00pm - **Pits Close**
+  * 9:00pm - Depart from AMVHS
+  * 10:00pm - Arrive at AMHS
   
 * **Sat 9 Mar:** Competitions, Day 1
   * 6:45am - Meet at AMHS for bus (?)
