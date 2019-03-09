@@ -1,11 +1,15 @@
+# Competition - Auburn Mountainview
+
+## Sat 9 Mar and Sun 10 Mar
+
 This is the proposed itinerary for the Auburn Mountainview Competition.  
-The competition takes place on Sat 9 Mar and Sun 10 Mar.  
+
 [Competition Info, FIRST](https://www.firstinspires.org/team-event-search/event?id=37478)  
 [Competition Info, TBA](https://www.thebluealliance.com/event/2019waamv)
 [Competition Schedule](https://www.firstinspires.org/sites/default/files/uploads/frc/2019-events/2019_WAAMV_Agenda.pdf)
 
-Auburn Mountainview High School
-28900 124th Ave SE, Auburn, WA 98092
+* Auburn Mountainview High School 
+* 28900 124th Ave SE, Auburn, WA 98092 ([map](https://www.google.com/maps/place/Auburn+Mountainview+High+School/@47.3419612,-122.174061,17z/data=!4m13!1m7!3m6!1s0x54905f337d87770d:0x5ddc9b85bda5f7fc!2s28900+124th+Ave+SE,+Auburn,+WA+98092!3b1!8m2!3d47.3419617!4d-122.171867!3m4!1s0x54905f33339e7f1f:0xedba6c6d3fa95904!8m2!3d47.3419907!4d-122.1719807))
 
 ### Itinerary:
 
@@ -23,7 +27,7 @@ Auburn Mountainview High School
   * 10:00pm - Arrive at AMHS
   
 * **Sat 9 Mar:** Competitions, Day 1
-  * 6:45am - Meet at AMHS for bus (?)
+  * 6:45am - Meet at AMHS for ~~bus~~ carpool
   * 6:55am - Depart from AMHS
     * Self-transportation can meet us at AMVHS at 7:55am
     * **Don't forget those safety goggles!**
