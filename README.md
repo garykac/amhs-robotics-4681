@@ -9,7 +9,7 @@ Est. 2013
 
 Unless otherwise specified, all robotics meetings take place in the portables.
 
-[Previous meetings...](docs/2019/meetingshistory.md)
+[Previous meetings...](docs/2019/meetings-history.md)
 
 ## Competitions
 
