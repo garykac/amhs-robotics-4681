@@ -97,7 +97,7 @@ public class Lifter {
         }
     }
 
-    public void GoToFirstBallLevel() {
+    /*public void GoToFirstBallLevel() {
         if (m_height.atFirstBallLevel()) {
             m_winch.set(0);
         } else if (m_height.getDistance() < m_height.ballFirstLevelHeight) {
@@ -155,5 +155,5 @@ public class Lifter {
         } else if (m_height.getDistance() > m_height.hatchThirdLevelHeight) {
             m_winch.set(-kMotorPowerLevel);
         }
-    }
+    }*/
 }
