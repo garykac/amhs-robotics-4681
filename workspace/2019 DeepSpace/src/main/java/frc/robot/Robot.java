@@ -34,8 +34,8 @@ public class Robot extends TimedRobot {
     private static final int kButtonJoystickRight = 12;
     private static final int kJoystickChannel = 0;
     private static final int kJoystickPlayerChannel = 1;
-    // For testing
-    private static final double kMotorPowerLevel = .8;
+    // For testing CHANGE IT FOR COMPETITION
+    private static final double kMotorPowerLevel = 1.0;
     // To manage the controls for the Lifter
     private boolean currentlyPressed = false;
     private boolean currentlyPressedPlayer = false;

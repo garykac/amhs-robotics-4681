@@ -30,6 +30,7 @@ public class Lifter {
         m_height.lifterHeightInit();
 
         m_DIOLifterSwitch = new DigitalInput(Constants.kDIOLifterSwitch);
+        
     }
     public void Lift() {
         m_winch.set(kMotorPowerLevel);
@@ -52,6 +53,33 @@ public class Lifter {
     public void Stop() {
         m_winch.set(0);
     }
+    boolean reached = false;
+    int offset = 5;
+    public void goToHeight(int targetHeight) {
+        if (m_height.getDistance() < (targetHeight + offset) && !reached) {
+            m_winch.set(kMotorPowerLevel);//Copying of Lift() function, code errors if calling .Lower() should be fixed at later date
+        }
+        else {
+            reached = true;
+        }
+        if (m_height.getDistance() < (targetHeight - offset) && reached) {
+            reached = false;
+        }
+        if (m_height.getDistance() > (targetHeight + offset)) {//Copying of Lower() function, code errors if calling .Lower() should be fixed at later date
+            if (!m_DIOLifterSwitch.get()) { //MAY NEED TO FLIP OPPOSITE OF SWITCH
+                m_winch.set(-kMotorPowerLevel);
+                System.out.println("Lowering");
+            } else {
+                m_winch.set(0); 
+                System.out.println("AT BOTTOM");
+            }
+        }
+    }
+
+
+
+
+
 
     public void GoToBottom() {
         if (m_height.atBottom() || m_DIOLifterSwitch.get()) {
