@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
     private Walker m_walker;
 
     private Lifter m_lifter;
-
+    
     private Grabber m_grabber;
 
     private Sucker m_sucker;
@@ -129,25 +129,25 @@ public class Robot extends TimedRobot {
             switch (lifterLevel) {
                 case -1:
                 case 0:
-                    m_lifter.GoToBottom();
+                    m_lifter.goToHeight(0);
                     break;
                 case 1:
-                    m_lifter.GoToFirstHatchLevel();
+                    m_lifter.goToHeight(LifterHeight.hatchFirstLevelHeight);
                     break;
                 case 2:
-                    m_lifter.GoToFirstBallLevel();
+                    m_lifter.goToHeight(LifterHeight.ballFirstLevelHeight);
                     break;
                 case 3:
-                    m_lifter.GoToSecondHatchLevel();
+                    m_lifter.goToHeight(LifterHeight.hatchSecondLevelHeight);
                     break;
                 case 4:
-                    m_lifter.GoToBallLoadingStation();
+                    m_lifter.goToHeight(LifterHeight.ballLoadingStationHeight);
                     break;
                 case 5:
-                    m_lifter.GoToThirdHatchLevel();
+                    m_lifter.goToHeight(LifterHeight.hatchThirdLevelHeight);
                     break;
                 case 6:
-                    m_lifter.GoToSecondBallLevel();
+                    m_lifter.goToHeight(LifterHeight.ballSecondLevelHeight);
                     break;
             }
         }

@@ -55,7 +55,7 @@ public class Lifter {
     }
     boolean reached = false;
     int offset = 5;
-    public void goToHeight(int targetHeight) {
+    public void goToHeight(double targetHeight) {
         if (m_height.getDistance() < (targetHeight + offset) && !reached) {
             m_winch.set(kMotorPowerLevel);//Copying of Lift() function, code errors if calling .Lower() should be fixed at later date
         }
@@ -105,7 +105,7 @@ public class Lifter {
         } else if (m_height.getDistance() > m_height.ballFirstLevelHeight) {
             m_winch.set(-kMotorPowerLevel);
         }
-    }
+}
     
     public void GoToSecondBallLevel() {
         if (m_height.atSecondBallLevel()) {
