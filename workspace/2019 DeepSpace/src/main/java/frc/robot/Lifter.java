@@ -15,6 +15,9 @@ public class Lifter {
     private PWMTalonSRX m_winch;
 
     private static final double kMotorPowerLevel = 1;
+    boolean reached = false;
+    int offset = 5;
+    int lifterSpeed = 0;
 
     private LifterHeight m_height;
     
@@ -53,8 +56,34 @@ public class Lifter {
     public void Stop() {
         m_winch.set(0);
     }
-    boolean reached = false;
-    int offset = 5;
+    
+    public void gotoID(int ID) {
+        switch (ID) {
+            case -1:
+            case 0:
+                goToHeight(0);
+                break;
+            case 1:
+                goToHeight(m_height.hatchFirstLevelHeight);
+                break;
+            case 2:
+                goToHeight(m_height.ballFirstLevelHeight);
+                break;
+            case 3:
+                goToHeight(m_height.hatchSecondLevelHeight);
+                break;
+            case 4:
+                goToHeight(m_height.ballLoadingStationHeight);
+                break;
+            case 5:
+                goToHeight(m_height.hatchThirdLevelHeight);
+                break;
+            case 6:
+                goToHeight(m_height.ballSecondLevelHeight);
+                break;
+        }
+    }
+    
     public void goToHeight(double targetHeight) {
         if (m_height.getDistance() < (targetHeight + offset) && !reached) {
             m_winch.set(kMotorPowerLevel);//Copying of Lift() function, code errors if calling .Lower() should be fixed at later date
