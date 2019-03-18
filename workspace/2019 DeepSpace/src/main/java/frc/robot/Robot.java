@@ -32,11 +32,13 @@ public class Robot extends TimedRobot {
     private static final int kButtonStart = 10;
     private static final int kButtonJoystickLeft = 11;
     private static final int kButtonJoystickRight = 12;
+    
     private static final int kJoystickChannel = 0;
     private static final int kJoystickPlayerChannel = 1;
-    // For testing CHANGE IT FOR COMPETITION
+    
     private static final double kMotorPowerLevel = 1.0;
-    // To manage the controls for the Lifter
+    
+    // To manage the controls for the Lifter and LineFollower
     private boolean currentlyPressed = false;
     private boolean currentlyPressedPlayer = false;
     private boolean ballMode= true;
@@ -123,113 +125,87 @@ public class Robot extends TimedRobot {
      * and the hatch receptacle is at the same level as hatch1. There isn't a level for BallCargoShip because
      * our primary focus is the rocket. AUTOMATED LIFTER IS CURRENTLY UNUSED
     */
-
-    public void lifterOperatorCode() {
-        if (autoLift == !autoLift) {
-            switch (lifterLevel) {
-                case -1:
-                case 0:
-                    m_lifter.goToHeight(0);
-                    break;
-                case 1:
-                    m_lifter.goToHeight(LifterHeight.hatchFirstLevelHeight);
-                    break;
-                case 2:
-                    m_lifter.goToHeight(LifterHeight.ballFirstLevelHeight);
-                    break;
-                case 3:
-                    m_lifter.goToHeight(LifterHeight.hatchSecondLevelHeight);
-                    break;
-                case 4:
-                    m_lifter.goToHeight(LifterHeight.ballLoadingStationHeight);
-                    break;
-                case 5:
-                    m_lifter.goToHeight(LifterHeight.hatchThirdLevelHeight);
-                    break;
-                case 6:
-                    m_lifter.goToHeight(LifterHeight.ballSecondLevelHeight);
-                    break;
+    
+    public void lifterCodeOnePlayer() {
+        /*if (m_stick.getRawButtonPressed(kButtonA)){
+            autoLift = !autoLift;  // true to false; v.v.
+            System.out.println("Automated Lifter: " + autoLift);
+        }*/
+        if (autoLift) {
+            m_lifter.gotoID(lifterLevel);
+            if (m_stick.getRawButtonPressed(kButtonB)) {
+                modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
+                if (modeAdder == 1) {
+                    System.out.println("Ball Mode");
+                } else {
+                    System.out.println("Hatch Mode");
+                }
+                lifterLevel += modeAdder;
             }
-        }
-        if (twoPlayer) { // Works with the controllers
-            /*if (m_stickPlayer.getRawButtonPressed(kButtonA)) {
-                autoLift = !autoLift;  // true to false; v.v.
-                System.out.println("Automated Lifter: " + autoLift);
-            }*/
-            if (autoLift == !autoLift) { //code works, Laser Sensor not finished, removed until laser works
-                if (m_stickPlayer.getRawButtonPressed(kButtonB)) {
-                    modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
-                    if (modeAdder == 1) {
-                        System.out.println("Ball Mode");
-                    } else {
-                        System.out.println("Hatch Mode");
-                    }
-                    lifterLevel += modeAdder;
-                }
-                if (m_stickPlayer.getPOV() == 0) {//D-Pad Up Arrow
-                    if (lifterLevel <= 4 && !currentlyPressedPlayer)
-                        lifterLevel += 2;
-                    currentlyPressedPlayer = true;
-                } else if (m_stickPlayer.getPOV() == 180) {//D-Pad Down Arrow
-                    if (lifterLevel >= 1 && !currentlyPressedPlayer)
-                        lifterLevel -= 2;
-                    currentlyPressedPlayer = true;
-                } else if (m_stickPlayer.getPOV() == 270) {//D-Pad Right Arrow
-                    lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
-                } else {
-                    currentlyPressedPlayer = false;      
-                }
-            } else { // The only other choice is autoLift = false;
-                if (m_stickPlayer.getPOV() == 0) {//D-Pad Up Arrow
-                    m_lifter.Lift();
-                } else if (m_stickPlayer.getPOV() == 180) {//D-Pad Down Arrow
-                    m_lifter.Lower();
-                } else {
-                    m_lifter.Stop();
-                }
+            if (m_stick.getPOV() == 0) {
+                if (lifterLevel <= 4 && !currentlyPressed)
+                    lifterLevel += 2;
+                currentlyPressed = true;
+            } else if (m_stick.getPOV() == 180) {
+                if (lifterLevel >= 1 && !currentlyPressed)
+                    lifterLevel -= 2;
+                currentlyPressed = true;
+            } else if (m_stick.getPOV() == 270) {
+                lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
+            } else {
+                currentlyPressed = false;      
             }
-        // END OF TWO PLAYER CODE
-        } else { // ELSE IF USING ONLY ONE JOYSTICK
-            /*if (m_stick.getRawButtonPressed(kButtonA)){
-                autoLift = !autoLift;  // true to false; v.v.
-                System.out.println("Automated Lifter: " + autoLift);
-            }*/
-            if (autoLift == !autoLift) { // Autolift is jerky
-                if (m_stick.getRawButtonPressed(kButtonB)) {
-                    modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
-                    if (modeAdder == 1) {
-                        System.out.println("Ball Mode");
-                    } else {
-                        System.out.println("Hatch Mode");
-                    }
-                    lifterLevel += modeAdder;
-                }
-                if (m_stick.getPOV() == 0) {
-                    if (lifterLevel <= 4 && !currentlyPressedPlayer)
-                        lifterLevel += 2;
-                    currentlyPressedPlayer = true;
-                } else if (m_stick.getPOV() == 180) {
-                    if (lifterLevel >= 1 && !currentlyPressedPlayer)
-                        lifterLevel -= 2;
-                    currentlyPressedPlayer = true;
-                } else if (m_stick.getPOV() == 270) {
-                    lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
-                } else {
-                    currentlyPressedPlayer = false;      
-                }
-            } else { // The only other choice is autoLift = false;
-                if (m_stick.getPOV() == 0) {
-                    m_lifter.Lift();
-                } else if (m_stick.getPOV() == 180) {
-                    m_lifter.Lower();
-                } else {
-                    m_lifter.Stop();
-                }
+        } else { // The only other choice is autoLift = false;
+            if (m_stick.getPOV() == 0) {
+                m_lifter.Lift();
+            } else if (m_stick.getPOV() == 180) {
+                m_lifter.Lower();
+            } else {
+                m_lifter.Stop();
             }
         }
     }
+    
+    public void lifterCodeTwoPlayer() {
+        /*if (m_stickPlayer.getRawButtonPressed(kButtonA)){
+            autoLift = !autoLift;  // true to false; v.v.
+            System.out.println("Automated Lifter: " + autoLift);
+        }*/
+        if (autoLift) { //code works, Laser Sensor not finished, removed until laser works
+            if (m_stickPlayer.getRawButtonPressed(kButtonB)) {
+                modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
+                if (modeAdder == 1) {
+                    System.out.println("Ball Mode");
+                } else {
+                    System.out.println("Hatch Mode");
+                }
+                lifterLevel += modeAdder;
+            }
+            if (m_stickPlayer.getPOV() == 0) {//D-Pad Up Arrow
+                if (lifterLevel <= 4 && !currentlyPressedPlayer)
+                    lifterLevel += 2;
+                currentlyPressedPlayer = true;
+            } else if (m_stickPlayer.getPOV() == 180) {//D-Pad Down Arrow
+                if (lifterLevel >= 1 && !currentlyPressedPlayer)
+                    lifterLevel -= 2;
+                currentlyPressedPlayer = true;
+            } else if (m_stickPlayer.getPOV() == 270) {//D-Pad Right Arrow
+                lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
+            } else {
+                currentlyPressedPlayer = false;      
+            }
+        } else { // The only other choice is autoLift = false;
+            if (m_stickPlayer.getPOV() == 0) {//D-Pad Up Arrow
+                m_lifter.Lift();
+            } else if (m_stickPlayer.getPOV() == 180) {//D-Pad Down Arrow
+                m_lifter.Lower();
+            } else {
+                m_lifter.Stop();
+            } 
+        }
+    }
 
-    public void mainPeriodic() {
+    public void mainPeriodicOnePlayer() {
         m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
                                     kMotorPowerLevel * m_stick.getY(),
                                     -kMotorPowerLevel * m_stick.getZ(), 0.0);
@@ -242,46 +218,47 @@ public class Robot extends TimedRobot {
         } else {
             m_grabber.Stop();
         }
-        // You have to press both sticks in to switch in and out of two player mode
-        if (m_stick.getRawButton(kButtonJoystickRight) && m_stick.getRawButton(kButtonJoystickLeft)) {
-            if (!currentlyPressed) {
-                twoPlayer = !twoPlayer;
-                System.out.println("\nTwo Player Mode: " + twoPlayer);
-            }
-            currentlyPressed = true;
-        } else {
-            currentlyPressed = false;
+        if (m_stick.getRawButtonPressed(kButtonRT)) { //Toggles between between grabbing or ejecting
+            grabberRunning = true;
+            constantIntake = !constantIntake;
+            System.out.println("Grabber Intake: " + constantIntake);
         }
-
-        if (twoPlayer) {
-            if (m_stickPlayer.getRawButtonPressed(kButtonRT)) { //Switches between motor for balls being off or on
-                grabberRunning = true;
-                constantIntake = !constantIntake;
-                System.out.println("Grabber Intake: " + constantIntake);
-            }
-            if (m_stickPlayer.getRawButtonPressed(kButtonLT)) { //Stops motor from spinning
-                grabberRunning = false;
-                constantIntake = false;
-            }
-            if (m_stickPlayer.getRawButtonPressed(kButtonX)) //Toggles hatch vacuum
-                m_sucker.Suck();
-            if (m_stickPlayer.getRawButtonPressed(kButtonY)) //Toggles between extended/retracted hatch piston
-                m_sucker.Extend();
-        } else {
-            if (m_stick.getRawButtonPressed(kButtonRT)) { //Toggles between between grabbing or ejecting
-                grabberRunning = true;
-                constantIntake = !constantIntake;
-                System.out.println("Grabber Intake: " + constantIntake);
-            }
-            if (m_stick.getRawButtonPressed(kButtonLT)) { //Kills the motor
-                grabberRunning = false;
-                constantIntake = false;
-            }
-            if (m_stick.getRawButtonPressed(kButtonX))
-                m_sucker.Suck();
-            if (m_stick.getRawButtonPressed(kButtonY))
-                m_sucker.Extend();
+        if (m_stick.getRawButtonPressed(kButtonLT)) { //Kills the motor
+            grabberRunning = false;
+            constantIntake = false;
         }
+        if (m_stick.getRawButtonPressed(kButtonX))
+            m_sucker.Suck();
+        if (m_stick.getRawButtonPressed(kButtonY))
+            m_sucker.Extend();
+    }
+    
+    public void mainPeriodicTwoPlayer() {
+        m_robotDrive.driveCartesian(-kMotorPowerLevel * m_stick.getX(),
+                                    kMotorPowerLevel * m_stick.getY(),
+                                    -kMotorPowerLevel * m_stick.getZ(), 0.0);
+        if (grabberRunning) {//Two Constants used, grabberRunning is whether or not ball motor is on
+            if (constantIntake) {//constnatIntake is whether or not the ball is being pulled in or 
+                m_grabber.Grab();
+            } else {
+                m_grabber.Eject();
+            }
+        } else {
+            m_grabber.Stop();
+        }
+        if (m_stickPlayer.getRawButtonPressed(kButtonRT)) { //Switches between motor for balls being off or on
+            grabberRunning = true;
+            constantIntake = !constantIntake;
+            System.out.println("Grabber Intake: " + constantIntake);
+        }
+        if (m_stickPlayer.getRawButtonPressed(kButtonLT)) { //Stops motor from spinning
+            grabberRunning = false;
+            constantIntake = false;
+        }
+        if (m_stickPlayer.getRawButtonPressed(kButtonX)) //Toggles hatch vacuum
+            m_sucker.Suck();
+        if (m_stickPlayer.getRawButtonPressed(kButtonY)) //Toggles between extended/retracted hatch piston
+            m_sucker.Extend();
     }
     
     @Override
@@ -291,9 +268,23 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousPeriodic() {
-        mainPeriodic();
-        lifterOperatorCode(); // The functionality of this line of code is referenced in issue #25 [it works]
-
+        // Press both sticks in to switch between one player and two player modes.
+        if (m_stick.getRawButton(kButtonJoystickRight) && m_stick.getRawButton(kButtonJoystickLeft)) {
+            if (!currentlyPressed) {
+                twoPlayer = !twoPlayer;
+                System.out.println("\nTwo Player Mode: " + twoPlayer);
+            }
+            currentlyPressed = true;
+        } else {
+            currentlyPressed = false;
+        }
+        if(twoPlayer) {
+            mainPeriodicTwoPlayer();
+            lifterCodeTwoPlayer();
+        } else {
+            mainPeriodicOnePlayer();
+            lifterCodeOnePlayer();
+        }
     }
     
     @Override
@@ -306,11 +297,9 @@ public class Robot extends TimedRobot {
                 
     @Override
     public void teleopPeriodic() {
-        mainPeriodic();
-        lifterOperatorCode();
-
+        autonomousPeriodic(); // All relevant methods are the same.
+        
         // CLIMBING CODE, SPECIFIC TO TELEOP
-        // Only valid for main joystick. It's easier that way.
         if (m_stick.getRawButtonPressed(kButtonStart)) {
             // Proceed to next climbing step.
             macroIndex++;
