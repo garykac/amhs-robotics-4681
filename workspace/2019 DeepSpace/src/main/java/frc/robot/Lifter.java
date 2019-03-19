@@ -84,16 +84,16 @@ public class Lifter {
     }
     
     public void goToHeight(double targetHeight) {
-        if (m_height.getDistance() < (targetHeight + offset) && !reached) {
+        if (getDistance() < (targetHeight + offset) && !reached) {
             Lift();
         } else {
             reached = true;
             Stop();
         }
-        if (m_height.getDistance() < (targetHeight - offset) && reached) {
+        if (getDistance() < (targetHeight - offset) && reached) {
             reached = false;
         }
-        if (m_height.getDistance() > (targetHeight + offset)) {
+        if (getDistance() > (targetHeight + offset)) {
             Lower();
         } else {
             reached = true;
