@@ -300,20 +300,17 @@ public class Robot extends TimedRobot {
         autonomousPeriodic(); // All relevant methods are the same.
         
         // CLIMBING CODE, SPECIFIC TO TELEOP
+        m_climber.Climb(macroIndex);
         if (m_stick.getRawButtonPressed(kButtonStart)) {
             // Proceed to next climbing step.
             macroIndex++;
-            System.out.println(macroIndex);
             m_walker.Climb(macroIndex);
-            if (macroIndex == 4) {
+            if (macroIndex == 4)
                 macroIndex = -1;
-            }
         }
         if (m_stick.getRawButtonPressed(kButtonBottom)) {
             // If we need to restart the climbing process.
             macroIndex = -1;
-            System.out.println(macroIndex);
-            m_walker.Climb(macroIndex);
         }
         
         //Prints out values for lidar scanner 
