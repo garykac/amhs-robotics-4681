@@ -171,7 +171,8 @@ public class Robot extends TimedRobot {
             autoLift = !autoLift;  // true to false; v.v.
             System.out.println("Automated Lifter: " + autoLift);
         }*/
-        if (autoLift) { //code works, Laser Sensor not finished, removed until laser works
+        if (autoLift) { //code works, Laser Sensor not finished
+            m_lifter.gotoID(lifterLevel);
             if (m_stickPlayer.getRawButtonPressed(kButtonB)) {
                 modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
                 if (modeAdder == 1) {
