@@ -1,4 +1,5 @@
 package frc.robot;
+
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -13,9 +14,9 @@ public class Lifter {
 
     private static final double kMotorPowerLevel = 1;
     boolean reached = false;
-    int offset = 5;
-    int lifterSpeed = 0;
-    int kspeedSteps = 50; // 50 is an arbitrary step amount. if too slow, decrease.
+    private int offset = 5;
+    private int lifterSpeed = 0;
+    private int kspeedSteps = 50; // arbitrary number. if too slow, decrease
 
     private LifterHeight m_height;
     
