@@ -16,7 +16,7 @@ public class Lifter {
     boolean reached = false;
     private int offset = 5;
     private int lifterSpeed = 0;
-    private int kspeedSteps = 50; // arbitrary number. if too slow, decrease
+    private int kSpeedSteps = 50; // arbitrary number. if too slow, decrease
 
     private LifterHeight m_height;
     
@@ -38,16 +38,16 @@ public class Lifter {
     
     public void Lift() {
         if (lifterSpeed < kSpeedSteps)  
-            speed++;
+            lifterSpeed++;
         m_winch.set(lifterSpeed/kSpeedSteps);
     }
 
     public void Lower() {
         if (!m_DIOLifterSwitch.get()) {
-            if (speed > -kSpeedSteps)
-                speed--;
+            if (lifterSpeed > -kSpeedSteps)
+                lifterSpeed--;
         } else {
-            speed = 0;
+            lifterSpeed = 0;
         }
         m_winch.set(lifterSpeed/kSpeedSteps);
     }

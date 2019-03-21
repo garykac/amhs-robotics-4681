@@ -301,7 +301,7 @@ public class Robot extends TimedRobot {
         autonomousPeriodic(); // All relevant methods are the same.
         
         // CLIMBING CODE, SPECIFIC TO TELEOP
-        m_climber.Climb(macroIndex);
+        m_walker.Climb(macroIndex);
         if (m_stick.getRawButtonPressed(kButtonStart)) {
             // Proceed to next climbing step.
             macroIndex++;
