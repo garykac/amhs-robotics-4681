@@ -16,7 +16,7 @@ public class Lifter {
     boolean reached = false;
     private int offset = 5;
     private int lifterSpeed = 0;
-    private int kSpeedSteps = 50; // arbitrary number. if too slow, decrease
+    private int kSpeedSteps = 10; // arbitrary number. if too slow, decrease
 
     private LifterHeight m_height;
     
