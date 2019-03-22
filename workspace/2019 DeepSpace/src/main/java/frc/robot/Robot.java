@@ -127,10 +127,10 @@ public class Robot extends TimedRobot {
     */
     
     public void lifterCodeOnePlayer() {
-        /*if (m_stick.getRawButtonPressed(kButtonA)){
+        if (m_stick.getRawButtonPressed(kButtonA)){
             autoLift = !autoLift;  // true to false; v.v.
             System.out.println("Automated Lifter: " + autoLift);
-        }*/
+        }
         if (autoLift) {
             m_lifter.gotoID(lifterLevel);
             if (m_stick.getRawButtonPressed(kButtonB)) {
@@ -151,7 +151,7 @@ public class Robot extends TimedRobot {
                     lifterLevel -= 2;
                 currentlyPressed = true;
             } else if (m_stick.getPOV() == 270) {
-                lifterLevel = (int).5*(modeAdder - 1); // This will return it to the correct bottom, no matter the mode.
+                lifterLevel = (int)0.5*(modeAdder + 1); // This will return it to the correct bottom, no matter the mode.
             } else {
                 currentlyPressed = false;      
             }
@@ -167,12 +167,13 @@ public class Robot extends TimedRobot {
     }
     
     public void lifterCodeTwoPlayer() {
-        /*if (m_stickPlayer.getRawButtonPressed(kButtonA)){
+        if (m_stickPlayer.getRawButtonPressed(kButtonA)){
             autoLift = !autoLift;  // true to false; v.v.
             System.out.println("Automated Lifter: " + autoLift);
-        }*/
+        }
         if (autoLift) { //code works, Laser Sensor not finished
             m_lifter.gotoID(lifterLevel);
+
             if (m_stickPlayer.getRawButtonPressed(kButtonB)) {
                 modeAdder *= -1; // Switches between -1 and 1, used to switch between two types of preset heights
                 if (modeAdder == 1) {
@@ -187,7 +188,7 @@ public class Robot extends TimedRobot {
                     lifterLevel += 2;
                 currentlyPressedPlayer = true;
             } else if (m_stickPlayer.getPOV() == 180) {//D-Pad Down Arrow
-                if (lifterLevel >= 1 && !currentlyPressedPlayer)
+                if (lifterLevel >= 2 && !currentlyPressedPlayer)
                     lifterLevel -= 2;
                 currentlyPressedPlayer = true;
             } else if (m_stickPlayer.getPOV() == 270) {//D-Pad Right Arrow
@@ -270,15 +271,8 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         // Press both sticks in to switch between one player and two player modes.
-        if (m_stick.getRawButton(kButtonJoystickRight) && m_stick.getRawButton(kButtonJoystickLeft)) {
-            if (!currentlyPressed) {
-                twoPlayer = !twoPlayer;
-                System.out.println("\nTwo Player Mode: " + twoPlayer);
-            }
-            currentlyPressed = true;
-        } else {
-            currentlyPressed = false;
-        }
+        if (m_stick.getRawButtonPressed(kButtonJoystickRight))
+            twoPlayer = !twoPlayer;
         if(twoPlayer) {
             mainPeriodicTwoPlayer();
             lifterCodeTwoPlayer();

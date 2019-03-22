@@ -37,9 +37,10 @@ public class Lifter {
     }
     
     public void Lift() {
-        if (lifterSpeed < kSpeedSteps)  
+        /*if (lifterSpeed < kSpeedSteps)  
             lifterSpeed++;
-        m_winch.set(lifterSpeed/kSpeedSteps);
+        m_winch.set(lifterSpeed/kSpeedSteps);*/
+        m_winch.set(1);
     }
 
     public void Lower() {
@@ -59,7 +60,6 @@ public class Lifter {
     
     public void gotoID(int ID) {
         switch (ID) {
-            case -1:
             case 0:
                 goToHeight(0);
                 break;
@@ -85,16 +85,9 @@ public class Lifter {
     }
     
     public void goToHeight(double targetHeight) {
-        if (getDistance() < (targetHeight + offset) && !reached) {
+        if (getDistance() < (targetHeight - 3)) {
             Lift();
-        } else {
-            reached = true;
-            Stop();
-        }
-        if (getDistance() < (targetHeight - offset) && reached) {
-            reached = false;
-        }
-        if (getDistance() > (targetHeight + offset)) {
+        } else if (getDistance() > (targetHeight)) {
             Lower();
         } else {
             reached = true;
