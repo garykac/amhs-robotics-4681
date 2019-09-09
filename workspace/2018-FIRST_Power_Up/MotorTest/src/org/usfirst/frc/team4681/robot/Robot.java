@@ -16,9 +16,6 @@ public class Robot extends TimedRobot {
 	Victor motor0;
 	Victor motor1;
 	Joystick controller;
-	boolean softMode;
-	boolean hardMode;
-	boolean eStop;
 	double kSpeed;
 
 
@@ -27,10 +24,7 @@ public class Robot extends TimedRobot {
 		this.motor0 = new Victor(0);
 		this.motor1 = new Victor(1);
 		this.controller = new Joystick(0);
-		softMode = true;
-		hardMode = false;
-		eStop = false;
-		kSpeed = 0.6;
+		kSpeed = 0.15;
 	}
 
 
@@ -42,44 +36,13 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		if (!eStop) {
-			if (controller.getRawButtonPressed(11) || controller.getRawButtonPressed(12))
-				eStop = true;
-			if (controller.getRawButtonPressed(6)) {
-				softMode = !softMode;
-				System.out.println("Soft Mode:");
-				System.out.print(softMode);
-				System.out.println();
-			}
-			if (controller.getRawButton(5)) {
-				hardMode = true;
-				System.out.println("YOU HAVE ACTIVATED HIGH SPEED MOVEMENT");
-			} else {
-				hardMode = false;
-			}
-			
-			if (softMode) {
-				kSpeed = .25;
-			} else {
-				if (!hardMode) {
-					kSpeed = .4;
-				} else {
-					if (controller.getRawButton(7)) {
-						kSpeed = .95;
-					} else {
-						kSpeed = .7;
-					}
-				}
-			}
+		if (controller.getRawButton(2))
+			kSpeed = controller.getRawButton(8) ? .70 : 0.35;
+		if (controller.getRawButtonPressed(3))
+			kSpeed = controller.getRawButton(8) ? 0.50 : 0.20;
 		
-			motor0.set(kSpeed*controller.getRawAxis(3));
-			motor1.set(kSpeed*-controller.getRawAxis(1));
-		} else {
-			System.out.println("E-STOP");
-			motor0.set(0); motor1.set(0);
-		}
-		if (controller.getRawButtonPressed(10))
-			eStop = false;
+		motor0.set(kSpeed*-controller.getRawAxis(3)*controller.getRawAxis(3));
+		motor1.set(kSpeed*controller.getRawAxis(1)*controller.getRawAxis(1));
 	}
 
 	@Override
