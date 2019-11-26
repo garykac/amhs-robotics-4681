@@ -1,6 +1,5 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -11,46 +10,89 @@ import edu.wpi.first.wpilibj.AnalogInput;
 
 public class Lifter {
     
-    //private PWMVictorSPX m_winch;
     private PWMTalonSRX m_winch;
 
     private static final double kMotorPowerLevel = 1;
+    boolean reached = false;
+    private int offset = 5;
+    private int lifterSpeed = 0;
+    private int kSpeedSteps = 10; // arbitrary number. if too slow, decrease
 
     private LifterHeight m_height;
     
     private DigitalInput m_DIOLifterSwitch;
 
     public void lifterInit() {
-        //m_winch = new PWMVictorSPX(Constants.kPWMLifter);
         m_winch = new PWMTalonSRX(Constants.kPWMLifter);
-        //change from true or false depending on which works.
         m_winch.setInverted(true);
 
         m_height = new LifterHeight();
         m_height.lifterHeightInit();
 
-        m_DIOLifterSwitch = new DigitalInput(Constants.kDIOLifterSwitch);
+        m_DIOLifterSwitch = new DigitalInput(Constants.kDIOLifterSwitch);  
     }
-    public void Lift() {
-        m_winch.set(kMotorPowerLevel);
-    }
-
+    
     public double getDistance(){
         return m_height.getDistance();
     }
+    
+    public void Lift() {
+        /*if (lifterSpeed < kSpeedSteps)  
+            lifterSpeed++;
+        m_winch.set(lifterSpeed/kSpeedSteps);*/
+        m_winch.set(1);
+    }
 
     public void Lower() {
-        if (!m_DIOLifterSwitch.get()) { //MAY NEED TO FLIP OPPOSITE OF SWITCH
-            m_winch.set(-kMotorPowerLevel);
-            System.out.println("Lowering");
+        if (!m_DIOLifterSwitch.get()) {
+            if (lifterSpeed > -kSpeedSteps)
+                lifterSpeed--;
         } else {
-            m_winch.set(0); 
-            System.out.println("AT BOTTOM");
+            lifterSpeed = 0;
         }
+        m_winch.set(lifterSpeed/kSpeedSteps);
     }
     
     public void Stop() {
+        lifterSpeed = 0;
         m_winch.set(0);
+    }
+    
+    public void gotoID(int ID) {
+        switch (ID) {
+            case 0:
+                goToHeight(0);
+                break;
+            case 1:
+                goToHeight(m_height.hatchFirstLevelHeight);
+                break;
+            case 2:
+                goToHeight(m_height.ballFirstLevelHeight);
+                break;
+            case 3:
+                goToHeight(m_height.hatchSecondLevelHeight);
+                break;
+            case 4:
+                goToHeight(m_height.ballLoadingStationHeight);
+                break;
+            case 5:
+                goToHeight(m_height.hatchThirdLevelHeight);
+                break;
+            case 6:
+                goToHeight(m_height.ballSecondLevelHeight);
+                break;
+        }
+    }
+    
+    public void goToHeight(double targetHeight) {
+        if (getDistance() < (targetHeight - 3)) {
+            Lift();
+        } else if (getDistance() > (targetHeight)) {
+            Lower();
+        } else {
+            reached = true;
+            Stop();
+        }
     }
 
     public void GoToBottom() {
@@ -66,66 +108,6 @@ public class Lifter {
             m_winch.set(0);
         } else {
             m_winch.set(kMotorPowerLevel);
-        }
-    }
-
-    public void GoToFirstBallLevel() {
-        if (m_height.atFirstBallLevel()) {
-            m_winch.set(0);
-        } else if (m_height.getDistance() < m_height.ballFirstLevelHeight) {
-            m_winch.set(kMotorPowerLevel);
-        } else if (m_height.getDistance() > m_height.ballFirstLevelHeight) {
-            m_winch.set(-kMotorPowerLevel);
-        }
-    }
-    
-    public void GoToSecondBallLevel() {
-        if (m_height.atSecondBallLevel()) {
-            m_winch.set(0);
-        } else if (m_height.getDistance() < m_height.ballSecondLevelHeight) {
-            m_winch.set(kMotorPowerLevel);
-        } else if (m_height.getDistance() > m_height.ballSecondLevelHeight) {
-            m_winch.set(-kMotorPowerLevel);
-        }
-    }
-    
-    public void GoToBallLoadingStation() {
-        if (m_height.atBallLoadingStationLevel()) {
-            m_winch.set(0);
-        } else if (m_height.getDistance() < m_height.ballLoadingStationHeight) {
-            m_winch.set(kMotorPowerLevel);
-        } else if (m_height.getDistance() > m_height.ballLoadingStationHeight) {
-            m_winch.set(-kMotorPowerLevel);
-        }
-    }
-
-    public void GoToFirstHatchLevel() {
-        if (m_height.atFirstHatchLevel()) {
-            m_winch.set(0);
-        } else if (m_height.getDistance() < m_height.hatchFirstLevelHeight) {
-            m_winch.set(kMotorPowerLevel);
-        } else if (m_height.getDistance() > m_height.hatchFirstLevelHeight) {
-            m_winch.set(-kMotorPowerLevel);
-        }
-    }
-    
-    public void GoToSecondHatchLevel() {
-        if (m_height.atSecondHatchLevel()) {
-            m_winch.set(0);
-        } else if (m_height.getDistance() < m_height.hatchSecondLevelHeight) {
-            m_winch.set(kMotorPowerLevel);
-        } else if (m_height.getDistance() > m_height.hatchSecondLevelHeight) {
-            m_winch.set(-kMotorPowerLevel);
-        }
-    }
-    
-    public void GoToThirdHatchLevel() {
-        if (m_height.atThirdHatchLevel()) {
-            m_winch.set(0);
-        } else if (m_height.getDistance() < m_height.hatchThirdLevelHeight) {
-            m_winch.set(kMotorPowerLevel);
-        } else if (m_height.getDistance() > m_height.hatchThirdLevelHeight) {
-            m_winch.set(-kMotorPowerLevel);
         }
     }
 }

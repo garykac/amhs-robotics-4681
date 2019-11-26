@@ -16,16 +16,17 @@ public class LifterHeight {
 
     private static final double minMaxDef = 3;
 
-    private static final double maxHeight = 58;
+    private static final double maxHeight = 62.6;
     private static final double minHeight = 2;
+    // ALL HEIGHTS NEED TO BE ([MEASURED DISTANCE] + 3)
+    // TO COMPENSATE FOR (targetHeight - 3) IN goToHeight()
+    public static final double ballFirstLevelHeight = 29;
+    public static final double ballLoadingStationHeight = 42;
+    public static final double ballSecondLevelHeight = 56;
 
-    public static final double ballFirstLevelHeight = 24;
-    public static final double ballLoadingStationHeight = 32;
-    public static final double ballSecondLevelHeight = 51;
-
-    public static final double hatchFirstLevelHeight = 8;
-    public static final double hatchSecondLevelHeight = 40;
-    public static final double hatchThirdLevelHeight = 57;
+    public static final double hatchFirstLevelHeight = 9;
+    public static final double hatchSecondLevelHeight = 39;
+    public static final double hatchThirdLevelHeight = 62;
 
 
     public void lifterHeightInit() {

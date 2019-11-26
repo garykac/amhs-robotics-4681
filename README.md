@@ -9,17 +9,14 @@ Est. 2013
 
 Unless otherwise specified, all robotics meetings take place in the portables.
 
+**Meeting 9/4, Mr. Knox's room (508), 3-4:30**
+To Do: Discuss interest meeting agenda, finalize autumn workshops, establish shirt designs
+
 [Previous meetings...](docs/2019/meetings-history.md)
 
 ## Competitions
 
-### Auburn Mountainview : 
-* Fri 8 Mar - Sun Mar 10
-* [Itinerary](docs/2019/competition-auburn.md)
-    
-### Glacier Peak :
-* Fri 22 Mar - Sun 24 Mar
-* [Itinerary](docs/2019/competition-glacier-peak.md)
+### To Be Released, October
 
 ## 2019 Competition Information
 

@@ -5,15 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team4681.robot;
+package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Victor;
 
-
 public class Robot extends TimedRobot {
-	Victor motor0;
+    Victor motor0;
 	Victor motor1;
 	Joystick controller;
 	double kSpeed;
@@ -24,9 +23,8 @@ public class Robot extends TimedRobot {
 		this.motor0 = new Victor(0);
 		this.motor1 = new Victor(1);
 		this.controller = new Joystick(0);
-		kSpeed = 0.0;
+		kSpeed = 0.45;
 	}
-
 
 	@Override
 	public void autonomousInit() {}
@@ -35,19 +33,9 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {}
 
 	@Override
-	public void teleopPeriodic() { /**
-		if (controller.getRawButton(2))
-			kSpeed = controller.getRawButton(8) ? .70 : 0.35;
-		if (controller.getRawButtonPressed(3))
-            kSpeed = controller.getRawButton(8) ? 0.50 : 0.20;
-            */
-		
-		motor0.set(kSpeed*-controller.getRawAxis(3)*controller.getRawAxis(3));
-		motor1.set(kSpeed*controller.getRawAxis(1)*controller.getRawAxis(1));
+	public void teleopPeriodic() {
 	}
 
 	@Override
-	public void testPeriodic() {
-        System.out.println(controller.getRawAxis(1));
-    }
+	public void testPeriodic() {}
 }
