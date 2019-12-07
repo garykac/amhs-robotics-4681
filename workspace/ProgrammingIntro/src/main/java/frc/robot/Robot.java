@@ -34,21 +34,24 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopPeriodic() {
+        //xbox a b x y
         if(controller.getRawButton(2))
             speed = 0.7;
         if(controller.getRawButton(3))
             speed = 0.4;
-        if(controller.getRawButton(1))
+        if(controller.getRawButtonPressed(1))
             speed += 0.1;
-        if(controller.getRawButton(4))
+        if(controller.getRawButtonPressed(4)) {
             speed += -0.1;
+            System.out.println(speed);
+        }
         if(speed < 0.1){
             speed = 0.1;
         }
         if(speed > 1){
             speed = 1;
         }
-        m0.set(controller.getRawAxis(1)*speed);
-        m1.set(controller.getRawAxis(3)*speed);
+        m0.set(-controller.getRawAxis(1)*speed);
+        m1.set(controller.getRawAxis(5)*speed);
     }
 }

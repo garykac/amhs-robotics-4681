@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.AnalogInput;
+//import edu.wpi.first.wpilibj.Ultrasonic;
 
 public class Robot extends TimedRobot {
     
@@ -18,7 +18,7 @@ public class Robot extends TimedRobot {
     MecanumDrive mec;
     double speed;
     CameraServer cam;
-    AnalogInput infrared; // LEFT OFF HERE
+    //Ultrasonic ultra; // LEFT OFF HERE
 
   @Override
   public void robotInit() {
@@ -30,11 +30,26 @@ public class Robot extends TimedRobot {
     mec = new MecanumDrive(m0, m1, m2, m3);
     speed = 0.5;
     cam.getInstance().startAutomaticCapture();
-    infrared = new AnalogInput(0);
+    //ultra = new Ultrasonic(0,1);
   }
  
   @Override
+  public void autonomousPeriodic() {
+    for (int i=0; i < 20; i++) {
+      mec.driveCartesian(.6,0,0);
+    }
+    mec.driveCartesian(0,0,0);
+  }
+
+  @Override
   public void teleopPeriodic() {
     mec.driveCartesian(-controller.getRawAxis(1)*speed, controller.getRawAxis(0)*speed, controller.getRawAxis(2)*speed);
+    //System.out.println(ultra.getRangeInches());
+  }
+
+  @Override
+  public void testPeriodic() {
+    mec.driveCartesian(-controller.getRawAxis(1), controller.getRawAxis(0), controller.getRawAxis(2));
+    //System.out.println(ultra.getRangeInches());
   }
 }
