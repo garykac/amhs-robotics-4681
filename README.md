@@ -9,23 +9,25 @@ Est. 2013
 
 Unless otherwise specified, all robotics meetings take place in the portables.
 
-**Meeting 9/4, Mr. Knox's room (508), 3-4:30**
-To Do: Discuss interest meeting agenda, finalize autumn workshops, establish shirt designs
+**Meeting 12/16, Mr. Knox's room (508), 2:45-3:00**
 
-[Previous meetings...](docs/2019/meetings-history.md)
+To Do: Lay out plan for Kickoff, including times, locations, and other relevant logistics.
 
-## Competitions
+**Meeting 1/4, Mr. Glass's room (804), 10:00-3:00**
 
-### To Be Released, October
+Game overview, research, strategy, lunch, and CAD: cardboard aided design.
 
-## 2019 Competition Information
+[Previous meetings, 2019...](docs/2019/meetings-history.md)
+[Previous meetings, 2020...](docs/2020/meetings-history.md)
 
-* [Main Competition Info](docs/2019/README.md)
-* [Team Info](docs/2019/teams)
+## 2020 Competition Information
+
+* [Main Competition Info](docs/2020/README.md)
+* [Team Info](docs/2020/teams.md)
 
 ## Documentation
 
-* [Business and Finance](docs/2019/teams/business-team.md)
+* [Business and Finance (2019)](docs/2019/teams/business-team.md)
 * [Post-mortem documents](docs/post-mortem.md)
 
 ## Help
