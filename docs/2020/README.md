@@ -9,7 +9,7 @@
 Game Manual 2020 (pdf) - To Be Released January 4, 2020
 
 ### FRC 4681 Team Information
-[Teams](teams/)
+[Teams](teams.md)
 
 ### Competition 1: Glacier Peak High School
 * February 28 to March 1
