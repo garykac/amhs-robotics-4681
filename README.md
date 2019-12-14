@@ -10,9 +10,11 @@ Est. 2013
 Unless otherwise specified, all robotics meetings take place in the portables.
 
 **Meeting 12/16, Mr. Knox's room (508), 2:45-3:00**
+
 To Do: Lay out plan for Kickoff, including times, locations, and other relevant logistics.
 
 **Meeting 1/4, Mr. Glass's room (804), 10:00-3:00**
+
 Game overview, research, strategy, lunch, and CAD: cardboard aided design.
 
 [Previous meetings, 2019...](docs/2019/meetings-history.md)
